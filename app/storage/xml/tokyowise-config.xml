@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- WARNING! This config file should only be modified by the site CMS. -->
+<tokyowise>
+	<home>
+		<!-- top header image -->
+		<headerimg>
+			<!-- the image file name for the top header image -->
+			<wide>header-img-featurevol6.png</wide>
+			<narrow>header-img-featurevol6-sp.png</narrow>
+			<lastupdate>20/06/2015 - 07:42:16 pm</lastupdate>
+		</headerimg>
+		<!-- The headline column -->
+		<headline>
+			<entry> 
+				<page>features</page>
+				<id>6</id>
+			</entry>
+			<entry>
+				<page>rensai</page>
+				<id>8</id>
+			</entry>
+			<entry>
+				<page>news</page>
+				<id>6</id>
+			</entry>
+			<entry>
+				<page>gadgets</page>
+				<id>10</id>
+			</entry>
+			<entry>
+				<page>features</page>
+				<id>5</id>
+			</entry>
+		</headline>
+		<!-- The feature highlight column -->
+		<featurehighlight>
+			<!-- Feature Category ID for the latest feature -->
+			<latestvol>2</latestvol>
+			<!-- Number of entries for the Features Highlight column -->
+			<totalentries>2</totalentries>
+		</featurehighlight>
+		<!-- Numbers of entries for each module on the page -->
+		<modules>
+			<features/>
+			<rensai>5</rensai>
+			<gadgets>8</gadgets>
+			<news>5</news>
+		</modules>
+	</home>	
+	<features>
+		<!-- Numbers of entries for each module on the page -->
+		<modules>
+			<features/>
+			<rensai>5</rensai>
+			<gadgets>8</gadgets>
+			<news>5</news>
+		</modules>
+	</features>
+	<rensai>
+		<!-- Number of rows for the latest posts column -->
+		<latestposts>6</latestposts>
+		<!-- Numbers of entries for each module on the page -->
+		<modules>
+			<features>6</features>
+			<rensai/>
+			<gadgets>8</gadgets>
+			<news>5</news>
+		</modules>
+	</rensai>
+	<gadgets>
+		<!-- Numbers of entries for each module on the page -->
+		<modules>
+			<features>6</features>
+			<rensai>5</rensai>
+			<gadgets/>
+			<news>6</news>
+		</modules>
+	</gadgets>
+	<news>
+		<!-- The Archive Column -->
+		<archive>
+			<!-- Number of entries for the news archive column -->
+			<totalentries>4</totalentries>
+		</archive>	
+		<!-- Numbers of entries for each module on the page -->
+		<modules>
+			<features>6</features>
+			<rensai>6</rensai>
+			<gadgets>8</gadgets>
+			<news/>
+		</modules>
+	</news>
+	<editors>
+		<!-- Numbers of entries for each module on the page -->
+		<modules>
+			<features>6</features>
+			<rensai>6</rensai>
+			<gadgets>8</gadgets>
+			<news>6</news>
+		</modules>
+	</editors>
+</tokyowise>

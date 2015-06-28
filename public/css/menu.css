@@ -1,0 +1,68 @@
+@media print, screen and (min-width: 641px) {
+	div.menu-navi-container {
+		margin: 10px auto 0px; border-top: 1px solid #e3e2e2;
+		border-bottom: 1px solid #e3e2e2; background: #000; padding: 5px;
+	}
+	div#panel { display: block !important; }
+	div.menu-navi-container ul.menu {
+		overflow: hidden; float: left; line-height: 185%; font-size: 14px;
+	}
+	div.menu-navi-container ul.menu li {
+		list-style: none; float: left; margin-right: 40px;
+	}
+	div.menu-navi-container ul.menu li a {
+		text-decoration: none; color: #fff;
+	}
+	div.menu-navi-container ul.menu li a:hover {
+		text-decoration: underline; color: #fff;
+	}
+}
+@media screen and (max-width: 640px) {
+	div.menu-navi-container {
+		width: 100%; padding: 5px 0; border: none;
+	}
+	.gnav {
+		max-width: 960px; width: 100%; margin: 0 auto; padding: 0;
+	}
+	#gnav-area {
+		position: absolute; top: 0; right: 0; z-index: 100; width: 100%;
+	}
+	a.gmenu {
+		border-radius: 4px; display: block; color: #fff; 
+		text-decoration: none; height: 37px; font-size: 12px; width: 40px; 
+		line-height: 35px; float: right; text-align:center; margin: 5px 8px 0;
+		background-color: #000; background-image: url("../images/hamburger-icon.jpg");
+		background-size: 30px 30px; background-repeat: no-repeat;
+		background-position: 50% 40%; cursor:pointer;
+	}
+	a.menuOpen {
+		background-image: url("../images/hamburger-active-icon.jpg") !important;
+	}
+	div#panel { display: none; clear: right; } 
+	div.menu-navi-container ul.menu { width: 100% }
+	div.menu-navi-container ul.menu li { 
+		border-bottom: 1px white solid; float: none; margin-right: 0;
+	}
+	div.menu-navi-container ul#menu-primary li { display: block; }
+	div.menu-navi-container ul#menu-primary li a { 
+		line-height: 200%; text-align: left; padding: 8px 0 8px 15px; font-size: 16px;
+	}
+	div.menu-navi-container ul.menu li a {
+		display: block; text-align: center; background: #000; opacity: 0.85; 
+		color: #e3e2e2; 
+	}
+	ul.sns { display: none; }
+}
+.gmenu { 
+	display: none; 
+}
+.gnav {
+	max-width: 960px; width: 100%; margin: 0 auto; overflow: hidden; zoom: 1;
+}
+div.menu-navi-container ul li { display: inline; }
+ul.menu li { float: left; }
+ul.sns { float: right; overflow: hidden; zoom: 1; }
+ul.sns li { float: left; }
+ul.sns li#fb {}
+ul.sns li#tw { margin-right: 15px; }
+ul.sns li img { width: 25px; }
