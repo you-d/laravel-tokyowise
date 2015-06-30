@@ -7,7 +7,7 @@
 		>
 		<a href="/cms/rensai">Ren-Sai</a>
 		>
-		<a href="/cms/{{ $rensaiCategory->id }}">{{ $rensaiCategory->category_name }}</a>
+		<a href="/cms/rensai/{{ $rensaiCategory->id }}">{{ $rensaiCategory->category_name }}</a>
 	</nav>
 </section>
 <!-- features contents -->
