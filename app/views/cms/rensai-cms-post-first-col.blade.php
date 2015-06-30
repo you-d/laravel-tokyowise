@@ -19,7 +19,7 @@
 				</dt>
 				<dd>
 					<!-- Content Primary Img -->
-					{{ HTML::image('images/rensai/posts/' . $rensaiPost->primary_img , $rensaiPost->primary_img) }}	
+					{{ HTML::image('images/rensai/posts/' . $rensaiPost->primary_img , $rensaiPost->primary_img) }}
 				</dd>
 			</dl>
 			<!-- Content Body -->
@@ -54,7 +54,7 @@
 						</a>
 					</li>
 				</ul>
-			</nav> 
+			</nav>
 		</div>
 		<!-- CMS - Page Content -->
 		<div id="rensai-cms-rensai-post-overlay" class="cms-overlay">
@@ -64,10 +64,17 @@
 			</div>
 			<div id="rensai-post-dialog" class="cms-dialog" >
 				@if (isset($rensaiPost))
-					<h1>[ Rensai ] {{ $rensaiPost->post_title }}</h1>
+					<h1>
+						[ Rensai ]
+						@if (strlen($rensaiPost->post_title) > 100)
+							{{ mb_substr($rensaiPost->post_title, 0, 35) . ' ...' }}
+						@else
+							{{ $rensaiPost->post_title }}
+						@endif
+					</h1>
 					<hr><br>
-					{{Form::open(['id' => 'cms-form', 'method' => 'POST', 
-								  'url' => url('/cms/rensai/' . $rensaiPost->category_id . '/' . $rensaiPost->post_id), 
+					{{Form::open(['id' => 'cms-form', 'method' => 'POST',
+								  'url' => url('/cms/rensai/' . $rensaiPost->category_id . '/' . $rensaiPost->post_id),
 								  'class' => '', 'accept-charset' => 'UTF-8']) }}
 						<input type="hidden" id="primary-id" value="{{ $rensaiPost->id }}">
 						<table class="cms-content-frame">
@@ -80,13 +87,13 @@
 							<tr class="height40">
 								<td class="left-col">Replace Main Article Image : </td>
 								<td class="right-col">
-									{{ Form::file('main-article-img', array('id'=>'main-article-img','class'=>'right-col-input')) }} 
+									{{ Form::file('main-article-img', array('id'=>'main-article-img','class'=>'right-col-input')) }}
 								</td>
 							</tr>
 							<tr class="height40">
 								<td class="left-col">Replace Article Body : </td>
 								<td class="right-col">
-									{{ Form::file('article-body', array('id'=>'article-body','class'=>'right-col-input')) }} 
+									{{ Form::file('article-body', array('id'=>'article-body','class'=>'right-col-input')) }}
 								</td>
 							</tr>
 							<tr>
@@ -96,15 +103,15 @@
 										<span style="color:#F00000;">{{ date("d/m/Y h:i:s a", strtotime($rensaiPost->updated_at)) }}</span>
 										&nbsp;[ GMT + 10 ]
 									</div>
-									<div id="error-list"></div> 
+									<div id="error-list"></div>
 								</td>
 							</tr>
 						</table>
 						<br><hr><br>
 						<button type="button" id="submit-btn">Update</button>
-						<button type="button" id="cancel-btn">Cancel</button>	
+						<button type="button" id="cancel-btn">Cancel</button>
 					{{ Form::close() }}
-				@else	
+				@else
 					The $rensaiPost has not been defined in the RensaiCmsController.
 				@endif
 			</div>
@@ -113,7 +120,7 @@
 		<div class="post-prev-next-link">
 			<div class="post-prev-next-link-left-col">
 				<?php $urlPath = ""; ?>
-				@if($leftLink != null) 
+				@if($leftLink != null)
 					<?php $urlPath = "/" . $leftLink->category_id . "/" . $leftLink->post_id; ?>
 				@endif
 				<a href="/rensai{{ $urlPath }}">
@@ -131,7 +138,7 @@
 						@if($leftLink == null)
 							Back to The Rensai Page
 						@else
-							@if (strlen($leftLink->post_title) > 100) 
+							@if (strlen($leftLink->post_title) > 100)
 								{{ mb_substr($leftLink->post_title, 0, 35) . ' ...' }}
 							@else
 								{{ $leftLink->post_title }}
@@ -142,7 +149,7 @@
 			</div>
 			<div class="post-prev-next-link-right-col">
 				<?php $urlPath = ""; ?>
-				@if($rightLink != null) 
+				@if($rightLink != null)
 					<?php $urlPath = "/" . $rightLink->category_id . "/" . $rightLink->post_id; ?>
 				@endif
 				<a href="/rensai{{ $urlPath }}">
@@ -160,7 +167,7 @@
 						@if($rightLink == null)
 							Back to The Rensai Page
 						@else
-							@if (strlen($rightLink->post_title) > 100) 
+							@if (strlen($rightLink->post_title) > 100)
 								{{ mb_substr($rightLink->post_title, 0, 35) . ' ...' }}
 							@else
 								{{ $rightLink->post_title }}
@@ -178,12 +185,12 @@
 				<div class="archive-entry archive-entry-selected">
 				@else
 				<div class="archive-entry">
-				@endif	
+				@endif
 					<dl>
 						<dt class="posting-date">{{ date("d/m/Y", strtotime($postArchive->posting_date)) }}</dt>
 						<dd>
 							<a href="{{ url('/rensai', array($postArchive->post_id), false) }}">
-								@if (strlen($postArchive->post_title) > 100) 
+								@if (strlen($postArchive->post_title) > 100)
 									{{ mb_substr($postArchive->post_title, 0, 35) . ' ...' }}
 								@else
 									{{ $postArchive->post_title }}

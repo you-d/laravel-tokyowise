@@ -100,8 +100,8 @@ body {
 	}
 	#error-container #error-container-box {
 		display: table; margin: 0 auto; padding-top: 25px; width: 50%;
-		border-top: 2px solid #000; border-bottom: 2px solid #000; margin-top: 130px;
-		line-height: 140%;
+		border-top: 2px solid #000; border-bottom: 2px solid #000;
+		line-height: 140%; margin: 130px 0 50px 0;
 	}
 	#login-container-sp div {
 		font-size: 12px; margin: 0 auto; width: 90%; margin-top: 140px;
