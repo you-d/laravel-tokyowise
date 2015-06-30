@@ -162,6 +162,8 @@ class RensaiCmsController extends RensaiController {
 				Cache::forget('rensai-rensaiPosts');
 
 				// Clear the cache for the previous posts of this newly created post
+				// DEMO Mode (because $newRecordId will be null in demo mode)
+				/*
 				$rensaiPostIds = DB::table('rensai_post')->select('id')->get();
 				for ($i=0; $i<count($rensaiPostIds) - 1; $i++) {
 					if ($newRecordId == $rensaiPostIds[$i]->id) {
@@ -174,7 +176,7 @@ class RensaiCmsController extends RensaiController {
 
 						break;
 					}
-				}
+				}*/
 
 				break;
 			case "rensai-delete-a-post":
@@ -261,13 +263,14 @@ class RensaiCmsController extends RensaiController {
 									 RensaiCategory::$validationMessages);
 		if ($validator->fails()) {
 			// Send all of the error messages back to the cms dialog in cms.js
-			echo 'Error:';
+			echo 'error:';
 			echo '<ul>';
 			foreach ($validator->errors()->all() as $message) {
 				echo '<li> - ' . $message . '</li>';
 			}
 			echo '</ul>';
 		} else {
+			/*
 			$cateDestPath = $this->getFolderPath("categories");
 			$postDestPath = $this->getFolderPath("posts");
 			$postBodyDestPath = $this->getFolderPath("postbody");
@@ -342,6 +345,9 @@ class RensaiCmsController extends RensaiController {
 			$postBody->move($postBodyDestPath, $postBodyName);
 
 			echo 'ok';
+			*/
+			// DEMO Mode
+			echo 'demo';
 		}
 	}
 	private function handleCategoryRemoval($id) {
@@ -354,6 +360,7 @@ class RensaiCmsController extends RensaiController {
 			// Delete all post materials related to all post record under this category record
 			$rensaiPosts = RensaiPost::where("category_id", "=", $id)->get();
 			if ($rensaiPosts != null) {
+				/*
 				foreach ($rensaiPosts as $rensaiPost) {
 					\File::delete($postDestPath . '/' . $rensaiPost->primary_img);
 					\File::delete($postDestPath . '/' . $rensaiPost->thumbnail_img);
@@ -370,6 +377,8 @@ class RensaiCmsController extends RensaiController {
 				RensaiCategory::destroy($id);
 
 				echo 'ok';
+				*/
+				echo 'demo';
 			} else {
 				// Throw an exception here...
 				echo 'error';
@@ -405,6 +414,7 @@ class RensaiCmsController extends RensaiController {
 			}
 			echo '</ul>';
 		} else {
+			/*
 			$postDestPath = $this->getFolderPath("posts");
 			$postBodyDestPath = $this->getFolderPath("postbody");
 
@@ -454,6 +464,12 @@ class RensaiCmsController extends RensaiController {
 			echo 'ok';
 
 			return $newRensaiPost->id;
+			*/
+
+			// DEMO Mode
+			echo 'demo';
+
+			return null;
 		}
 	}
 	private function handleDeletingPost($id) {
@@ -470,6 +486,7 @@ class RensaiCmsController extends RensaiController {
 				echo '<p style="text-align:center;">Delete the category from the <b>[rensai hub cms page]</b> to delete this post.</p>';
 				echo '<br>';
 			} else {
+				/*
 				$postDestPath = $this->getFolderPath("posts");
 				$postBodyDestPath = $this->getFolderPath("postbody");
 
@@ -483,6 +500,10 @@ class RensaiCmsController extends RensaiController {
 				RensaiPost::destroy($id);
 
 				echo 'ok';
+				*/
+
+				// DEMO mode
+				echo 'demo';
 			}
 		} else {
 			// throw an exception here...
@@ -510,13 +531,14 @@ class RensaiCmsController extends RensaiController {
 
 			if ($validator->fails()) {
 				// Send all of the error messages back to the cms dialog in cms.js
-				echo 'Error:';
+				echo 'error:';
 				echo '<ul>';
 				foreach ($validator->errors()->all() as $message) {
 					echo '<li> - ' . $message . '</li>';
 				}
 				echo '</ul>';
 			} else {
+				/*
 				// Update the record
 				$tgtRensaiPost->post_title = $updatedPostTitle;
 				$tgtRensaiPost->save();
@@ -551,6 +573,10 @@ class RensaiCmsController extends RensaiController {
 				$newArticleBody->move($postBodyDestPath, $postBodyName);
 
 				echo 'ok';
+				*/
+
+				// DEMO mode
+				echo 'demo';
 			}
 		} else {
 			// throw an exception here...
@@ -586,6 +612,7 @@ class RensaiCmsController extends RensaiController {
 			}
 			echo '</ul>';
 		} else {
+			/*
 			$cateDestPath = $this->getFolderPath("categories");
 
 			// Update this record
@@ -610,6 +637,9 @@ class RensaiCmsController extends RensaiController {
 			$sideIconImg->move($cateDestPath, $iconImgName);
 
 			echo 'ok';
+			*/
+			// DEMO mode
+			echo 'demo';
 		}
 	}
 }

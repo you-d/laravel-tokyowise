@@ -30,6 +30,14 @@
 		@include('cms/menu-cms')
 		<!-- contents -->
 		@yield('content-cms')
+		<!-- [CMS] - Demo Mode Notification Modal Dialog -->
+		<div id="demo-mode-dialog" class="cms-dialog" >
+			<h1>[Demo Mode] Status: <span style="color: #F00000">Active</span></h1>
+			<hr><br>
+			This CMS Functionality has been disabled.
+			<br><br><hr><br>
+			<button type="button" id="cancel-btn">I Obey...</button>
+		</div>
 		<!-- footer -->
 		<footer id="footer">
 			<section>
@@ -60,7 +68,7 @@
 			<a href="">
 				{{ HTML::image('images/pagetop.png', 'Page Top Btn') }}
 			</a>
-		</p>	
+		</p>
 	</div>
 	{{ HTML::script('js/jquery-2.1.4.min.js'); }}
 	{{ HTML::script('jquery-ui-1114/jquery-ui.min.js'); }}

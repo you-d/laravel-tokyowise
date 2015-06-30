@@ -178,6 +178,10 @@ $(document).ready(function() {
 	$.ajaxSetup({
 		headers:{'X-CSRF-Token':$('meta[name=_token]').attr('content')}
 	});
+	/* Demo Mode Dialog */
+	$("#demo-mode-dialog #cancel-btn").click(function() {
+		$("#demo-mode-dialog").dialog("close");
+	});
 	/* HOME */
 	/* Home - Headline Header Img */
 	HandleBasicDialogFunctionality("#edit-home-headline-header-img", "#home-headline-header-img-dialog", 700, 280);
@@ -199,18 +203,22 @@ $(document).ready(function() {
 							});
 		request.always(function(outputMsg) {
 			if (outputMsg == 'ok') {
-				$("#home-headline-header-img-dialog").dialog("close");
-				window.location.reload();
+					$("#home-headline-header-img-dialog").dialog("close");
+					window.location.reload();
+			} else if (outputMsg == 'demo') {
+					$("#demo-mode-dialog").dialog({
+						modal:true, resizable:false, draggable:false, width:600, height:200,
+					});
 			} else {
-				// get the height of the table inside the dialog
-				var prevheight = $("#home-headline-header-img-dialog .cms-content-frame").height();
-				// inject the error list
-				$("#home-headline-header-img-dialog #error-list").html(outputMsg);
-				// get the updated height of the table inside the dialog
-				var newheight = $("#home-headline-header-img-dialog .cms-content-frame").height();
-				// change the height of the dialog
-				var currdialogheight = $("#home-headline-header-img-dialog").height();
-				$("#home-headline-header-img-dialog").height(currdialogheight + newheight - prevheight);
+					// get the height of the table inside the dialog
+					var prevheight = $("#home-headline-header-img-dialog .cms-content-frame").height();
+					// inject the error list
+					$("#home-headline-header-img-dialog #error-list").html(outputMsg);
+					// get the updated height of the table inside the dialog
+					var newheight = $("#home-headline-header-img-dialog .cms-content-frame").height();
+					// change the height of the dialog
+					var currdialogheight = $("#home-headline-header-img-dialog").height();
+					$("#home-headline-header-img-dialog").height(currdialogheight + newheight - prevheight);
 			}
 			$("#home-headline-header-img-dialog #submit-btn").attr("disabled", false);
 		});
@@ -291,6 +299,10 @@ $(document).ready(function() {
 			if (outputMsg == 'ok') {
 				$("#rensai-create-article-category-dialog").dialog("close");
 				window.location.reload();
+			} else if (outputMsg == 'demo') {
+				$("#demo-mode-dialog").dialog({
+					modal:true, resizable:false, draggable:false, width:600, height:200,
+				});
 			} else {
 				// get the height of the table inside the dialog
 				var prevheight = $("#rensai-create-article-category-dialog #table2").height();
@@ -306,7 +318,7 @@ $(document).ready(function() {
 		});
 	});
 	$("#rensai-remove-article-category-dialog #submit-btn").click(function() {
-		$(this).attr("disabled", "disabled");
+		//$(this).attr("disabled", "disabled");
 		var form = $("#rensai-remove-article-category-dialog #cms-form");
 		var formAction = form.attr('url');
 		var category = "rensai-delete-article-category";
@@ -316,9 +328,14 @@ $(document).ready(function() {
 							  url: formAction,
 							  data: dataString,
 							  success: function() {
-							  		$(this).removeAttr("disabled");
-									request.done(function() { window.location.reload(); });
-									$("#rensai-remove-article-category-dialog").dialog("close");
+							  		//$(this).removeAttr("disabled");
+										request.done(function() {
+												//window.location.reload();
+												$("#demo-mode-dialog").dialog({
+													modal:true, resizable:false, draggable:false, width:600, height:200,
+												});
+										});
+										//$("#rensai-remove-article-category-dialog").dialog("close");
 							  }
 							});
 	});
@@ -348,6 +365,10 @@ $(document).ready(function() {
 			if (outputMsg == 'ok') {
 				$("#rensai-category-edit-category-dialog").dialog("close");
 				window.location.reload();
+			} else if (outputMsg == 'demo') {
+				$("#demo-mode-dialog").dialog({
+					modal:true, resizable:false, draggable:false, width:600, height:200,
+				});
 			} else {
 				// get the height of the table inside the dialog
 				var prevheight = $("#rensai-category-edit-category-dialog .cms-content-frame").height();
@@ -383,6 +404,10 @@ $(document).ready(function() {
 			if (outputMsg == 'ok') {
 				$("#rensai-category-create-post-dialog").dialog("close");
 				window.location.reload();
+			} else if (outputMsg == 'demo') {
+				$("#demo-mode-dialog").dialog({
+					modal:true, resizable:false, draggable:false, width:600, height:200,
+				});
 			} else {
 				// get the height of the table inside the dialog
 				var prevheight = $("#rensai-category-create-post-dialog .cms-content-frame").height();
@@ -417,6 +442,10 @@ $(document).ready(function() {
 			if (outputMsg == 'ok') {
 				$("#rensai-category-delete-post-dialog").dialog("close");
 				window.location.reload();
+			} else if (outputMsg == 'demo') {
+				$("#demo-mode-dialog").dialog({
+					modal:true, resizable:false, draggable:false, width:600, height:200,
+				});
 			} else if (outputMsg == 'error') {
 
 			} else {
@@ -456,6 +485,10 @@ $(document).ready(function() {
 			if (outputMsg == 'ok') {
 				$("#rensai-post-dialog").dialog("close");
 				window.location.reload();
+			} else if (outputMsg == 'demo') {
+				$("#demo-mode-dialog").dialog({
+					modal:true, resizable:false, draggable:false, width:600, height:200,
+				});
 			} else if (outputMsg == 'error') {
 
 			} else {

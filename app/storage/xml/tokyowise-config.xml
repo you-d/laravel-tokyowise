@@ -58,7 +58,7 @@
 	</features>
 	<rensai>
 		<!-- Number of rows for the latest posts column -->
-		<latestposts>6</latestposts>
+		<latestposts>5</latestposts>
 		<!-- Numbers of entries for each module on the page -->
 		<modules>
 			<features>6</features>
