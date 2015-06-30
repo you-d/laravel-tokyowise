@@ -101,7 +101,7 @@ body {
 	#error-container #error-container-box {
 		display: table; margin: 0 auto; padding-top: 25px; width: 50%;
 		border-top: 2px solid #000; border-bottom: 2px solid #000;
-		line-height: 140%; margin: 130px 0 50px 0;
+		line-height: 140%; margin-top: 130px; margin-bottom: 50px;
 	}
 	#login-container-sp div {
 		font-size: 12px; margin: 0 auto; width: 90%; margin-top: 140px;
@@ -421,4 +421,33 @@ a:hover {
 	.cms-under-construction-txt { display: none; }
 	.ui-dialog { display: none !important; }
 	.cms-dialog { display: none !important; }
+}
+/* How To Page */
+@media print, screen and (min-width: 641px) {
+	.centre-container {
+		width: 640px; margin-top: 10px !important; margin-bottom: 10px !important; margin: 0 auto;
+	}
+	.howto-videoframe {
+		width: 100%; height: 360px; margin-top: 10px !important; margin-bottom: 50px !important;
+		margin: 0 auto;
+	}
+	.howto-videoframe .now-loading-text {
+		height: 360px; line-height: 360px;
+	}
+}
+@media print, screen and (max-width: 640px) {
+	.centre-container {
+		width: 90%; margin: 0 auto; margin-top: 50px; margin-bottom: 30px;
+		line-height: 140%;
+	}
+	.howto-videoframe {
+		width: 100%; height: 100%; margin-top: 10px; margin-bottom: 10px;
+		margin: 0 auto;
+	}
+}
+.howto-videoframe {
+	text-align: center; background-color: #000;
+}
+.howto-videoframe .now-loading-text {
+	color: #FFF;
 }

@@ -29,7 +29,8 @@ Route::group(array('before' => 'checklogout'), function() {
 														  'uses' => 'PoemsController@poems'));
 	Route::get('/contributors', array( 'as' => 'contributors',
 														  			 'uses' => 'ContributorsController@contributors'));
-	// In production, this page can only be accessed over https connection
+	Route::get('/howto', array( 'as' => 'howto',
+																		 'uses' => 'HowToController@howto'));
 	Route::get('/login', array( 'as' => 'login',
 															'before' => 'canshowlogin',
 															'uses' => 'LoginController@login'));
