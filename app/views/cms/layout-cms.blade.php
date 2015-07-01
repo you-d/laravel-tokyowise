@@ -12,6 +12,8 @@
 	{{ HTML::style('css/modules.css'); }}
 	{{ HTML::style('jquery-bxslider/jquery.bxslider.css'); }}
 	{{ HTML::style('jquery-ui-1114/jquery-ui.min.css'); }}
+	{{ HTML::script('jwplayer/jwplayer.js'); }}
+	<script type="text/javascript">jwplayer.key="jsV0xZdfwdvabHVZAuCcS5ZwuBE2+tpVCGC4Ww==";</script>
 </head>
 <body>
 	<div id="container">
@@ -58,6 +60,7 @@
 				<ul>
 					<li><a href="{{ url() }}/cms">HOME</a></li>
 					<li><a href="{{ url() }}/cms/about_tokyowise">ABOUT TOKYOWISE</a></li>
+					<li><a href="{{ url() }}/cms/howto">HOW TO</a></li>
 					<li><a href="{{ url() }}/cms/site_policy">SITE POLICY</a></li>
 				</ul>
 				<p><small>&#64;PARAGRAPH. ALL RIGHTS RESERVED</small></p>
