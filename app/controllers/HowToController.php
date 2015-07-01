@@ -8,6 +8,10 @@ class HowToController extends BaseController {
 				// howto.blade.php
 				$output = 'howto';
 				break;
+			case "hubCms" :
+				// howto-cms.blade.php
+				$output = 'howto-cms';
+				break;
 		}
 
 		return $output;
@@ -28,5 +32,10 @@ class HowToController extends BaseController {
 	/* Shows howto.blade.php */
 	public function howto() {
       return View::make($this->getViewName("hub"));
+  }
+	/* Shows howto-cms.blade.php */
+	public function howtoCms() {
+			$viewFile = $this->getCmsViewFolder() . $this->getViewName("hubCms");
+      return View::make($viewFile);
   }
 }

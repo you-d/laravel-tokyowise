@@ -71,6 +71,8 @@ Route::group(array('before' => 'cmsauth|checklogout'), function() {
 														  		'uses' => 'PoemsController@poemsCms'));
 	Route::get('/cms/contributors', array( 'as' => 'contributors',
 														  			 		 'uses' => 'ContributorsController@contributorsCms'));
+	Route::get('/cms/howto', array( 'as' => 'howto',
+																  'uses' => 'HowToController@howtoCms'));																						
 	Route::get('/cms/rensai/{categoryId}', array( 'uses' => 'RensaiCmsController@rensaiCategoryCms') );
 	Route::get('/cms/rensai/{categoryId}/{postId}', array( 'uses' => 'RensaiCmsController@rensaiPostCms'));
 	// POST
@@ -93,6 +95,7 @@ Route::group(array('before' => 'cmsauth|checklogout'), function() {
 		Route::post('/cms/editors', array( 'as' => 'postEditorsCms',
 										   'uses' => 'EditorsCmsController@postEditorsCms')
 				   );
+
 		Route::post('/cms/rensai/{categoryId}', array( 'uses' => 'RensaiCmsController@postRensaiCategoryCms') );
 		Route::post('/cms/rensai/{categoryId}/{postId}', array( 'uses' => 'RensaiCmsController@postRensaiPostCms'));
 	});
