@@ -206,9 +206,7 @@ $(document).ready(function() {
 					$("#home-headline-header-img-dialog").dialog("close");
 					window.location.reload();
 			} else if (outputMsg == 'demo') {
-					$("#demo-mode-dialog").dialog({
-						modal:true, resizable:false, draggable:false, width:600, height:200,
-					});
+					CreateDemoModeDialog();
 			} else {
 					// get the height of the table inside the dialog
 					var prevheight = $("#home-headline-header-img-dialog .cms-content-frame").height();
@@ -300,9 +298,7 @@ $(document).ready(function() {
 				$("#rensai-create-article-category-dialog").dialog("close");
 				window.location.reload();
 			} else if (outputMsg == 'demo') {
-				$("#demo-mode-dialog").dialog({
-					modal:true, resizable:false, draggable:false, width:600, height:200,
-				});
+				CreateDemoModeDialog();
 			} else {
 				// get the height of the table inside the dialog
 				var prevheight = $("#rensai-create-article-category-dialog #table2").height();
@@ -331,9 +327,7 @@ $(document).ready(function() {
 							  		//$(this).removeAttr("disabled");
 										request.done(function() {
 												//window.location.reload();
-												$("#demo-mode-dialog").dialog({
-													modal:true, resizable:false, draggable:false, width:600, height:200,
-												});
+												CreateDemoModeDialog();
 										});
 										//$("#rensai-remove-article-category-dialog").dialog("close");
 							  }
@@ -366,9 +360,7 @@ $(document).ready(function() {
 				$("#rensai-category-edit-category-dialog").dialog("close");
 				window.location.reload();
 			} else if (outputMsg == 'demo') {
-				$("#demo-mode-dialog").dialog({
-					modal:true, resizable:false, draggable:false, width:600, height:200,
-				});
+				CreateDemoModeDialog();
 			} else {
 				// get the height of the table inside the dialog
 				var prevheight = $("#rensai-category-edit-category-dialog .cms-content-frame").height();
@@ -405,9 +397,7 @@ $(document).ready(function() {
 				$("#rensai-category-create-post-dialog").dialog("close");
 				window.location.reload();
 			} else if (outputMsg == 'demo') {
-				$("#demo-mode-dialog").dialog({
-					modal:true, resizable:false, draggable:false, width:600, height:200,
-				});
+				CreateDemoModeDialog();
 			} else {
 				// get the height of the table inside the dialog
 				var prevheight = $("#rensai-category-create-post-dialog .cms-content-frame").height();
@@ -443,9 +433,7 @@ $(document).ready(function() {
 				$("#rensai-category-delete-post-dialog").dialog("close");
 				window.location.reload();
 			} else if (outputMsg == 'demo') {
-				$("#demo-mode-dialog").dialog({
-					modal:true, resizable:false, draggable:false, width:600, height:200,
-				});
+				CreateDemoModeDialog();
 			} else if (outputMsg == 'error') {
 
 			} else {
@@ -486,9 +474,7 @@ $(document).ready(function() {
 				$("#rensai-post-dialog").dialog("close");
 				window.location.reload();
 			} else if (outputMsg == 'demo') {
-				$("#demo-mode-dialog").dialog({
-					modal:true, resizable:false, draggable:false, width:600, height:200,
-				});
+				CreateDemoModeDialog();
 			} else if (outputMsg == 'error') {
 
 			} else {
@@ -716,5 +702,11 @@ function HandleHomeHeadlineSubmitAction(dialogId, headlineIdx) {
 									$(dialogId).dialog("close");
 							  }
 							});
+	});
+}
+
+function CreateDemoModeDialog() {
+	$("#demo-mode-dialog").dialog({
+		modal:true, resizable:false, draggable:false, width:600, height:255,
 	});
 }

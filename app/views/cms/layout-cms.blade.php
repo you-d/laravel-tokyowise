@@ -36,9 +36,15 @@
 		<div id="demo-mode-dialog" class="cms-dialog" >
 			<h1>[Demo Mode] Status: <span style="color: #F00000">Active</span></h1>
 			<hr><br>
-			This CMS Functionality has been disabled.
-			<br><br><hr><br>
-			<button type="button" id="cancel-btn">I Obey...</button>
+			<div style="line-height: 140%;">
+				This CMS Functionality has been disabled.<br>
+				Please check the [<a href="{{ url() }}/cms/howto" style="color:#F00000;">How To</a>]
+				page for the demonstration<br>
+				about how to use this cms feature.
+			</div>
+			</thead>
+			<br><hr><br>
+			<button type="button" id="cancel-btn">Got It!</button>
 		</div>
 		<!-- footer -->
 		<footer id="footer">
