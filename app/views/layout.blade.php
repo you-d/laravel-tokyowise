@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -10,6 +10,8 @@
 	{{ HTML::style('css/styles.css'); }}
 	{{ HTML::style('css/modules.css'); }}
 	{{ HTML::style('jquery-bxslider/jquery.bxslider.css'); }}
+	{{ HTML::script('jwplayer/jwplayer.js'); }}
+	<script type="text/javascript">jwplayer.key="jsV0xZdfwdvabHVZAuCcS5ZwuBE2+tpVCGC4Ww==";</script>
 </head>
 <body>
 	<div id="container">
@@ -54,6 +56,7 @@
 				<ul>
 					<li><a href="{{ url() }}">HOME</a></li>
 					<li><a href="/about_tokyowise">ABOUT TOKYOWISE</a></li>
+					<li><a href="/howto">HOW TO</a></li>
 					<li><a href="/site_policy">SITE POLICY</a></li>
 				</ul>
 				<p><small>&#64;PARAGRAPH. ALL RIGHTS RESERVED</small></p>
