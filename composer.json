@@ -8,6 +8,9 @@
 		"intervention/image": "^2.2",
 		"cartalyst/sentry": "2.1.*"
 	},
+	"require-dev": {
+		"panique/laravel-sass": "dev-master"
+	},
 	"autoload": {
 		"classmap": [
 			"app/commands",

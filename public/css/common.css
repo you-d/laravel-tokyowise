@@ -423,6 +423,7 @@ a:hover {
 	.cms-dialog { display: none !important; }
 }
 /* How To Page */
+/*
 @media print, screen and (min-width: 641px) {
 	.centre-container {
 		width: 640px; margin-top: 10px !important; margin-bottom: 10px !important; margin: 0 auto;
@@ -451,3 +452,4 @@ a:hover {
 .howto-videoframe .now-loading-text {
 	color: #FFF;
 }
+*/

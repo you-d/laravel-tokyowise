@@ -46,4 +46,8 @@ $app = require_once __DIR__.'/../bootstrap/start.php';
 |
 */
 
+/* For the "panique/laravel-sass" package */
+//SassCompiler::run("scss/", "css/"); -> doesn't work
+SassCompiler::run("public/scss/", "public/css/");
+
 $app->run();
