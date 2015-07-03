@@ -1,6 +1,9 @@
-// Variables & Mixins repository. Must be included in every single scss files
+// Variables & Mixins repository. Must be included at the top of the file in every single scss file
 
 $breakpoint-sp : 640px;
+$font-family : "Hiragino Kaku Gothic Pro",Meiryo,Osaka,"HelveticaNeue-Light",
+               "Helvetica Neue Light","Helvetica Neue",Helvetica, Arial,
+               "Lucida Grande",sans-serif;
 $red-colour : #F00000;
 $white-colour : #FFFFFF;
 $black-colour : #000000;
@@ -18,6 +21,6 @@ $grey-border : 1px solid #E3E2E2;
   @if $media-type == "ps" {
     @media print, screen and (max-width: #{$breakpoint-sp}) { @content; }
   } @else if $media-type == "s" {
-    @media screen and (max-width: #{$breakpoint-sp + 1px}) { @content; }
+    @media screen and (max-width: #{$breakpoint-sp}) { @content; }
   }
 }

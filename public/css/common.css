@@ -1,9 +1,3 @@
-body {
-	background: #e3e2e2; text-align: center;
-	font-family: "Hiragino Kaku Gothic Pro",Meiryo,Osaka,"HelveticaNeue-Light",
-				 "Helvetica Neue Light","Helvetica Neue",Helvetica, Arial,
-				 "Lucida Grande",sans-serif;
-}
 @media print, screen and (min-width: 641px) {
 	#login-container-sp { display: none; }
 

@@ -31,7 +31,7 @@
     color: #fff;
   }
 }
-@media screen and (max-width: 641px) {
+@media screen and (max-width: 640px) {
   .menu-navi-container {
     width: 100%;
     border: none;

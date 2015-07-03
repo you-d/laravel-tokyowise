@@ -2,6 +2,9 @@
 @import 'utils';
 
 // Common
+body {
+	background: $grey-colour; text-align: center; font-family: $font-family;
+}
 .centre-container {
     margin: 0 auto; line-height: 140%;
     @include media-query-wide() {
@@ -15,6 +18,8 @@
 
 // import _navmenu.scss
 @import 'navmenu';
+// import _sitemodules.css
+@import 'sitemodules';
 
 // How To Page
 .howto-videoframe {
