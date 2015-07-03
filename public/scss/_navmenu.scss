@@ -1,0 +1,78 @@
+// _utils.scss
+@import 'utils';
+
+.menu-navi-container {
+  padding: 5px 0;
+  @include media-query-wide() {
+      margin: 10px auto 0px; border-top: $grey-border;
+      border-bottom: $grey-border; background: $black-colour;
+      #panel { display: block !important; }
+      ul.menu {
+          overflow: hidden; float: left; line-height: 185%; font-size: 14px;
+          li {
+              list-style: none; float: left; margin-right: 40px;
+              a {
+                  text-decoration: none; color: $white-colour;
+              }
+              a:hover {
+                  text-decoration: underline; color: $white-colour;
+              }
+          }
+      }
+  }
+  @include media-query-narrow("s") {
+      width: 100%; border: none;
+      #panel { display: none; clear: right; }
+      .gnav {
+    		  max-width: 960px; width: 100%; margin: 0 auto; padding: 0;
+    	}
+      #gnav-area {
+    		  position: absolute; top: 0; right: 0; z-index: 100; width: 100%;
+    	}
+      a.gmenu {
+      		border-radius: 4px; display: block; color: $white-colour;
+      		text-decoration: none; height: 37px; font-size: 12px; width: 40px;
+      		line-height: 35px; float: right; text-align:center; margin: 5px 8px 0;
+      		background-color: $black-colour; cursor:pointer;
+          background-image: url("../images/hamburger-icon.jpg");
+      		background-size: 30px 30px; background-repeat: no-repeat;
+      		background-position: 50% 40%;
+    	}
+    	a.menuOpen {
+    		  background-image: url("../images/hamburger-active-icon.jpg") !important;
+    	}
+      ul.menu {
+        width: 100%;
+        li {
+          border-bottom: 1px solid $white-colour; float: none; margin-right: 0;
+          a {
+            display: block; text-align: center; background: $black-colour;
+        		opacity: 0.85; color: $grey-colour;
+          }
+        }
+      }
+      ul#menu-primary {
+        li {
+          display: block;
+          a {
+            line-height: 200%; text-align: left; padding: 8px 0 8px 15px;
+            font-size: 16px;
+          }
+        }
+      }
+      ul.sns {
+        display: none;
+      }
+    }
+    ul li { display: inline; }
+    ul.sns {
+      float: right; overflow: hidden; zoom: 1;
+      li#fb {  }
+      li#tw { margin-right: 15px; }
+      li img { width: 25px; }
+    }
+    .gmenu { display: none; }
+    .gnav {
+      max-width: 960px; width: 100%; margin: 0 auto; overflow: hidden; zoom: 1;
+    }
+}

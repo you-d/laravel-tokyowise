@@ -1,0 +1,23 @@
+// must be included in every single scss files
+
+$breakpoint-sp : 640px;
+$red-colour : #F00000;
+$white-colour : #FFFFFF;
+$black-colour : #000000;
+$grey-colour : #E3E2E2;
+$grey-border : 1px solid #E3E2E2;
+
+@mixin media-query-wide($media-type: "ps") {
+  @if $media-type == "ps" {
+    @media print, screen and (min-width: #{$breakpoint-sp + 1px}) { @content; }
+  } @else if $media-type == "s" {
+    @media screen and (min-width: #{$breakpoint-sp + 1px}) { @content; }
+  }
+}
+@mixin media-query-narrow($media-type: "ps") {
+  @if $media-type == "ps" {
+    @media print, screen and (max-width: #{$breakpoint-sp}) { @content; }
+  } @else if $media-type == "s" {
+    @media screen and (max-width: #{$breakpoint-sp + 1px}) { @content; }
+  }
+}
