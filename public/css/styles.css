@@ -1,24 +1,27 @@
 /* home (generic) */
 @media print, screen and (min-width: 641px) {
+	/*
 	#headline-header-image {
 		width: 776px; display: block; margin-bottom: 10px;
-	}
+	} */
 }
 @media print, screen and (max-width: 640px) {
 	/* a hack to remove the border of jquery.bxslider. */
+	/*
 	.bx-wrapper .bx-viewport { border: none !important; left: 0px !important; }
 
 	#headline-header-image { display: none; }
 
 	#social-media-block {
 		margin-top: 30px; font-size: 88%;
-	}
+	} */
 }
 /* home-first-col */
 @media print, screen and (min-width: 641px) {
-	#home-contents #headlines-section-sp { display: none; }
-	#home-contents #features-header-img-sp { display: none; }
+	/* #home-contents #headlines-section-sp { display: none; }
+	#home-contents #features-header-img-sp { display: none; } */
 
+	/*
 	#home-contents {
 		display: table-cell; width: 510px; padding: 0; vertical-align: top;
 	}
@@ -53,10 +56,11 @@
 	}
 	#headlines-section .headline-entry dl dt a img {
 		width: 247px; height: 247px;
-	}
+	}*/ /*
 	#home-contents #features-header-img img {
 		width: 100%;
-	}
+	} */
+	/*
 	#home-contents #features-section {
 		display: block; overflow: hidden; zoom: 1; border-bottom: 1px solid #000;
 	}
@@ -80,12 +84,14 @@
 	}
 	#features-section .features-entry .posting-date {
 		text-align: left; line-height: 130%; margin-top: 5px;
-	}
+	} */
 }
 @media print, screen and (max-width: 640px) {
+	/*
 	#home-contents #headlines-section { display: none; }
 	#home-contents #features-header-img { display: none; }
-
+	*/
+	/*
 	#headlines-section-sp {
 		padding-top: 29px;
 	}
@@ -94,14 +100,16 @@
 	}
 	#headlines-section-sp a #headline-header-img-sp img {
 		width: 100%; vertical-align: bottom;
-	}
+	} */
+	/*
 	#headlines-section-sp .headline-entry-top {
 		border-top: 1px solid #e3e2e2; margin-top: 6px;
 	}
 	#headlines-section-sp .headline-entry {
 		display: block; border-bottom: 1px solid #e3e2e2; height: 75px;
 		background: url(/images/linkbtn.png) 97% 50% no-repeat; background-size: 15px;
-	}
+	} */
+	/*
 	#headlines-section-sp .headline-entry dl .headline-entry-info .headline-entry-title {
 		padding-left: 0px; font-size: 10px; color:#919191;
 	}
@@ -116,10 +124,11 @@
 	}
 	#headlines-section-sp .headline-entry dl .headline-entry-info .new-sticker img {
 		width: 32px; line-height: 100%; margin-right: 5px;
-	}
+	} */ /*
 	#home-contents #features-header-img-sp img {
 		width: 100%;
-	}
+	} */
+	/*
 	#features-section h1 img {
 		width: 100%;
 	}
@@ -145,12 +154,14 @@
 	}
 	#features-section .features-entry .posting-date {
 		margin: 0 85px 0 10px; display: block; text-align: left;
-	}
+	} */
 }
+/*
 #features-section h1 img {
 	width: 100%;
-}
+} */
 /* home-second-col */
+/*
 @media print, screen and (min-width: 641px) {
 	#home-second-col {
 		padding: 0 0 0 16px; display: table-cell; width: 248px;
@@ -171,7 +182,8 @@
 	#editors-eye img {
 		width: 100%; height: auto;
 	}
-}
+} */
+/*
 @media print, screen and (max-width: 640px) {
 	#home-second-col #home-side-contents {
 		font-size: 15px; line-height: 22px; margin-bottom: 10px;
@@ -185,9 +197,10 @@
 }
 #poem-section, #contributors-section {
 	width: 100%;
-}
+} */
 /* features-first-col */
 @media print, screen and (min-width: 641px) {
+	/*
 	#features-first-col .features-list:nth-child(4) {
 		border-top: 1px solid #e3e2e2;
 	}
@@ -205,12 +218,13 @@
 		vertical-align: top; margin-right: 110px; height: 90px;
 	}
 	#features-first-col .features-list .features-entry dl dd a {
-		display: block; width: 100%; height; auto;
+		display: block; width: 100%; height: auto;
 	}
 	#features-first-col .features-list .features-entry .posting-date {
 		text-align: left; line-height: 100%; font-size: 12px; font-weight: normal;
-	}
+	} */
 }
+/*
 @media print, screen and (max-width: 640px) {
 	#features-first-col .features-list .features-list-header-img {
 		width: 100%;
@@ -232,7 +246,8 @@
 		margin-left: 10px; line-height: 100%; font-size: 12px; font-weight: normal;
 		text-align: left;
 	}
-}
+} */
+/*
 #features-first-col .features-list {
 	overflow: hidden; border-left: 1px solid #e3e2e2; border-right: 1px solid #e3e2e2;
 }
@@ -241,7 +256,7 @@
 }
 #features-first-col .features-list .features-list-header-img img {
 	width: 100%;
-}
+}*/
 /* features-second-col */
 @media print, screen and (min-width: 641px) {
 
