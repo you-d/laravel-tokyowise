@@ -6,7 +6,6 @@
 	<title>TOKYOWISE - Yudiman's Laravel Demo</title>
 	{{ HTML::style('css/reset.css'); }}
 	{{ HTML::style('css/style.css'); }}
-	{{ HTML::style('css/common.css'); }}
 	{{ HTML::style('css/styles.css'); }}
 	{{ HTML::style('jquery-bxslider/jquery.bxslider.css'); }}
 	{{ HTML::script('jwplayer/jwplayer.js'); }}
@@ -17,13 +16,13 @@
 		<!-- header -->
 		<header id="header">
 			@if (Sentry::check())
-			<div id="logout-link-box">
-				<a href="">Logout</a>
-			</div>
+					<div id="logout-link-box">
+						<a href="">Logout</a>
+					</div>
 			@else
-			<div id="login-link-box">
-				<a href="login">CMS Login</a>
-			</div>
+					<div id="login-link-box">
+						<a href="login">CMS Login</a>
+					</div>
 			@endif
 			<h1>
 				<a href="{{ url() }}">

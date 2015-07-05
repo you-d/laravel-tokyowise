@@ -1,21 +1,8 @@
 // import _utils.scss
 @import 'utils';
 
-// Common
-body {
-	background: $grey-colour; text-align: center; font-family: $font-family;
-}
-.centre-container {
-    margin: 0 auto; line-height: 140%;
-    @include media-query-wide() {
-      width: 640px; margin-top: 10px !important;
-      margin-bottom: 10px !important;
-    }
-    @include media-query-narrow() {
-      width: 90%; margin-top: 50px; margin-bottom: 30px;
-    }
-}
-
+// import _base.scss
+@import 'base';
 // import _navmenu.scss
 @import 'navmenu';
 // import _sitemodules.css
@@ -30,7 +17,6 @@ body {
     }
     @include media-query-narrow() {
       height: 100%; margin-bottom: 10px;
-
     }
     .now-loading-text {
       color: $white-colour;
