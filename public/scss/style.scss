@@ -1,20 +1,20 @@
 // import _utils.scss
-@import 'utils';
+@import 'partials/utils';
 
 // import _base.scss
-@import 'base';
+@import 'partials/base';
 // import _navmenu.scss
-@import 'navmenu';
+@import 'partials/navmenu';
 // import _sitemodules.scss
-@import 'sitemodules';
+@import 'partials/sitemodules';
 // import _home.scss
-@import 'home';
+@import 'partials/home';
 // import _features.scss
-@import 'features';
+@import 'partials/features';
 // import _rensai.scss
-@import 'rensai';
+@import 'partials/rensai';
 // import '_cms.scss'
-@import 'cms';
+@import 'partials/cms';
 
 // news-first-col
 #news-first-col {
