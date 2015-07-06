@@ -1,0 +1,213 @@
+// import _utils.scss
+@import 'utils';
+
+// home (generic)
+#headline-header-image {
+    @include media-query-wide() {
+        width: 776px; display: block; margin-bottom: 10px;
+    }
+    @include media-query-narrow() {
+        display: none;
+    }
+}
+
+@include media-query-narrow() {
+    // a hack to remove the border of jquery.bxslider.
+    .bx-wrapper .bx-viewport { border: none !important; left: 0px !important; }
+    #social-media-block {
+      margin-top: 30px; font-size: 88%;
+    }
+}
+// home-first-col
+#home-contents {
+    @include media-query-wide() {
+        display: table-cell; width: 510px; padding: 0; vertical-align: top;
+    }
+    @include media-query-narrow() {
+
+    }
+}
+#home-contents #headlines-section {
+    @include media-query-wide() {
+        .headline-entry-top {
+            width: inherit; margin-bottom: 16px;
+            dl dt a img { width: 100%; height: auto; }
+        }
+        .headline-entry {
+            width: 247px; float: left; margin-bottom: 10px; height: 325px;
+            margin-right: 0px;
+            dl dt a img { width: 247px; height: 247px; }
+        }
+        .headline-entry:nth-child(even) { margin-right: 12px; }
+        .headline-entry-top, .headline-entry {
+            .headline-entry-info {
+                font-size: 10px; line-height: 150%; font-weight: bold;
+                color: #919191;
+            }
+            dl {
+                dt {
+                    .new-sticker {
+                        position: absolute; width: 50px;
+                        img { width: 100%; height: auto; }
+                    }
+                    a img {
+                        width: 100%; height: auto;
+                    }
+                }
+                dd a { font-size: 12px; font-weight: bold; }
+            }
+        }
+    }
+    @include media-query-narrow() {
+        display: none;
+    }
+}
+#home-contents #headlines-section-sp {
+    @include media-query-wide() {
+        display: none;
+    }
+    @include media-query-narrow() {
+        padding-top: 29px;
+        a #headline-header-img-sp {
+            width: 100%; margin-bottom: 0px;
+            img {
+          		  width: 100%; vertical-align: bottom;
+          	}
+        }
+        .headline-entry-top {
+      		  border-top: 1px solid #e3e2e2; margin-top: 6px;
+      	}
+        .headline-entry {
+      		  display: block; border-bottom: 1px solid #e3e2e2; height: 75px;
+      		  background: url(/images/linkbtn.png) 97% 50% no-repeat;
+            background-size: 15px;
+            dl {
+                .headline-entry-info {
+                    .headline-entry-title {
+                        padding-left: 0px; font-size: 10px; color:#919191;
+                    }
+                    .new-sticker {
+                        float: left; line-height: 100%;
+                        img {
+                            width: 32px; line-height: 100%; margin-right: 5px;
+                      	}
+                    }
+                }
+                dd {
+              		  padding-left: 10px; clear: both; padding-right: 20px;
+                    a {
+                  		  font-size: 14px; line-height: 130%; font-weight: bold;
+                  	}
+              	}
+            }
+      	}
+    }
+}
+#home-contents #features-header-img {
+    @include media-query-wide() {
+        img { width: 100%; }
+    }
+    @include media-query-narrow() {
+        display: none;
+    }
+}
+#home-contents #features-header-img-sp {
+    @include media-query-wide() {
+        display: none;
+    }
+    @include media-query-narrow() {
+        width: 100%;
+    }
+}
+#home-contents #features-section {
+    h1 img { width: 100%; }
+    @include media-query-wide() {
+        display: block; overflow: hidden; zoom: 1;
+        border-bottom: 1px solid $black-colour;
+        h1 { width: 510px; height: 68px; clear: both; }
+        .features-highlight-desc {
+      		  display: block; font-size: 13px; line-height: 140%;
+            margin: 0 0 20px;
+      	}
+        .features-entry {
+      		  width: 247px; float: left; display: block; margin-bottom: 30px;
+            dl {
+                dt a img { width: 100%; height: auto; }
+                dd { font-size: 12px; line-height: 130%; font-weight: bold; }
+            }
+            .posting-date {
+          		  text-align: left; line-height: 130%; margin-top: 5px;
+          	}
+      	}
+        .features-entry:nth-child(odd) { margin-right: 12px; }
+
+    }
+    @include media-query-narrow() {
+        h1 img { width: 100%; }
+        .features-highlight-desc {
+      		  display: block; font-size: 13px; line-height: 135%;
+      		  padding: 0 5px; width: 87%; margin: 0 auto;
+            margin-top: 10px; margin-bottom: 20px;
+      	}
+        .features-entry {
+      		  overflow: hidden; display: block; border-top: 1px solid #e3e2e2;
+            padding: 5px 0;
+            dl {
+                dt { width: 85px; float: right;
+                     a img { width: 85px; vertical-align: text-bottom; }
+                }
+                dd { margin: 0 85px 0 10px; height: 63px; padding-top: 5px;
+                     a { display: block; width: 100%; height: 100%;
+                         font-size: 14px; line-height: 130%; font-weight: bold;
+                     }
+                }
+            }
+            .posting-date {
+                margin: 0 85px 0 10px; display: block; text-align: left;
+          	}
+      	}
+    }
+}
+// home-second-col
+#home-second-col {
+    @include media-query-wide() {
+        padding: 0 0 0 16px; display: table-cell; width: 248px;
+    }
+    @include media-query-narrow() {
+
+    }
+}
+#home-second-col #home-side-contents {
+    @include media-query-wide() {
+        display: table-cell; width: 248px; font-size: 12px; line-height: 18px;
+        vertical-align: top;
+        #rensai-list-hybrid { margin: 20px 0 5px; }
+    }
+    @include media-query-narrow() {
+        font-size: 15px; line-height: 22px; margin-bottom: 10px;
+    }
+}
+#poem-section {
+    width: 100%;
+    img {
+        @include media-query-wide() {
+            width: 100%; height: auto;
+        }
+        @include media-query-narrow() {
+            width: 90%; display: block; margin: 20px auto;
+        }
+    }
+}
+#contributors-section {
+    width: 100%;
+    img { width: 100%; height: auto; }
+}
+#editors-eye {
+    @include media-query-wide() {
+        width: 248px; display: block; margin: 20px 0;
+        img { width: 100%; height: auto; }
+    }
+    @include media-query-narrow() {
+        img { width: 90%; display: block; margin: 20px auto; }
+    }
+}

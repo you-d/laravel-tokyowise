@@ -1,0 +1,68 @@
+// import _utils.scss
+@import 'partials/utils';
+
+// import _base.scss
+@import 'partials/base';
+// import _navmenu.scss
+@import 'partials/navmenu';
+// import _sitemodules.scss
+@import 'partials/sitemodules';
+// import _home.scss
+@import 'partials/home';
+// import _features.scss
+@import 'partials/features';
+// import _rensai.scss
+@import 'partials/rensai';
+// import '_cms.scss'
+@import 'partials/cms';
+
+// news-first-col
+#news-first-col {
+    @include media-query-wide() {
+        .page-header-img {
+            width: 100%; text-align: center; border-bottom: $grey-border;
+            margin: 0; background: #eeeeee; padding: 0;
+            img { width: 60%; vertical-align: bottom; }
+        }
+    }
+}
+
+// gadgets-first-col
+#gadgets-first-col {
+    @include media-query-wide() {
+        .page-header-img {
+            width: 100%; text-align: center; border-bottom: $grey-border;
+            margin: 0; border-top: $grey-border; padding: 10px 0;
+            padding: 0;
+            img { width: 50%; }
+        }
+    }
+    @include media-query-narrow() {
+        .page-header-img-sp {
+            text-align: center; margin-top: 15px; padding: 15px;
+            border-bottom: $grey-border; border-top: $grey-border;
+            img { width: 73%; }
+        }
+    }
+}
+
+// How To Page
+.howto-videoframe {
+    text-align: center; background-color: $black-colour; width: 100%;
+    margin: 0 auto; margin-top: 10px;
+    @include media-query-wide() {
+      height: 360px; margin-bottom: 50px;
+    }
+    @include media-query-narrow() {
+      height: 100%; margin-bottom: 10px;
+    }
+    .now-loading-text {
+      color: $white-colour;
+      @include media-query-wide() {
+        height: 360px; line-height: 360px;
+      }
+      @include media-query-narrow() {
+        height: auto; line-height: auto;
+      }
+    }
+}

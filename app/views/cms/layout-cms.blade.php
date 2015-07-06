@@ -1,4 +1,4 @@
-<!doctype html>
+<!DOCTYPE html>
 <html lang="en">
 <head>
 	<meta charset="UTF-8">
@@ -6,10 +6,7 @@
 	<meta name="_token" content="{{ csrf_token() }}"/>
 	<title>[CMS] TOKYOWISE - Yudiman's Laravel Demo</title>
 	{{ HTML::style('css/reset.css'); }}
-	{{ HTML::style('css/common.css'); }}
-	{{ HTML::style('css/menu.css'); }}
-	{{ HTML::style('css/styles.css'); }}
-	{{ HTML::style('css/modules.css'); }}
+	{{ HTML::style('css/style.css'); }}
 	{{ HTML::style('jquery-bxslider/jquery.bxslider.css'); }}
 	{{ HTML::style('jquery-ui-1114/jquery-ui.min.css'); }}
 	{{ HTML::script('jwplayer/jwplayer.js'); }}
