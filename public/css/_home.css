@@ -209,7 +209,9 @@
     line-height: 135%;
     padding: 0 5px;
     width: 87%;
-    margin: 10px 0 20px;
+    margin: 0 auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
   }
   #home-contents #features-section .features-entry {
     overflow: hidden;

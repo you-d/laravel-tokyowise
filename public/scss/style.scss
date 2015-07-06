@@ -16,6 +16,36 @@
 // import '_cms.scss'
 @import 'cms';
 
+// news-first-col
+#news-first-col {
+    @include media-query-wide() {
+        .page-header-img {
+            width: 100%; text-align: center; border-bottom: $grey-border;
+            margin: 0; background: #eeeeee; padding: 0;
+            img { width: 60%; vertical-align: bottom; }
+        }
+    }
+}
+
+// gadgets-first-col
+#gadgets-first-col {
+    @include media-query-wide() {
+        .page-header-img {
+            width: 100%; text-align: center; border-bottom: $grey-border;
+            margin: 0; border-top: $grey-border; padding: 10px 0;
+            padding: 0;
+            img { width: 50%; }
+        }
+    }
+    @include media-query-narrow() {
+        .page-header-img-sp {
+            text-align: center; margin-top: 15px; padding: 15px;
+            border-bottom: $grey-border; border-top: $grey-border;
+            img { width: 73%; }
+        }
+    }
+}
+
 // How To Page
 .howto-videoframe {
     text-align: center; background-color: $black-colour; width: 100%;

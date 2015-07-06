@@ -337,76 +337,204 @@ a:hover {
 	 height: 22px; margin-top: 50px;
    img { width: 100%; }
 }
-// cms-overlay (only available in desktop view)
-@media print, screen and (min-width: 641px) {
-	.cms-buttons-container {
-		position: absolute; top: 0px; left: 0px;
-	}
-	.cms-button {
-		border: 2px solid black; cursor: pointer; text-align: center;
-		width: 100px; height: 25px; padding-top: 6px; font-size: 16px !important;
-		float: left; font-weight: bold;
-	}
-	.cms-button-width150 {
-		width: 150px;
-	}
-	.cms-button-white {
-		background-color: #FFFFFF;
-	}
-	.cms-button-red {
-		background-color: #F00000;
-	}
-	.cms-button-grey {
-		background-color: #CDCDCD;
-	}
-	.cms-overlay {
-		border: 2px solid #F00000;
-	}
-	.cms-transparent-overlay {
-		opacity: 0.7; filter: alpha(opacity=70); // for IE8 and earlier
-		background-color: #ffffff; width: 100%; height: 100%; position: absolute;
-		top: 0px; left: 0px;
-	}
-	.cms-under-construction-txt {
-		font-weight: bold; font-size: 16px; position: absolute; top: 0px; left: 0px;
-	}
-	.cms-dialog {
-		display: none;
-		font-family: $font-family;
-    h1 { font-size: 16px; font-weight: bold; }
-    .cms-submit-btn { position:absolute; top: 0px; left: 0px; }
-    .upload-text-field { width: 220px; }
-    .dialog-last-update-label { font-size:9px; }
-    #error-list {
-  		color: #F00000; font-size: 12px; text-align: left; line-height: 140%;
-  	}
-	}
-	.ui-dialog-titlebar {
-		display: none;
-	}
-	table.cms-content-frame {
-		margin: 0 auto;
-    tr { height: 30px;
-         .left-col {
-           text-align:right; padding: 5px 10px 0 0; vertical-align: top; width: 40%;
-         }
-         .right-col {
-           text-align:left;
-           input { width: 90%; }
-           textarea { height: 50px; width: 90%; }
-           select.longwidth { width: inherit; }
-         }
+// editors-first-col , news-first-col , gadgets-first-col (generic)
+.first-col-wide {
+    .first-col-article-entry {
+        border-bottom: $grey-border;
+        @include media-query-wide() {
+            width: 46.5%; float: left; font-size: 12px; line-height: 140%;
+            margin: 1.61%; font-weight: bold;
+            dl {
+              dt { float: right;
+                   a img { width: 100px; height: 100px; }
+              }
+              dd { vertical-align: top; margin-right: 110px; height: 90px; }
+            }
+            .posting-date {
+                text-align: left; line-height: 100%; font-size: 12px;
+                font-weight: normal;
+            }
+        }
+        @include media-query-narrow() {
+            margin: 5px 0 0; width: 100%; float: left; font-size: 14px;
+            font-weight: bold; line-height: 120%;
+            dl {
+              dt { float: right; margin-bottom: -3px;
+                   a img { width: 80px; height: 80px; }
+              }
+              dd { margin: 0 85px 0 10px; height: 65px; }
+            }
+            .posting-date {
+          		  margin: 0 80px 0 10px; line-height: 100%; text-align: left;
+          		  font-weight: normal; font-size: 12px;
+          	}
+        }
     }
-    tr:last-child { height: 0px; }
-    tr.height40 { height: 40px; }
-    tr.height50 { height: 50px; }
-	}
+    .first-col-article-entry:last-child {
+        @include media-query-wide() {
+            margin-bottom: 20px;
+        }
+    }
 }
-@media print, screen and (max-width: 640px) {
-	.cms-button { display: none; }
-	.cms-transparent-overlay { display: none; }
-	.css-overlay { display: none; }
-	.cms-under-construction-txt { display: none; }
-	.ui-dialog { display: none !important; }
-	.cms-dialog { display: none !important; }
+// features-post-first-col , rensai-post-first-col (generic)
+.post-content {
+    font-size: 16px; line-height: 1.95; margin: 0 0 15px;
+    h2 { font-size: 14px; font-weight: bold; line-height: 24px;
+         text-align: center; }
+    img {	width: 100%; }
+    @include media-query-wide() {
+        position: relative; padding: 0 10px 0;
+        dl.post-primary-img {
+            position: relative; margin: 0 0 20px;
+            dt, dd { font-size: 16px; line-height: 1.95; }
+            dt { position: absolute; top: 20px; left: -92px;
+                 img { width: 8px; }
+               }
+            dd { img { width: 100%; } }
+        }
+        img { width: 100%; }
+        p .post-author {
+      		  margin: 24px 0 0; display: block; text-align: right;
+            font-size: 14px;
+      	}
+    }
+    @include media-query-narrow() {
+        dl.post-primary-img {
+            position: relative; margin: 0 0 30px; width: 100%;
+            dt { position: absolute; top: 20px; left: 0; width: 7%;
+                 font-size: 16px; line-height: 1.95;
+                 img { width: 6px; }
+          	}
+            dd { position: relative; width: 88%; left: 7%;
+                 img { width: 100%; }
+            }
+        }
+        p .post-author {
+      		  display: block; text-align: right; font-size: 14px;
+            margin-top: 24px;
+      	}
+    }
+}
+.post-prev-next-link {
+   padding: 20px 0; font-weight: normal; clear: both; overflow: hidden;
+   zoom: 1;
+   div {
+       a { .post-link-thumbnail-img {
+              width: 65px; float: left; display: block;
+              img { width: 100%; }
+           }
+           .post-link-label {
+               display: block; margin-bottom: 10px; width: 100%;
+              font-size: 12px;
+           }
+           .post-link-thumbnail-title {
+               font-size: 14px; line-height: 140%; margin-left: 70px;
+               height: 70px; font-weight: bold; display: block;
+           }
+       }
+       a:hover { text-decoration: none; }
+   }
+   div.post-prev-next-link-left-col {
+      a .post-link-label { text-align: left; }
+   }
+   div.post-prev-next-link-right-col {
+      a .post-link-label { text-align: right; }
+   }
+   @include media-query-wide() {
+       .post-prev-next-link-left-col, .post-prev-next-link-right-col {
+           width: 245px; padding: 5px; float: left;
+           border: 1px solid #949090;
+       }
+       .post-prev-next-link-left-col { margin-right: 15px; }
+       div a { display: block; width: 100%; height: 100%;
+               text-decoration: none;
+       }
+   }
+   @include media-query-narrow() {
+       .post-prev-next-link-left-col , .post-prev-next-link-right-col {
+          width: 95%; padding: 5px; border: 1px solid #949090;
+       }
+       .post-prev-next-link-left-col { margin-bottom: 15px; }
+   }
+}
+.post-archives {
+    margin: 10px 0px 0; border-bottom: 1px solid #000;
+    .archive-entry dl { font-size: 12px; }
+    .archive-entry-selected { background: #eeeeee; }
+    h2 { border-bottom: 1px solid #000; border-top: 1px solid #000;
+        padding: 10px 0; font-size: 14px; font-weight: bold; }
+    .archive-entry {
+        display: block; overflow: hidden; border-bottom: 1px dashed #000;
+    }
+    .archive-entry:last-child {
+        display: block; overflow: hidden; border-bottom: none;
+    }
+    @include media-query-wide() {
+        .archive-entry dl {
+            dt {
+              font-size: 11px; line-height: 24px; float: left; clear: both;
+              margin: 0 6px 0 0;
+            }
+            dd {
+              line-height: 24px; display: table-cell;
+              // doesn't work. PHP's mb_substr is used instead.
+              // text-overflow: ellipsis; white-space: nowrap; width: 460px;
+              // webkit-text-overflow: ellipsis; -o-text-overflow: ellipsis;
+              // overflow: hidden;
+            }
+        }
+    }
+    @include media-query-narrow() {
+        margin-bottom: 30px !important;
+        .archive-entry dl {
+            dd {
+                line-height: 30px; white-space: nowrap; margin-left: 75px;
+                a { display: block; text-overflow: ellipsis;
+                    -webkit-text-overflow: ellipsis;
+                    -o-text-overflow: ellipsis; overflow: hidden;
+                }
+            }
+            .posting-date {
+                font-size: 12px; line-height: 30px; float: left;
+                margin: 0 8px; padding: 0; width: 75px; clear: left;
+            }
+        }
+    }
+}
+// news-post-first-col (generic)
+.post-archives-v2 {
+    @include media-query-wide() {
+        margin: 20px 0 0; border-bottom: 1px solid #c1c1c1; font-size: 12px;
+        line-height: 18px;
+        h2 {
+      		  margin: 0 0 20px; padding: 8px 0 8px 5px;
+      		  border-bottom: 1px solid #c1c1c1; line-height: 12px;
+            border-top: 1px solid #c1c1c1;
+            img { width: 212px; height: 15px; }
+      	}
+        .post-archives-v2-entries {
+      		  width: 100%; overflow: hidden; zoom: 1; padding: 0 10px 14px;
+      	}
+        .archive-v2-entry {
+      		  width: 48%; float: left; padding: 0 0.7% 0.2%;
+            dl {
+                dt { float: left;
+                     a img {
+                       width: 80px; height: 80px; vertical-align: bottom;
+                     }
+                }
+                dd { font-weight: bold; margin-left: 90px; height: 75px;
+                     a { display: block; width: 100%; height: 100%; }
+                }
+            }
+            p .posting-date {
+                display: block; text-align: right; font-size: 9px;
+          	}
+      	}
+        .archive-v2-entry-clear { clear: both; }
+
+    }
+    @include media-query-narrow() {
+        display: none; 
+    }
 }

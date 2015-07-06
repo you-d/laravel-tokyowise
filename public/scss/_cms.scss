@@ -1,6 +1,69 @@
 // import _utils.scss
 @import 'utils';
 
+// cms-overlay (only available in desktop view)
+@media print, screen and (min-width: 641px) {
+	.cms-buttons-container {
+		position: absolute; top: 0px; left: 0px;
+	}
+	.cms-button {
+		border: 2px solid black; cursor: pointer; text-align: center;
+		width: 100px; height: 25px; padding-top: 6px; font-size: 16px !important;
+		float: left; font-weight: bold;
+	}
+	.cms-button-width150 { width: 150px; }
+	.cms-button-white { background-color: $white-colour; }
+	.cms-button-red { background-color: $red-colour; }
+	.cms-button-grey { background-color: #CDCDCD; }
+	.cms-overlay { border: 2px solid $red-colour; }
+	.cms-transparent-overlay {
+		opacity: 0.7; filter: alpha(opacity=70); // for IE8 and earlier
+		background-color: $white-colour; width: 100%; height: 100%;
+		top: 0px; left: 0px; position: absolute;
+	}
+	.cms-under-construction-txt {
+		font-weight: bold; font-size: 16px; position: absolute; top: 0px; left: 0px;
+	}
+	.cms-dialog {
+		display: none;
+		font-family: $font-family;
+    h1 { font-size: 16px; font-weight: bold; }
+    .cms-submit-btn { position:absolute; top: 0px; left: 0px; }
+    .upload-text-field { width: 220px; }
+    .dialog-last-update-label { font-size:9px; }
+    #error-list {
+  		color: $red-colour; font-size: 12px; text-align: left; line-height: 140%;
+  	}
+	}
+	.ui-dialog-titlebar { display: none; }
+	table.cms-content-frame {
+		margin: 0 auto;
+    tr { height: 30px;
+         .left-col {
+           text-align:right; padding: 5px 10px 0 0; vertical-align: top;
+           width: 40%;
+         }
+         .right-col {
+           text-align:left;
+           input { width: 90%; }
+           textarea { height: 50px; width: 90%; }
+           select.longwidth { width: inherit; }
+         }
+    }
+    tr:last-child { height: 0px; }
+    tr.height40 { height: 40px; }
+    tr.height50 { height: 50px; }
+	}
+}
+@media print, screen and (max-width: 640px) {
+	.cms-button { display: none; }
+	.cms-transparent-overlay { display: none; }
+	.css-overlay { display: none; }
+	.cms-under-construction-txt { display: none; }
+	.ui-dialog { display: none !important; }
+	.cms-dialog { display: none !important; }
+}
+
 // home cms panels
 #cms-content-frame-home-headline-panel {
     .home-cms-panel-headline-leftcol { width:160px; }
