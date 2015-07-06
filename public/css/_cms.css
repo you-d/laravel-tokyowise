@@ -1,0 +1,37 @@
+#cms-content-frame-home-headline-panel .home-cms-panel-headline-leftcol {
+  width: 160px;
+}
+#cms-content-frame-home-headline-panel .home-cms-panel-headline-rightcol {
+  width: 480px;
+}
+#home-headline-header-img-dialog table .home-cms-panel-headerimg-leftcol {
+  width: 250px;
+}
+#rensai-create-article-category-dialog .cms-content-frame, #rensai-remove-article-category-dialog .cms-content-frame, #rensai-category-create-post-dialog .cms-content-frame {
+  width: 98%;
+}
+#rensai-create-article-category-dialog .cms-content-frame caption p {
+  text-align: left;
+  font-weight: bold;
+  margin-bottom: 10px;
+  font-size: 14px;
+}
+#rensai-remove-article-category-dialog .cms-content-frame caption p, #rensai-category-create-post-dialog .cms-content-frame caption p {
+  font-weight: normal;
+  margin-bottom: 15px;
+  font-size: 14px;
+  color: #f00000;
+}
+#rensai-create-article-category-dialog .cms-content-frame tr, #rensai-remove-article-category-dialog .cms-content-frame tr, #rensai-category-create-post-dialog .cms-content-frame tr, #rensai-category-delete-post-dialog .cms-content-frame tr {
+  height: 40px;
+}
+#rensai-create-article-category-dialog .cms-content-frame tr .left-col, #rensai-remove-article-category-dialog .cms-content-frame tr .left-col, #rensai-category-create-post-dialog .cms-content-frame tr .left-col, #rensai-category-delete-post-dialog .cms-content-frame tr .left-col {
+  width: 40%;
+}
+#rensai-create-article-category-dialog .cms-content-frame tr .right-col .right-col-input, #rensai-remove-article-category-dialog .cms-content-frame tr .right-col .right-col-input, #rensai-category-create-post-dialog .cms-content-frame tr .right-col .right-col-input, #rensai-category-delete-post-dialog .cms-content-frame tr .right-col .right-col-input {
+  width: 90%;
+}
+#rensai-create-article-category-dialog .cms-content-frame tr .right-col .right-col-area, #rensai-remove-article-category-dialog .cms-content-frame tr .right-col .right-col-area, #rensai-category-create-post-dialog .cms-content-frame tr .right-col .right-col-area, #rensai-category-delete-post-dialog .cms-content-frame tr .right-col .right-col-area {
+  resize: none;
+  height: 150px;
+}

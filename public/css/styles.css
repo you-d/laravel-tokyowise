@@ -265,6 +265,7 @@
 
 }
 /* rensai-first-col */
+/*
 @media print, screen and (min-width: 641px) {
 	#rensai-new-articles-list {
 		margin-bottom: 20px;
@@ -348,6 +349,7 @@
 		width: 100%;
 	}
 }
+*/
 /* rensai-second-col */
 @media print, screen and (min-width: 641px) {
 
@@ -356,6 +358,7 @@
 
 }
 /* rensai-category-first-col */
+/*
 @media print, screen and (min-width: 641px) {
 	#rensai-category-first-col {
 		overflow: hidden; border-left: 1px solid #e3e2e2; border-right: 1px solid #e3e2e2;
@@ -385,7 +388,7 @@
 	#rensai-category-first-col .rensai-entry dl dd {
 		vertical-align: top; margin-right: 110px; height: 90px; word-break: break-all;
 		-ms-word-break: break-all; word-break: break-word; -webkit-hypens: auto;
-		-moz-hypens: auto; hypens: auto;
+		-moz-hypens: auto; hyphens: auto;
 	}
 	#rensai-category-first-col .rensai-entry .posting-date {
 		text-align: left; line-height: 100%; font-size: 12px; font-weight: normal;
@@ -425,6 +428,8 @@
 		font-size: 12px; font-weight: normal;
 	}
 }
+*/
+
 /* editors-first-col , news-first-col , gadgets-first-col (generic) */
 @media print, screen and (min-width: 641px) {
 	.first-col-wide .first-col-article-entry {
@@ -716,6 +721,7 @@
 
 }
 /* CMS Panels */
+/*
 #cms-content-frame-home-headline-panel .home-cms-panel-headline-leftcol {
 	width:160px;
 }
@@ -759,3 +765,4 @@
 	resize: none;
 	height: 150px;
 }
+*/

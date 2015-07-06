@@ -1,0 +1,37 @@
+// import _utils.scss
+@import 'utils';
+
+// home cms panels
+#cms-content-frame-home-headline-panel {
+    .home-cms-panel-headline-leftcol { width:160px; }
+    .home-cms-panel-headline-rightcol { width:480px; }
+}
+#home-headline-header-img-dialog {
+    table .home-cms-panel-headerimg-leftcol { width:250px; }
+}
+// rensai cms panels
+#rensai-create-article-category-dialog , #rensai-remove-article-category-dialog,
+#rensai-category-create-post-dialog {
+    .cms-content-frame { width: 98%; }
+}
+#rensai-create-article-category-dialog {
+    .cms-content-frame caption p {
+        text-align:left; font-weight:bold; margin-bottom:10px; font-size:14px;
+    }
+}
+#rensai-remove-article-category-dialog, #rensai-category-create-post-dialog {
+    .cms-content-frame caption p {
+        font-weight:normal; margin-bottom:15px; font-size:14px;
+        color:$red-colour;
+    }
+}
+#rensai-create-article-category-dialog, #rensai-remove-article-category-dialog,
+#rensai-category-create-post-dialog, #rensai-category-delete-post-dialog {
+    .cms-content-frame tr { height: 40px;
+                            .left-col { width: 40%; }
+                            .right-col {
+                                .right-col-input { width: 90%; }
+                                .right-col-area { resize: none; height: 150px; }
+                            }
+    }
+}
