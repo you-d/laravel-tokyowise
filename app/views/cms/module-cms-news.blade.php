@@ -13,19 +13,19 @@
 					</dt>
 					<dd>
 						<a href="/news/{{ $newsModuleEntry->id }}">
-							@if (strlen($newsModuleEntry->post_title) > 100) 
+							@if (strlen($newsModuleEntry->post_title) > 100)
 								{{ mb_substr($newsModuleEntry->post_title, 0, 35) . ' ...' }}
 							@else
 								{{ $newsModuleEntry->post_title }}
 							@endif
-						</a>	
+						</a>
 					</dd>
 				</dl>
 				<p><span class="posting-date">{{ date("d/m/Y", strtotime($newsModuleEntry->posting_date)) }}</span></p>
 			</div>
 		@endforeach
 	@else
-		<p>The $newsModuleEntries needs to be defined in the controller of this page.</p>	
-	@endif	
+		<p>The $newsModuleEntries needs to be defined in the controller of this page.</p>
+	@endif
 </section>
-<span class="view-all-link"><a href="/cms/news">VIEW ALL</a></span>
+<span class="view-all-link"><a href="{{ url() }}/cms/news">VIEW ALL</a></span>

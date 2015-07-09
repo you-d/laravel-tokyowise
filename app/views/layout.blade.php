@@ -42,19 +42,19 @@
 					</a>
 				</h1>
 				<div id="sns_block">
-					<a href="#" target="_blank">
+					<a href="{{ url() }}/#" target="_blank">
 						{{ HTML::image('images/sns_t.png', 'twitter') }}
 					</a>
 					&nbsp;&nbsp;
-					<a href="#" target="_blank">
+					<a href="{{ url() }}/#" target="_blank">
 						{{ HTML::image('images/sns_f.png', 'facebook') }}
 					</a>
 				</div>
 				<ul>
-					<li><a href="{{ url() }}">HOME</a></li>
-					<li><a href="/about_tokyowise">ABOUT TOKYOWISE</a></li>
-					<li><a href="/howto">HOW TO</a></li>
-					<li><a href="/site_policy">SITE POLICY</a></li>
+					<li>{{ HTML::link("/home", "HOME") }}</li>
+					<li>{{ HTML::link("/about_tokyowise", "ABOUT TOKYOWISE") }}</li>
+					<li>{{ HTML::link("/howto", "HOW TO") }}</li>
+					<li>{{ HTML::link("/site_policy", "SITE POLICY") }}</li>
 				</ul>
 				<p><small>&#64;PARAGRAPH. ALL RIGHTS RESERVED</small></p>
 			</section>

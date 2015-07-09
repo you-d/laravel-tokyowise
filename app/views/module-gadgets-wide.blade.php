@@ -7,12 +7,12 @@
 		<p>No. {{ $gadgetsModuleEntry->id }}</p>
 		<dl>
 			<dt>
-				<a href="/gadgets/{{ 'no' . $gadgetsModuleEntry->id }}">
+				<a href="{{ url() }}/gadgets/{{ 'no' . $gadgetsModuleEntry->id }}">
 					{{ HTML::image('images/gadgets/posts/' . $gadgetsModuleEntry->thumbnail_img, $gadgetsModuleEntry->thumbnail_img) }}
 				</a>
 			</dt>
 			<dd>
-				<a href="/gadgets/{{ 'no' . $gadgetsModuleEntry->id }}">
+				<a href="{{ url() }}/gadgets/{{ 'no' . $gadgetsModuleEntry->id }}">
 					{{ str_replace("<br>", " ", $gadgetsModuleEntry->post_title); }}
 					<br>
 					<span>{{ date("d/m/Y", strtotime($gadgetsModuleEntry->posting_date)) }}</span>
@@ -22,4 +22,4 @@
 	</div>
 	@endforeach
 </section>
-<span class="view-all-link"><a href="/gadgets">VIEW ALL</a></span>
+<span class="view-all-link"><a href="{{ url() }}/gadgets">VIEW ALL</a></span>

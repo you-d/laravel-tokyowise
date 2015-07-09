@@ -5,14 +5,14 @@
 	@if (isset($featureModuleEntries))
 		@foreach ($featureModuleEntries as $featureModuleEntry)
 			<div class="hybrid-module-entry-v1">
-				<a href="/features/{{ $featureModuleEntry->post_id }}">
+				<a href="{{ url() }}/features/{{ $featureModuleEntry->post_id }}">
 					<p>{{ HTML::image('images/features/posts/' . $featureModuleEntry->thumbnail_img, $featureModuleEntry->thumbnail_img) }}</p>
 					<dl>
 						<dt>
 							{{ $featureModuleEntry->category_name }}
 						</dt>
 						<dd>
-							@if (strlen($featureModuleEntry->post_title) > 100) 
+							@if (strlen($featureModuleEntry->post_title) > 100)
 								{{ mb_substr($featureModuleEntry->post_title, 0, 35) . ' ...' }}
 							@else
 								{{ $featureModuleEntry->post_title }}
@@ -24,8 +24,8 @@
 			</div>
 		@endforeach
 	@else
-		<p>The $featureModuleEntries needs to be defined in the controller of this page.</p>	
+		<p>The $featureModuleEntries needs to be defined in the controller of this page.</p>
 	@endif
 </section>
-<span class="view-all-link"><a href="/features">VIEW ALL</a></span>
-<span class="view-all-link-sp"><a href="/features">Features - VIEW ALL</a></span>
+<span class="view-all-link"><a href="{{ url() }}/features">VIEW ALL</a></span>
+<span class="view-all-link-sp"><a href="{{ url() }}/features">Features - VIEW ALL</a></span>

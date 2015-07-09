@@ -3,11 +3,11 @@
 <!-- breadcrumb -->
 <section id="breadcrumb-section">
 	<nav>
-		<a href="/cms/home">Home</a>
+		<a href="{{ url() }}/cms/home">Home</a>
 		>
-		<a href="/cms/rensai">Ren-Sai</a>
+		<a href="{{ url() }}/cms/rensai">Ren-Sai</a>
 		>
-		<a href="/cms/rensai/{{ $rensaiCategory->id }}">{{ $rensaiCategory->category_name }}</a>
+		<a href="{{ url() }}/cms/rensai/{{ $rensaiCategory->id }}">{{ $rensaiCategory->category_name }}</a>
 	</nav>
 </section>
 <!-- features contents -->

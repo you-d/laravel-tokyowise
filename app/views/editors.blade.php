@@ -3,9 +3,9 @@
 <!-- breadcrumb -->
 <section id="breadcrumb-section">
 	<nav>
-		<a href="/home">Home</a>
+		<a href="{{ url() }}/home">Home</a>
 		>
-		<a href="/editors">Editor&#39;s Eyes</a>
+		<a href="{{ url() }}/editors">Editor&#39;s Eyes</a>
 	</nav>
 </section>
 <!-- editors contents -->

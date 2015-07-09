@@ -6,13 +6,13 @@
 		@include('cms/module-cms-rensai-hybrid')
 		<!-- Poem Link Section -->
 		<div id="poem-section">
-			<a href="/poems">
+			<a href="{{ url() }}/poems">
 				{{ HTML::image('images/poems/general/home-link.jpg', 'Poetic Tokyo Walks') }}
 			</a>
 		</div>
 		<!-- Editor's Eyes Link Section -->
 		<div id="editors-eye" class="pc">
-			<a href="/editors">
+			<a href="{{ url() }}/editors">
 				{{ HTML::image('images/editors/general/home-editors-eyes.jpg', 'Editors Eyes') }}
 			</a>
 		</div>
@@ -20,7 +20,7 @@
 		@include('module-gadgets-sp')
 		<!-- Writer List Link Section -->
 		<div id="contributors-section">
-			<a href="/contributors">
+			<a href="{{ url() }}/contributors">
 				{{ HTML::image('images/writers.png', 'Writers On Writing') }}
 			</a>
 		</div>

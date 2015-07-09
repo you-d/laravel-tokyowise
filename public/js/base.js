@@ -120,9 +120,9 @@ function sp_sliders() {
             minSlides: 1,
             maxSlides: 1,
             startSlide:0,
-			// moveSlides: 1,
-            prevText: '<img src="/images/btn_prev_main.png" alt="">',
-            nextText: '<img src="/images/btn_next_main.png" alt="">',
+						// moveSlides: 1,
+            prevText: '<img src="./images/btn_prev_main.png" alt="">',
+            nextText: '<img src="./images/btn_next_main.png" alt="">',
             onSlideAfter: function(){ _mainSlider.startAuto(); }
         });
 	};

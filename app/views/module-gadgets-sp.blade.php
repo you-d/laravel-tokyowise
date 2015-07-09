@@ -5,11 +5,11 @@
 	<div id="gadget-entries-container">
 		@foreach ($gadgetsModuleEntries as $gadgetsModuleEntry)
 		<div class="gadget-entry">
-			<a href="/gadgets/{{ 'no' . $gadgetsModuleEntry->id }}">
+			<a href="{{ url() }}/gadgets/{{ 'no' . $gadgetsModuleEntry->id }}">
 				{{ HTML::image('images/gadgets/posts/' . $gadgetsModuleEntry->thumbnail_img, $gadgetsModuleEntry->thumbnail_img) }}
 			</a>
 		</div>
 		@endforeach
 	</div>
-	<span class="view-all-link-sp"><a href="/gadgets">Gadgets - VIEW ALL</a></span>
+	<span class="view-all-link-sp"><a href="{{ url() }}/gadgets">Gadgets - VIEW ALL</a></span>
 </section>

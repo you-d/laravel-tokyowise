@@ -16,7 +16,7 @@
 				</dt>
 				<dd>
 					<!-- Content Primary Img -->
-					{{ HTML::image('images/news/posts/' . $newsPost->primary_img , $newsPost->primary_img) }}	
+					{{ HTML::image('images/news/posts/' . $newsPost->primary_img , $newsPost->primary_img) }}
 				</dd>
 			</dl>
 			<!-- Content Body -->
@@ -26,41 +26,41 @@
 			<nav class="post-social-media-share-block">
 				<ul>
 					<li>
-						<a href="/#">
+						<a href="{{ url() }}/#">
 							{{ HTML::image('images/social_ico_tw.png', 'Share on Twitter') }}
 						</a>
 					</li>
 					<li>
-						<a href="/#">
+						<a href="{{ url() }}/#">
 							{{ HTML::image('images/social_ico_fb.png', 'Share on Facebook') }}
 						</a>
 					</li>
 					<li>
-						<a href="/#">
+						<a href="{{ url() }}/#">
 							{{ HTML::image('images/social_ico_pin.png', 'Share on Pinterest') }}
 						</a>
 					</li>
 					<li>
-						<a href="/#">
+						<a href="{{ url() }}/#">
 							{{ HTML::image('images/social_ico_go.png', 'Share on Google Plus') }}
 						</a>
 					</li>
 					<li>
-						<a href="/#">
+						<a href="{{ url() }}/#">
 							{{ HTML::image('images/social_ico_tum.png', 'Share on Tumblr') }}
 						</a>
 					</li>
 				</ul>
-			</nav> 
+			</nav>
 		</div>
 		<!-- Prev & Next Link -->
 		<div class="post-prev-next-link">
 			<div class="post-prev-next-link-left-col">
 				<?php $urlPath = ""; ?>
-				@if($leftLink != null) 
+				@if($leftLink != null)
 					<?php $urlPath = $leftLink->id; ?>
 				@endif
-				<a href="/news/{{ $urlPath }}">
+				<a href="{{ url() }}/news/{{ $urlPath }}">
 					<span class="post-link-label">
 						@if($leftLink == null) ^ Top @else ≪ Next @endif
 					</span>
@@ -75,7 +75,7 @@
 						@if($leftLink == null)
 							Back to The News Page
 						@else
-							@if (strlen($leftLink->post_title) > 100) 
+							@if (strlen($leftLink->post_title) > 100)
 								{{ mb_substr(str_replace("<br>", " ", $leftLink->post_title), 0, 30) . ' ...' }}
 							@else
 								{{ str_replace("<br>", " ", $leftLink->post_title) }}
@@ -86,10 +86,10 @@
 			</div>
 			<div class="post-prev-next-link-right-col">
 				<?php $urlPath = ""; ?>
-				@if($rightLink != null) 
+				@if($rightLink != null)
 					<?php $urlPath = $rightLink->id; ?>
 				@endif
-				<a href="/news/{{ $urlPath }}">
+				<a href="{{ url() }}/news/{{ $urlPath }}">
 					<span class="post-link-label">
 						@if($rightLink == null) Top ^ @else Prev ≫ @endif
 					</span>
@@ -104,7 +104,7 @@
 						@if($rightLink == null)
 							Back to The News Page
 						@else
-							@if (strlen($rightLink->post_title) > 100) 
+							@if (strlen($rightLink->post_title) > 100)
 								{{ mb_substr(str_replace("<br>", " ", $rightLink->post_title), 0, 30) . ' ...' }}
 							@else
 								{{ str_replace("<br>", " ", $rightLink->post_title) }}
@@ -122,12 +122,12 @@
 				<div class="archive-v2-entry">
 					<dl>
 						<dt>
-							<a href="/news/{{ $postArchive->id }}">
+							<a href="{{ url() }}/news/{{ $postArchive->id }}">
 								{{ HTML::image('images/news/posts/' . $postArchive->thumbnail_img, $postArchive->thumbnail_img) }}
 							</a>
 						</dt>
 						<dd>
-							<a href="/news/{{ $postArchive->id }}">
+							<a href="{{ url() }}/news/{{ $postArchive->id }}">
 								{{ $postArchive->post_title }}
 							</a>
 						</dd>
@@ -138,6 +138,6 @@
 				<div class="archive-v2-entry-clear"></div>
 			</div>
 		</div>
-		<span class="view-all-link"><a href="/news">VIEW ALL</a></span>
+		<span class="view-all-link"><a href="{{ url() }}/news">VIEW ALL</a></span>
 	</div>
 </section>

@@ -64,7 +64,7 @@
 		<!-- Social Media Links -->
 		@include('module-social-media-sp')
 		<!-- Headline Header Image -->
-		<a href="/#">
+		<a href="{{ url() }}/#">
 			<div id="headline-header-img-sp">
 				{{ HTML::image('images/home/' . $narrowHeaderImg) }}
 			</div>
@@ -149,12 +149,12 @@
 			<div class="features-entry">
 				<dl>
 					<dt>
-						<a href="/features/{{ $featurePost->post_id }}" title="{{ $featurePost->post_title }}">
+						<a href="{{ url() }}/features/{{ $featurePost->post_id }}" title="{{ $featurePost->post_title }}">
 							{{ HTML::image('images/features/posts/' . $featurePost->thumbnail_img, $featurePost->thumbnail_img) }}
 						</a>
 					</dt>
 					<dd>
-						<a href="/features/{{ $featurePost->post_id }}" title="{{ $featurePost->post_title }}">
+						<a href="{{ url() }}/features/{{ $featurePost->post_id }}" title="{{ $featurePost->post_title }}">
 							{{ $featurePost->post_title }}
 						</a>
 					</dd>
@@ -163,6 +163,6 @@
 			</div>
 		@endforeach
 	</div>
-	<span class="view-all-link"><a href="/features">VIEW ALL</a></span>
-	<span class="view-all-link-sp"><a href="/features">Features - VIEW ALL</a></span>
+	<span class="view-all-link"><a href="{{ url() }}/features">VIEW ALL</a></span>
+	<span class="view-all-link-sp"><a href="{{ url() }}/features">Features - VIEW ALL</a></span>
 </section>
