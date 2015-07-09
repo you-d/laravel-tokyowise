@@ -12,7 +12,7 @@
 							{{ $featureModuleEntry->category_name }}
 						</dt>
 						<dd>
-							@if (strlen($featureModuleEntry->post_title) > 100) 
+							@if (strlen($featureModuleEntry->post_title) > 100)
 								{{ mb_substr($featureModuleEntry->post_title, 0, 35) . ' ...' }}
 							@else
 								{{ $featureModuleEntry->post_title }}
@@ -24,8 +24,8 @@
 			</div>
 		@endforeach
 	@else
-		<p>The $featureModuleEntries needs to be defined in the controller of this page.</p>	
+		<p>The $featureModuleEntries needs to be defined in the controller of this page.</p>
 	@endif
 </section>
-<span class="view-all-link"><a href="cms/features">VIEW ALL</a></span>
-<span class="view-all-link-sp"><a href="cms/features">Features - VIEW ALL</a></span>
+<span class="view-all-link"><a href="{{ url() }}/cms/features">VIEW ALL</a></span>
+<span class="view-all-link-sp"><a href="{{ url() }}/cms/features">Features - VIEW ALL</a></span>

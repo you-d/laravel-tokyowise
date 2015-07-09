@@ -21,18 +21,18 @@
     </div>
     <script type="text/javascript">
         jwplayer("video1").setup({
-            file: "/videos/home-replace-header-img.mp4",
+            file: "videos/home-replace-header-img.mp4",
             aspectratio: "16:9",
             width: "100%",
-            skin: "/jwplayer/skins/five.xml"
+            skin: "jwplayer/skins/five.xml"
         });
     </script>
     <script type="text/javascript">
         jwplayer("video2").setup({
-            file: "/videos/rensai-cms-demo.mp4",
+            file: "videos/rensai-cms-demo.mp4",
             aspectratio: "16:9",
             width: "100%",
-            skin: "/jwplayer/skins/five.xml"
+            skin: "jwplayer/skins/five.xml"
         });
     </script>
 </article>

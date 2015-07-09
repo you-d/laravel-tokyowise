@@ -22,7 +22,7 @@
 				</dd>
 				<dd>
 					<!-- Content Primary Img -->
-					{{ HTML::image('images/gadgets/posts/' . $gadgetPost->primary_img , $gadgetPost->primary_img) }}	
+					{{ HTML::image('images/gadgets/posts/' . $gadgetPost->primary_img , $gadgetPost->primary_img) }}
 				</dd>
 				<dd class="post-content-primary-img-desc">
 					<!-- Content Primary Img Desc -->
@@ -41,41 +41,41 @@
 			<nav class="post-social-media-share-block">
 				<ul>
 					<li>
-						<a href="/#">
+						<a href="{{ url() }}/#">
 							{{ HTML::image('images/social_ico_tw.png', 'Share on Twitter') }}
 						</a>
 					</li>
 					<li>
-						<a href="/#">
+						<a href="{{ url() }}/#">
 							{{ HTML::image('images/social_ico_fb.png', 'Share on Facebook') }}
 						</a>
 					</li>
 					<li>
-						<a href="/#">
+						<a href="{{ url() }}/#">
 							{{ HTML::image('images/social_ico_pin.png', 'Share on Pinterest') }}
 						</a>
 					</li>
 					<li>
-						<a href="/#">
+						<a href="{{ url() }}/#">
 							{{ HTML::image('images/social_ico_go.png', 'Share on Google Plus') }}
 						</a>
 					</li>
 					<li>
-						<a href="/#">
+						<a href="{{ url() }}/#">
 							{{ HTML::image('images/social_ico_tum.png', 'Share on Tumblr') }}
 						</a>
 					</li>
 				</ul>
-			</nav> 
+			</nav>
 		</div>
 		<!-- Prev & Next Link -->
 		<div class="post-prev-next-link">
 			<div class="post-prev-next-link-left-col">
 				<?php $urlPath = ""; ?>
-				@if($leftLink != null) 
+				@if($leftLink != null)
 					<?php $urlPath = "/no" . $leftLink->id; ?>
 				@endif
-				<a href="/gadgets{{ $urlPath }}">
+				<a href="{{ url() }}/gadgets{{ $urlPath }}">
 					<span class="post-link-label">
 						@if($leftLink == null) ^ Top @else ≪ Next @endif
 					</span>
@@ -90,7 +90,7 @@
 						@if($leftLink == null)
 							Back to The Gadgets Page
 						@else
-							@if (strlen($leftLink->post_title) > 100) 
+							@if (strlen($leftLink->post_title) > 100)
 								{{ mb_substr(str_replace("<br>", " ", $leftLink->post_title), 0, 35) . ' ...' }}
 							@else
 								{{ str_replace("<br>", " ", $leftLink->post_title) }}
@@ -101,10 +101,10 @@
 			</div>
 			<div class="post-prev-next-link-right-col">
 				<?php $urlPath = ""; ?>
-				@if($rightLink != null) 
+				@if($rightLink != null)
 					<?php $urlPath = "/no" . $rightLink->id; ?>
 				@endif
-				<a href="/gadgets{{ $urlPath }}">
+				<a href="{{ url() }}/gadgets{{ $urlPath }}">
 					<span class="post-link-label">
 						@if($rightLink == null) Top ^ @else Prev ≫ @endif
 					</span>
@@ -119,7 +119,7 @@
 						@if($rightLink == null)
 							Back to The Gadgets Page
 						@else
-							@if (strlen($rightLink->post_title) > 100) 
+							@if (strlen($rightLink->post_title) > 100)
 								{{ mb_substr(str_replace("<br>", " ", $rightLink->post_title), 0, 35) . ' ...' }}
 							@else
 								{{ str_replace("<br>", " ", $rightLink->post_title) }}

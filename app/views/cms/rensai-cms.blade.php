@@ -3,9 +3,9 @@
 <!-- breadcrumb -->
 <section id="breadcrumb-section">
 	<nav>
-		<a href="/cms/home">Home</a>
+		<a href="{{ url() }}/cms/home">Home</a>
 		>
-		<a href="/cms/rensai">Ren-Sai</a>
+		<a href="{{ url() }}/cms/rensai">Ren-Sai</a>
 	</nav>
 </section>
 <!-- features contents -->
@@ -25,9 +25,9 @@
 		<h1>[ Rensai ] Features Side Column</h1>
 		<hr><br>
 		@if (isset($featureModuleEntries))
-			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/rensai'), 
+			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/rensai'),
 						   'class' => '', 'accept-charset' => 'UTF-8']) }}
-				<?php $tot = count($featureModuleEntries); ?> 
+				<?php $tot = count($featureModuleEntries); ?>
 				Number of entries :&nbsp;
 				<select id="entries-num">
 					<?php for($i=3; $i<=10; $i++) { ?>
@@ -36,9 +36,9 @@
 				</select>
 				<br><br><hr><br>
 				<button type="button" id="submit-btn">Update</button>
-				<button type="button" id="cancel-btn">Cancel</button>	
+				<button type="button" id="cancel-btn">Cancel</button>
 			{{ Form::close() }}
-		@else	
+		@else
 			The $featureModuleEntries has not been defined in the RensaiCmsController.
 		@endif
 	</div>
@@ -53,9 +53,9 @@
 		<h1>[ Rensai ] News Side Column</h1>
 		<hr><br>
 		@if (isset($newsModuleEntries))
-			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/rensai'), 
+			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/rensai'),
 						   'class' => '', 'accept-charset' => 'UTF-8']) }}
-				<?php $tot = count($newsModuleEntries); ?> 
+				<?php $tot = count($newsModuleEntries); ?>
 				Number of entries :&nbsp;
 				<select id="entries-num">
 					<?php for($i=3; $i<=10; $i++) { ?>
@@ -64,9 +64,9 @@
 				</select>
 				<br><br><hr><br>
 				<button type="button" id="submit-btn">Update</button>
-				<button type="button" id="cancel-btn">Cancel</button>	
+				<button type="button" id="cancel-btn">Cancel</button>
 			{{ Form::close() }}
-		@else	
+		@else
 			The $newsModuleEntries has not been defined in the RensaiCmsController.
 		@endif
 	</div>
@@ -81,9 +81,9 @@
 		<h1>[ Rensai ] Gadgets Side Column</h1>
 		<hr><br>
 		@if (isset($gadgetsModuleEntries))
-			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/rensai'), 
+			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/rensai'),
 						   'class' => '', 'accept-charset' => 'UTF-8']) }}
-				<?php $tot = count($gadgetsModuleEntries); ?> 
+				<?php $tot = count($gadgetsModuleEntries); ?>
 				Number of entries :&nbsp;
 				<select id="entries-num">
 					<?php for($i=3; $i<=10; $i++) { ?>
@@ -92,9 +92,9 @@
 				</select>
 				<br><br><hr><br>
 				<button type="button" id="submit-btn">Update</button>
-				<button type="button" id="cancel-btn">Cancel</button>	
+				<button type="button" id="cancel-btn">Cancel</button>
 			{{ Form::close() }}
-		@else	
+		@else
 			The $gadgetsModuleEntries has not been defined in the RensaiCmsController.
 		@endif
 	</div>

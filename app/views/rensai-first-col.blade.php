@@ -13,13 +13,13 @@
 		<h2>新着記事</h2>
 		@foreach ($rensaiPosts as $rensaiPost)
 		<div class="rensai-article-entry rensai-article-entry-first-sp">
-			<a href="/rensai/{{ $rensaiPost->category_id }}/{{ $rensaiPost->post_id }}">
+			<a href="{{ url() }}/rensai/{{ $rensaiPost->category_id }}/{{ $rensaiPost->post_id }}">
 				<span class="posting-date">{{ date("d/m/Y", strtotime($rensaiPost->posting_date)) }}</span>
 				<span class="rensai-article-title">
 					{{ $rensaiPost->post_title }}
 				</span>
 			</a>
-		</div>	
+		</div>
 		@endforeach
 	</div>
 	<!-- Article Categories Section -->
@@ -29,11 +29,11 @@
 			<?php $counter = 0; ?>
 			@foreach ($rensaiCategories as $rensaiCategory)
 			<div class="rensai-article-cat-entry">
-				<a href="/rensai/{{ $rensaiCategory->id }}">
+				<a href="{{ url() }}/rensai/{{ $rensaiCategory->id }}">
 					<div class="rensai-article-cat-entry-info">
 						<div class="rensai-article-cat-entry-title">{{ $rensaiCategory->category_name }}</div>
 						<div class="rensai-article-cat-entry-desc">
-							@if (strlen($rensaiCategory->group_desc) > 100) 
+							@if (strlen($rensaiCategory->group_desc) > 100)
 								{{ mb_substr($rensaiCategory->group_desc, 0, 35) . ' ...' }}
 							@else
 								{{ $rensaiCategory->group_desc }}
@@ -48,7 +48,7 @@
 				</a>
 			</div>
 			<?php $counter++; ?>
-			@endforeach 
+			@endforeach
 		</div>
 	</div>
-</section>	
+</section>

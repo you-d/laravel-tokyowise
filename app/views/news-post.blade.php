@@ -3,11 +3,11 @@
 <!-- breadcrumb -->
 <section id="breadcrumb-section">
 	<nav>
-		<a href="/home">Home</a>
+		<a href="{{ url() }}/home">Home</a>
 		>
-		<a href="/news">News</a>
+		<a href="{{ url() }}/news">News</a>
 		>
-		<a href="/news/{{ $newsPost->id }}">{{ $newsPost->post_title }}</a>
+		<a href="{{ url() }}/news/{{ $newsPost->id }}">{{ $newsPost->post_title }}</a>
 	</nav>
 </section>
 <!-- features contents -->

@@ -154,12 +154,12 @@
 		<div class="rensai-entry">
 			<dl>
 				<dt>
-					<a href="/cms/rensai/{{ $rensaiCategory->id }}/{{ $rensaiPost->post_id }}">
+					<a href="{{ url() }}/cms/rensai/{{ $rensaiCategory->id }}/{{ $rensaiPost->post_id }}">
 						{{ HTML::image('images/rensai/posts/' . $rensaiPost->thumbnail_img, $rensaiPost->thumbnail_img) }}
 					</a>
 				</dt>
 				<dd>
-					<a href="/cms/rensai/{{ $rensaiCategory->id }}/{{ $rensaiPost->post_id }}">
+					<a href="{{ url() }}/cms/rensai/{{ $rensaiCategory->id }}/{{ $rensaiPost->post_id }}">
 						@if (strlen($rensaiPost->post_title) > 100)
 							{{ mb_substr($rensaiPost->post_title, 0, 70) . ' ...' }}
 						@else

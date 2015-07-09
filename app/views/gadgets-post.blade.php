@@ -3,11 +3,11 @@
 <!-- breadcrumb -->
 <section id="breadcrumb-section">
 	<nav>
-		<a href="/home">Home</a>
+		<a href="{{ url() }}/home">Home</a>
 		>
-		<a href="/gadgets">Gadgets</a>
+		<a href="{{ url() }}/gadgets">Gadgets</a>
 		>
-		<a href="/gadgets/no{{ $gadgetPost->id }}">{{ str_replace("<br>"," ",$gadgetPost->post_title) }}</a>
+		<a href="{{ url() }}/gadgets/no{{ $gadgetPost->id }}">{{ str_replace("<br>"," ",$gadgetPost->post_title) }}</a>
 	</nav>
 </section>
 <!-- editors contents -->
