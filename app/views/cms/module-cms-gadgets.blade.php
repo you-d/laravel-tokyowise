@@ -21,5 +21,5 @@
 		</dl>
 	</div>
 	@endforeach
-	<span class="view-all-link"><a href="/cms/gadgets">VIEW ALL</a></span>
+	<span class="view-all-link"><a href="{{ url() }}/cms/gadgets">VIEW ALL</a></span>
 </section>

@@ -12,12 +12,12 @@
 	<div class="first-col-article-entry">
 		<dl>
 			<dt>
-				<a href="/#">
+				<a href="{{ url() }}/#">
 					{{ HTML::image('images/editors/general/home-editors-eyes-150x150.jpg', 'editors eyes top vol11') }}
 				</a>
 			</dt>
 			<dd>
-				<a href="/#">カフェでワインが正解になった Exclusive Wines for inspired by STARBUCKS</a>
+				<a href="{{ url() }}/#">カフェでワインが正解になった Exclusive Wines for inspired by STARBUCKS</a>
 			</dd>
 			<p class="posting-date">20/05/2015</p>
 		</dl>
@@ -26,12 +26,12 @@
 	<div class="first-col-article-entry">
 		<dl>
 			<dt>
-				<a href="/#">
+				<a href="{{ url() }}/#">
 					{{ HTML::image('images/editors/general/home-editors-eyes-150x150.jpg', 'editors eyes top vol11') }}
 				</a>
 			</dt>
 			<dd>
-				<a href="/#">カフェでワインが正解になった Exclusive Wines for inspired by STARBUCKS</a>
+				<a href="{{ url() }}/#">カフェでワインが正解になった Exclusive Wines for inspired by STARBUCKS</a>
 			</dd>
 			<p class="posting-date">20/05/2015</p>
 		</dl>
@@ -40,12 +40,12 @@
 	<div class="first-col-article-entry">
 		<dl>
 			<dt>
-				<a href="/#">
+				<a href="{{ url() }}/#">
 					{{ HTML::image('images/editors/general/home-editors-eyes-150x150.jpg', 'editors eyes top vol11') }}
 				</a>
 			</dt>
 			<dd>
-				<a href="/#">カフェでワインが正解になった Exclusive Wines for inspired by STARBUCKS</a>
+				<a href="{{ url() }}/#">カフェでワインが正解になった Exclusive Wines for inspired by STARBUCKS</a>
 			</dd>
 			<p class="posting-date">20/05/2015</p>
 		</dl>

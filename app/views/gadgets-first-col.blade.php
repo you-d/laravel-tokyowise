@@ -12,15 +12,15 @@
 	<div class="first-col-article-entry">
 		<dl>
 			<dt>
-				<a href="/gadgets/no{{ $gadgetPost->id }}">
+				<a href="{{ url() }}/gadgets/no{{ $gadgetPost->id }}">
 					{{ HTML::image('images/gadgets/posts/' . $gadgetPost->thumbnail_img, $gadgetPost->thumbnail_img) }}
 				</a>
 			</dt>
 			<dd>
-				<a href="/gadgets/no{{ $gadgetPost->id }}">{{ str_replace("<br>"," ",$gadgetPost->post_title) }}</a>
+				<a href="{{ url() }}/gadgets/no{{ $gadgetPost->id }}">{{ str_replace("<br>"," ",$gadgetPost->post_title) }}</a>
 			</dd>
 			<p class="posting-date">{{ date("d/m/Y", strtotime($gadgetPost->posting_date)) }}</p>
 		</dl>
 	</div>
 	@endforeach
-</section>	
+</section>

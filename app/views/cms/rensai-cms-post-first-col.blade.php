@@ -29,27 +29,27 @@
 			<nav class="post-social-media-share-block">
 				<ul>
 					<li>
-						<a href="/#">
+						<a href="{{ url() }}/#">
 							{{ HTML::image('images/social_ico_tw.png', 'Share on Twitter') }}
 						</a>
 					</li>
 					<li>
-						<a href="/#">
+						<a href="{{ url() }}/#">
 							{{ HTML::image('images/social_ico_fb.png', 'Share on Facebook') }}
 						</a>
 					</li>
 					<li>
-						<a href="/#">
+						<a href="{{ url() }}/#">
 							{{ HTML::image('images/social_ico_pin.png', 'Share on Pinterest') }}
 						</a>
 					</li>
 					<li>
-						<a href="/#">
+						<a href="{{ url() }}/#">
 							{{ HTML::image('images/social_ico_go.png', 'Share on Google Plus') }}
 						</a>
 					</li>
 					<li>
-						<a href="/#">
+						<a href="{{ url() }}/#">
 							{{ HTML::image('images/social_ico_tum.png', 'Share on Tumblr') }}
 						</a>
 					</li>
@@ -123,7 +123,7 @@
 				@if($leftLink != null)
 					<?php $urlPath = "/" . $leftLink->category_id . "/" . $leftLink->post_id; ?>
 				@endif
-				<a href="/rensai{{ $urlPath }}">
+				<a href="{{ url() }}/rensai{{ $urlPath }}">
 					<span class="post-link-label">
 						@if($leftLink == null) ^ Top @else ≪ Next @endif
 					</span>
@@ -152,7 +152,7 @@
 				@if($rightLink != null)
 					<?php $urlPath = "/" . $rightLink->category_id . "/" . $rightLink->post_id; ?>
 				@endif
-				<a href="/rensai{{ $urlPath }}">
+				<a href="{{ url() }}/rensai{{ $urlPath }}">
 					<span class="post-link-label">
 						@if($rightLink == null) Top ^ @else Prev ≫ @endif
 					</span>

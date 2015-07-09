@@ -3,9 +3,9 @@
 <!-- breadcrumb -->
 <section id="breadcrumb-section">
 	<nav>
-		<a href="/cms/home">Home</a>
+		<a href="{{ url() }}/cms/home">Home</a>
 		>
-		<a href="/cms/news">News</a>
+		<a href="{{ url() }}/cms/news">News</a>
 	</nav>
 </section>
 <!-- editors contents -->
@@ -13,12 +13,12 @@
 	<!-- 1st Column -->
 	@include('news-first-col') <!-- Under Construction -->
 	<!-- 2nd Column -->
-	@include('cms/news-cms-second-col') 
+	@include('cms/news-cms-second-col')
 </article>
 <!-- CMS - First Col Section -->
 <div id="news-cms-first-col-overlay" class="cms-overlay">
 	<div class="cms-transparent-overlay"></div>
-	<p class="cms-under-construction-txt">UNDER CONSTRUCTION</p>	
+	<p class="cms-under-construction-txt">UNDER CONSTRUCTION</p>
 </div>
 <!-- CMS - Features Module -->
 <div id="news-cms-features-module-overlay" class="cms-overlay">
@@ -30,9 +30,9 @@
 		<h1>[ News ] Features Side Column</h1>
 		<hr><br>
 		@if (isset($featureModuleEntries))
-			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/news'), 
+			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/news'),
 						   'class' => '', 'accept-charset' => 'UTF-8']) }}
-				<?php $tot = count($featureModuleEntries); ?> 
+				<?php $tot = count($featureModuleEntries); ?>
 				Number of entries :&nbsp;
 				<select id="entries-num">
 					<?php for($i=3; $i<=10; $i++) { ?>
@@ -41,9 +41,9 @@
 				</select>
 				<br><br><hr><br>
 				<button type="button" id="submit-btn">Update</button>
-				<button type="button" id="cancel-btn">Cancel</button>	
+				<button type="button" id="cancel-btn">Cancel</button>
 			{{ Form::close() }}
-		@else	
+		@else
 			The $featureModuleEntries has not been defined in the NewsCmsController.
 		@endif
 	</div>
@@ -58,9 +58,9 @@
 		<h1>[ News ] Rensai Side Column</h1>
 		<hr><br>
 		@if (isset($rensaiModuleEntries))
-			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/news'), 
+			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/news'),
 						   'class' => '', 'accept-charset' => 'UTF-8']) }}
-				<?php $tot = count($rensaiModuleEntries); ?> 
+				<?php $tot = count($rensaiModuleEntries); ?>
 				Number of entries :&nbsp;
 				<select id="entries-num">
 					<?php for($i=3; $i<=10; $i++) { ?>
@@ -69,9 +69,9 @@
 				</select>
 				<br><br><hr><br>
 				<button type="button" id="submit-btn">Update</button>
-				<button type="button" id="cancel-btn">Cancel</button>	
+				<button type="button" id="cancel-btn">Cancel</button>
 			{{ Form::close() }}
-		@else	
+		@else
 			The $rensaiModuleEntries has not been defined in the NewsCmsController.
 		@endif
 	</div>
@@ -86,9 +86,9 @@
 		<h1>[ News ] Gadgets Side Column</h1>
 		<hr><br>
 		@if (isset($gadgetsModuleEntries))
-			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/news'), 
+			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/news'),
 						   'class' => '', 'accept-charset' => 'UTF-8']) }}
-				<?php $tot = count($gadgetsModuleEntries); ?> 
+				<?php $tot = count($gadgetsModuleEntries); ?>
 				Number of entries :&nbsp;
 				<select id="entries-num">
 					<?php for($i=3; $i<=10; $i++) { ?>
@@ -97,11 +97,11 @@
 				</select>
 				<br><br><hr><br>
 				<button type="button" id="submit-btn">Update</button>
-				<button type="button" id="cancel-btn">Cancel</button>	
+				<button type="button" id="cancel-btn">Cancel</button>
 			{{ Form::close() }}
-		@else	
+		@else
 			The $gadgetsModuleEntries has not been defined in the NewsCmsController.
 		@endif
 	</div>
-</div>	
+</div>
 @stop

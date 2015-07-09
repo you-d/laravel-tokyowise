@@ -3,9 +3,9 @@
 <!-- breadcrumb -->
 <section id="breadcrumb-section">
 	<nav>
-		<a href="/cms/home">Home</a>
+		<a href="{{ url() }}/cms/home">Home</a>
 		>
-		<a href="/cms/editors">Editor&#39;s Eyes</a>
+		<a href="{{ url() }}/cms/editors">Editor&#39;s Eyes</a>
 	</nav>
 </section>
 <!-- editors contents -->
@@ -13,12 +13,12 @@
 	<!-- 1st Column -->
 	@include('editors-first-col') <!-- under construction -->
 	<!-- 2nd Column -->
-	@include('cms/editors-cms-second-col') 
+	@include('cms/editors-cms-second-col')
 </article>
 <!-- CMS - First Col Section -->
 <div id="editors-cms-first-col-overlay" class="cms-overlay">
 	<div class="cms-transparent-overlay"></div>
-	<p class="cms-under-construction-txt">UNDER CONSTRUCTION</p>	
+	<p class="cms-under-construction-txt">UNDER CONSTRUCTION</p>
 </div>
 <!-- CMS - Features Module -->
 <div id="editors-cms-features-module-overlay" class="cms-overlay">
@@ -30,9 +30,9 @@
 		<h1>[ Editors ] Features Side Column</h1>
 		<hr><br>
 		@if (isset($featureModuleEntries))
-			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/editors'), 
+			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/editors'),
 						   'class' => '', 'accept-charset' => 'UTF-8']) }}
-				<?php $tot = count($featureModuleEntries); ?> 
+				<?php $tot = count($featureModuleEntries); ?>
 				Number of entries :&nbsp;
 				<select id="entries-num">
 					<?php for($i=3; $i<=10; $i++) { ?>
@@ -41,9 +41,9 @@
 				</select>
 				<br><br><hr><br>
 				<button type="button" id="submit-btn">Update</button>
-				<button type="button" id="cancel-btn">Cancel</button>	
+				<button type="button" id="cancel-btn">Cancel</button>
 			{{ Form::close() }}
-		@else	
+		@else
 			The $featureModuleEntries has not been defined in the EditorsCmsController.
 		@endif
 	</div>
@@ -58,9 +58,9 @@
 		<h1>[ Editors ] Rensai Side Column</h1>
 		<hr><br>
 		@if (isset($rensaiModuleEntries))
-			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/editors'), 
+			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/editors'),
 						   'class' => '', 'accept-charset' => 'UTF-8']) }}
-				<?php $tot = count($rensaiModuleEntries); ?> 
+				<?php $tot = count($rensaiModuleEntries); ?>
 				Number of entries :&nbsp;
 				<select id="entries-num">
 					<?php for($i=3; $i<=10; $i++) { ?>
@@ -69,9 +69,9 @@
 				</select>
 				<br><br><hr><br>
 				<button type="button" id="submit-btn">Update</button>
-				<button type="button" id="cancel-btn">Cancel</button>	
+				<button type="button" id="cancel-btn">Cancel</button>
 			{{ Form::close() }}
-		@else	
+		@else
 			The $rensaiModuleEntries has not been defined in the EditorsCmsController.
 		@endif
 	</div>
@@ -86,9 +86,9 @@
 		<h1>[ Editors ] News Side Column</h1>
 		<hr><br>
 		@if (isset($newsModuleEntries))
-			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/editors'), 
+			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/editors'),
 						   'class' => '', 'accept-charset' => 'UTF-8']) }}
-				<?php $tot = count($newsModuleEntries); ?> 
+				<?php $tot = count($newsModuleEntries); ?>
 				Number of entries :&nbsp;
 				<select id="entries-num">
 					<?php for($i=3; $i<=10; $i++) { ?>
@@ -97,9 +97,9 @@
 				</select>
 				<br><br><hr><br>
 				<button type="button" id="submit-btn">Update</button>
-				<button type="button" id="cancel-btn">Cancel</button>	
+				<button type="button" id="cancel-btn">Cancel</button>
 			{{ Form::close() }}
-		@else	
+		@else
 			The $newsModuleEntries has not been defined in the EditorsCmsController.
 		@endif
 	</div>
@@ -114,9 +114,9 @@
 		<h1>[ Editors ] Gadgets Side Column</h1>
 		<hr><br>
 		@if (isset($gadgetsModuleEntries))
-			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/editors'), 
+			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/editors'),
 						   'class' => '', 'accept-charset' => 'UTF-8']) }}
-				<?php $tot = count($gadgetsModuleEntries); ?> 
+				<?php $tot = count($gadgetsModuleEntries); ?>
 				Number of entries :&nbsp;
 				<select id="entries-num">
 					<?php for($i=3; $i<=10; $i++) { ?>
@@ -125,11 +125,11 @@
 				</select>
 				<br><br><hr><br>
 				<button type="button" id="submit-btn">Update</button>
-				<button type="button" id="cancel-btn">Cancel</button>	
+				<button type="button" id="cancel-btn">Cancel</button>
 			{{ Form::close() }}
-		@else	
+		@else
 			The $gadgetsModuleEntries has not been defined in the EditorsCmsController.
 		@endif
 	</div>
-</div>	
+</div>
 @stop

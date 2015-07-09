@@ -19,7 +19,7 @@
 				</dt>
 				<dd>
 					<!-- Content Primary Img -->
-					{{ HTML::image('images/rensai/posts/' . $rensaiPost->primary_img , $rensaiPost->primary_img) }}	
+					{{ HTML::image('images/rensai/posts/' . $rensaiPost->primary_img , $rensaiPost->primary_img) }}
 				</dd>
 			</dl>
 			<!-- Content Body -->
@@ -29,41 +29,41 @@
 			<nav class="post-social-media-share-block">
 				<ul>
 					<li>
-						<a href="/#">
+						<a href="{{ url() }}/#">
 							{{ HTML::image('images/social_ico_tw.png', 'Share on Twitter') }}
 						</a>
 					</li>
 					<li>
-						<a href="/#">
+						<a href="{{ url() }}/#">
 							{{ HTML::image('images/social_ico_fb.png', 'Share on Facebook') }}
 						</a>
 					</li>
 					<li>
-						<a href="/#">
+						<a href="{{ url() }}/#">
 							{{ HTML::image('images/social_ico_pin.png', 'Share on Pinterest') }}
 						</a>
 					</li>
 					<li>
-						<a href="/#">
+						<a href="{{ url() }}/#">
 							{{ HTML::image('images/social_ico_go.png', 'Share on Google Plus') }}
 						</a>
 					</li>
 					<li>
-						<a href="/#">
+						<a href="{{ url() }}/#">
 							{{ HTML::image('images/social_ico_tum.png', 'Share on Tumblr') }}
 						</a>
 					</li>
 				</ul>
-			</nav> 
+			</nav>
 		</div>
 		<!-- Prev & Next Link -->
 		<div class="post-prev-next-link">
 			<div class="post-prev-next-link-left-col">
 				<?php $urlPath = ""; ?>
-				@if($leftLink != null) 
+				@if($leftLink != null)
 					<?php $urlPath = "/" . $leftLink->category_id . "/" . $leftLink->post_id; ?>
 				@endif
-				<a href="/rensai{{ $urlPath }}">
+				<a href="{{ url() }}/rensai{{ $urlPath }}">
 					<span class="post-link-label">
 						@if($leftLink == null) ^ Top @else ≪ Next @endif
 					</span>
@@ -78,7 +78,7 @@
 						@if($leftLink == null)
 							Back to The Rensai Page
 						@else
-							@if (strlen($leftLink->post_title) > 100) 
+							@if (strlen($leftLink->post_title) > 100)
 								{{ mb_substr($leftLink->post_title, 0, 35) . ' ...' }}
 							@else
 								{{ $leftLink->post_title }}
@@ -89,10 +89,10 @@
 			</div>
 			<div class="post-prev-next-link-right-col">
 				<?php $urlPath = ""; ?>
-				@if($rightLink != null) 
+				@if($rightLink != null)
 					<?php $urlPath = "/" . $rightLink->category_id . "/" . $rightLink->post_id; ?>
 				@endif
-				<a href="/rensai{{ $urlPath }}">
+				<a href="{{ url() }}/rensai{{ $urlPath }}">
 					<span class="post-link-label">
 						@if($rightLink == null) Top ^ @else Prev ≫ @endif
 					</span>
@@ -107,7 +107,7 @@
 						@if($rightLink == null)
 							Back to The Rensai Page
 						@else
-							@if (strlen($rightLink->post_title) > 100) 
+							@if (strlen($rightLink->post_title) > 100)
 								{{ mb_substr($rightLink->post_title, 0, 35) . ' ...' }}
 							@else
 								{{ $rightLink->post_title }}
@@ -125,12 +125,12 @@
 				<div class="archive-entry archive-entry-selected">
 				@else
 				<div class="archive-entry">
-				@endif	
+				@endif
 					<dl>
 						<dt class="posting-date">{{ date("d/m/Y", strtotime($postArchive->posting_date)) }}</dt>
 						<dd>
 							<a href="{{ url('/rensai', array($postArchive->post_id), false) }}">
-								@if (strlen($postArchive->post_title) > 100) 
+								@if (strlen($postArchive->post_title) > 100)
 									{{ mb_substr($postArchive->post_title, 0, 35) . ' ...' }}
 								@else
 									{{ $postArchive->post_title }}

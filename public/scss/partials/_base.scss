@@ -187,7 +187,7 @@ a:hover {
 .view-all-link {
     @include media-query-wide() {
         display: block;
-        background: url(/images/arrow_new.png) no-repeat right 0px;
+        background: url("../images/arrow_new.png") no-repeat right 0px;
         a { font-weight: bold; display: block; text-align: right;
             margin: 5px 12px; font-size: 12px; color: #666666;
             line-height: 120%; }
@@ -535,6 +535,6 @@ a:hover {
 
     }
     @include media-query-narrow() {
-        display: none; 
+        display: none;
     }
 }
