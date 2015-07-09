@@ -9,7 +9,7 @@ class DatabaseSeeder extends Seeder {
 	public function run()
 	{
 		Eloquent::unguard();
-	
+
 		//$this->call('FeatureCategorySeeder');
 		//$this->call('FeaturePostSeeder');
 		//$this->call('RensaiCategorySeeder');

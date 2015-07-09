@@ -123,6 +123,8 @@ return array(
 		'Illuminate\Workbench\WorkbenchServiceProvider',
 		'Intervention\Image\ImageServiceProvider',
 		'Cartalyst\Sentry\SentryServiceProvider',
+		'LucaDegasperi\OAuth2Server\Storage\FluentStorageServiceProvider',
+		'LucaDegasperi\OAuth2Server\OAuth2ServerServiceProvider',
 	),
 
 	/*
@@ -189,7 +191,8 @@ return array(
 		'URL'             => 'Illuminate\Support\Facades\URL',
 		'Validator'       => 'Illuminate\Support\Facades\Validator',
 		'View'            => 'Illuminate\Support\Facades\View',
-		'Image' 		  => 'Intervention\Image\Facades\Image',
-		'Sentry' 		  => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
+		'Image' 		  	  => 'Intervention\Image\Facades\Image',
+		'Sentry' 		  	  => 'Cartalyst\Sentry\Facades\Laravel\Sentry',
+		'Authorizer' 	    => 'LucaDegasperi\OAuth2Server\Facades\AuthorizerFacade',
 	),
 );

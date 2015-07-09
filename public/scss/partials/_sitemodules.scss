@@ -93,7 +93,7 @@
         .news-entry {
       		  margin: 0 0 5px; padding: 5px 0;
             dl { overflow: hidden;
-          		   background: url(/images/linkbtn.png) 97% 50% no-repeat;
+          		   background: url("../images/linkbtn.png") 97% 50% no-repeat;
                  background-size: 15px;
                  dt { margin: 0 10% 0 10px; font-size: 14px; line-height: 120%;
                		    font-weight: bold; height: 45px;
@@ -125,7 +125,7 @@
             margin: 0 0 10px;
             p { min-height: 22px; padding: 0 0 0 28px;
                 font-size: 11px; line-height: 22px;
-                background: url(/images/gadgets/general/too_bg_00.png) 0 0 no-repeat;
+                background: url("../images/gadgets/general/too_bg_00.png") 0 0 no-repeat;
             }
             dl { position: relative; width: 168px; height: 206px;
                  text-align: center;

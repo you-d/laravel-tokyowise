@@ -6,7 +6,8 @@
 	"require": {
 		"laravel/framework": "4.2.*",
 		"intervention/image": "^2.2",
-		"cartalyst/sentry": "2.1.*"
+		"cartalyst/sentry": "2.1.*",
+		"lucadegasperi/oauth2-server-laravel": "3.*"
 	},
 	"require-dev": {
 		"panique/laravel-sass": "dev-master"

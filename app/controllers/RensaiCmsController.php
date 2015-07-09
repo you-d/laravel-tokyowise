@@ -1,5 +1,5 @@
 <?php
-
+/* API Ver.1 */
 class RensaiCmsController extends RensaiController {
 	/* view file name */
 	public function getViewName($pageType) {
@@ -171,7 +171,6 @@ class RensaiCmsController extends RensaiController {
 								Cache::forget('rensai-post-prev-next-links' . $categoryId . "/" . $prevPost);
 							}
 						}
-
 						break;
 					}
 				}
@@ -185,6 +184,7 @@ class RensaiCmsController extends RensaiController {
 				Cache::forget('rensai-category-rensaiPosts' . $targetCategoryId);
 				Cache::forget('rensai-rensaiLatestThumbImgs');
 				Cache::forget('rensai-rensaiPosts');
+				Cache::forget('rensai-post-rensaiPost' . $targetPostId);
 
 				Cache::forget('rensai-post-prev-next-links' . $targetCategoryId . "/" .$targetPostId);
 				// Clear the cache for the next & previous posts of this deleted post
@@ -203,11 +203,9 @@ class RensaiCmsController extends RensaiController {
 								Cache::forget('rensai-post-prev-next-links' . $targetCategoryId . "/" . $nextPost);
 							}
 						}
-
 						break;
 					}
 				}
-
 				break;
 		}
 	}
@@ -217,7 +215,7 @@ class RensaiCmsController extends RensaiController {
 				$this->handleEditingPost($categoryId, $postId);
 
 				// Clear the cache
-				Cache::forget('rensai_post_rensaiPost' . $categoryId . '/' . $postId);
+				Cache::forget('rensai-post-rensaiPost' . $postId);
 			break;
 		}
 	}

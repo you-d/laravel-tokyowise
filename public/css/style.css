@@ -359,7 +359,7 @@ a:hover {
 @media print, screen and (min-width: 641px) {
   .view-all-link {
     display: block;
-    background: url(/images/arrow_new.png) no-repeat right 0px;
+    background: url("../images/arrow_new.png") no-repeat right 0px;
   }
   .view-all-link a {
     font-weight: bold;
@@ -1250,7 +1250,7 @@ a:hover {
   }
   #news-list-sp .news-entry dl {
     overflow: hidden;
-    background: url(/images/linkbtn.png) 97% 50% no-repeat;
+    background: url("../images/linkbtn.png") 97% 50% no-repeat;
     background-size: 15px;
   }
   #news-list-sp .news-entry dl dt {
@@ -1305,7 +1305,7 @@ a:hover {
     padding: 0 0 0 28px;
     font-size: 11px;
     line-height: 22px;
-    background: url(/images/gadgets/general/too_bg_00.png) 0 0 no-repeat;
+    background: url("../images/gadgets/general/too_bg_00.png") 0 0 no-repeat;
   }
   #gadget-list .gadget-entry dl {
     position: relative;
@@ -1521,7 +1521,7 @@ a:hover {
     display: block;
     border-bottom: 1px solid #e3e2e2;
     height: 75px;
-    background: url(/images/linkbtn.png) 97% 50% no-repeat;
+    background: url("../images/linkbtn.png") 97% 50% no-repeat;
     background-size: 15px;
   }
   #home-contents #headlines-section-sp .headline-entry dl .headline-entry-info .headline-entry-title {

@@ -1,6 +1,6 @@
 <section id="gadget-list">
 	<h1>
-		{{ HTML::image('images/gadgets/general/gadgets-header-img.png', 'Gadget List Header Img') }}
+		{{ HTML::image('/images/gadgets/general/gadgets-header-img.png', 'Gadget List Header Img') }}
 	</h1>
 	@foreach ($gadgetsModuleEntries as $gadgetsModuleEntry)
 	<div class="gadget-entry">
