@@ -106,6 +106,7 @@ Route::group(array('before' => 'cmsauth|checklogout'), function() {
 	Ref :
 	- https://gist.github.com/m13z/6270524
 	- https://stackoverflow.com/questions/20733963/using-oauth2-in-php-for-accessing-twitter-moving-it-to-google-app-engine
+	- https://github.com/thephpleague/oauth2-client
 
 	Note :
 	- Don't use PHP built-in web-server (php artisan serve) to test
@@ -119,82 +120,8 @@ Route::group(array('before' => 'cmsauth|checklogout'), function() {
   - $consumerKey refers to "id" column, not the "name" column in the oauth_clients
     db table.
  */
-Route::get('apitest', function() {
-		/*
-			Note :
-			- OAuth 2 Grant Type : Client Credentials Grant
-			- Client Credentials Grant Type -> Must use "oauth-owner" filter.
-		*/
-
-		// login credentials
-		$consumerKey = "1";
-		$consumerSecret = "ssshdonttellanybody";
-		// specify the oauth2 authorization url
-		$oauth2url = url('api/oauth2');
-
-		// request token
-		$basicCredentials = base64_encode(($consumerKey).':'.($consumerSecret));
-		$authContext = stream_context_create(
-				array(
-					'http' => array(
-							'method' => 'POST',
-							'header' => "Authorization: Basic " . $basicCredentials . "\r\n" .
-	                			  "Content-type: application/x-www-form-urlencoded;charset=UTF-8\r\n",
-							'content' => 'grant_type=client_credentials',
-					),
-				)
-		);
-
-		// send requests
-		try {
-				$preTokenResponse = file_get_contents($oauth2url, false, $authContext);
-				var_dump("[REQUESTING ACCESS TOKEN IS SUCCESSFUL]");echo "<br><br>";
-				var_dump(json_decode($preTokenResponse, true));echo "<br><br>";
-		} catch (Exception $e) {
-				var_dump("[REQUESTING ACCESS TOKEN HAS FAILED]");echo "<br><br>";
-				var_dump($http_response_header);echo "<br><br>";
-		}
-
-		var_dump("[GOT THE ACCESS TOKEN, NOW GET THE RESOURCE]");echo "<br><br>";
-		$token = json_decode($preTokenResponse, true);
-		var_dump($token);echo "<br><br>";
-
-		if (isset($token["token_type"]) && $token["token_type"] == "Bearer") {
-				$context = stream_context_create(
-						array(
-							'http' => array(
-									'method'  => 'GET',
-									'header'  => 'Authorization: Bearer '.$token["access_token"]
-							),
-						)
-				);
-
-				// specify the api endpoint url
-				$api = url('api/v1');
-				// sample resource request url
-				//$url = $api . "/rensai/posts/3";
-				$url = $api . "/rensai/categories/3/posts";
-
-				// try to connect to web API endpoints
-				try {
-						$response = file_get_contents($url, false, $context);
-						var_dump("[OBTAINING RESOURCE IS SUCCESSFUL]");echo "<br><br>";
-						var_dump(json_decode($response, true));
-				} catch (Exception $e) {
-						var_dump("[OBTAINING RESOURCE HAS FAILED]");echo "<br><br>";
-						var_dump($http_response_header);
-				}
-		} else {
-				echo "SIGH...";
-		}
-});
-Route::get('apitest2', function() {
-		/*
-			Note :
-			- OAuth 2 Grant Type : Password Grant
-		*/
-
-});
+Route::get('oauthtest', array( 'uses' => 'OAuthController@clientCredentialsGrantTest' ));
+Route::get('oauthtest2', array( 'uses' => 'OAuthController@passwordGrantTest' ));
 Route::group(array('prefix' => 'api/v1/rensai/', 'before' => 'oauth-owner'), function() {
 		Route::get('categories.posts', 'RensaiCategoryApiController@showPosts');
 		Route::resource('categories.posts', 'RensaiCategoryApiController@showPosts');
