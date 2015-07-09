@@ -1,4 +1,4 @@
-{{ url() }}@extends('layout')
+@extends('layout')
 @section('content')
 <article role="main" id="main">
 	<div id="main-body">
