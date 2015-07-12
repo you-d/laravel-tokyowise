@@ -68,7 +68,7 @@ class OAuthController extends Controller
                 'header' => "Authorization: Basic " . $basicCredentials . "\r\n" .
                             "Content-type: application/x-www-form-urlencoded;charset=UTF-8\r\n",
                 'content' => http_build_query($authContextContents),
-            ),
+            )
           )
       );
 
@@ -76,34 +76,41 @@ class OAuthController extends Controller
       try {
           $preTokenResponse = file_get_contents($oauth2url, false, $authContext);
           var_dump("[REQUESTING ACCESS TOKEN IS SUCCESSFUL]");echo "<br><br>";
-          var_dump(json_decode($preTokenResponse, true));echo "<br><br>";
+          $decodedResponse = json_decode($preTokenResponse, true);
+          var_dump($decodedResponse["access_token"]);echo "<br><br>";
           var_dump("[GOT THE ACCESS TOKEN, NOW GET THE RESOURCE]");echo "<br><br>";
-          $token = json_decode($preTokenResponse, true);
-          var_dump($token);echo "<br><br>";
       } catch (Exception $e) {
           var_dump("[REQUESTING ACCESS TOKEN HAS FAILED]");echo "<br><br>";
           var_dump($http_response_header);echo "<br><br>";
       }
-
-      if (isset($token["token_type"]) && $token["token_type"] == "Bearer") {
+      // WARNING :
+      // There's a bug with how Symfony's http layer is implemented which will
+      // generate a 400 "Bad Request" status code upon making an attempt to connect to
+      // the web API endpoint by using the lucadegasperi's oauth2-server-laravel package.
+      // solution -> https://github.com/lucadegasperi/oauth2-server-laravel/issues/206
+      if (isset($decodedResponse["token_type"]) && $decodedResponse["token_type"] == "Bearer") {
           $context = stream_context_create(
               array(
                 'http' => array(
                     'method'  => 'GET',
-                    'header'  => 'Authorization: Bearer '.$token["access_token"]
-                ),
+                    'header' => "Authorization: Bearer " . $decodedResponse["access_token"],
+                    /*
+                    'header' => "Authorization: Bearer " . $decodedResponse["access_token"] . "\r\n" .
+                                "Content-type: application/json;charset=UTF-8\r\n",
+                    'content' => http_build_query($authContextContents),*/
+                )
               )
           );
 
           // specify the api endpoint url
           $api = url(ApiController::$apiVersions["v1"]);
-          //$api = url('api/v1');
           // sample resource request url
-          //$url = $api . "/rensai/posts/3";
-          $url = $api . "/rensai/categories/3/posts";
+          $url = $api . "/rensai/posts/3";
+          //$url = $api . "/rensai/categories/3/posts";
 
           // try to connect to web API endpoints
           try {
+
               $response = file_get_contents($url, false, $context);
               var_dump("[OBTAINING RESOURCE IS SUCCESSFUL]");echo "<br><br>";
               var_dump(json_decode($response, true));
@@ -114,6 +121,13 @@ class OAuthController extends Controller
       } else {
           echo "SIGH...";
       }
+      /* ALTERNATIVELY - with cURL
+      $ch = curl_init($url);
+      curl_setopt($ch, CURLOPT_POST, false); // its GET request
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json', 'Authorization: Bearer ' . $decodedResponse["access_token"]));
+      $response = curl_exec($ch);
+      */
     }
 
     /*
@@ -144,7 +158,7 @@ class OAuthController extends Controller
                 'header' => "Authorization: Basic " . $basicCredentials . "\r\n" .
                             "Content-type: application/x-www-form-urlencoded;charset=UTF-8\r\n",
                 'content' => http_build_query($authContextContents),
-            ),
+            )
           )
       );
 
@@ -152,34 +166,41 @@ class OAuthController extends Controller
       try {
           $preTokenResponse = file_get_contents($oauth2url, false, $authContext);
           var_dump("[REQUESTING ACCESS TOKEN IS SUCCESSFUL]");echo "<br><br>";
-          var_dump(json_decode($preTokenResponse, true));echo "<br><br>";
+          $decodedResponse = json_decode($preTokenResponse, true);
+          var_dump($decodedResponse["access_token"]);echo "<br><br>";
           var_dump("[GOT THE ACCESS TOKEN, NOW GET THE RESOURCE]");echo "<br><br>";
-          $token = json_decode($preTokenResponse, true);
-          var_dump($token);echo "<br><br>";
       } catch (Exception $e) {
           var_dump("[REQUESTING ACCESS TOKEN HAS FAILED]");echo "<br><br>";
           var_dump($http_response_header);echo "<br><br>";
       }
-
-      if (isset($token["token_type"]) && $token["token_type"] == "Bearer") {
+      // WARNING :
+      // There's a bug with how Symfony's http layer is implemented which will
+      // generate a 400 "Bad Request" status code upon making an attempt to connect to
+      // the web API endpoint by using the lucadegasperi's oauth2-server-laravel package.
+      // solution -> https://github.com/lucadegasperi/oauth2-server-laravel/issues/206
+      if (isset($decodedResponse["token_type"]) && $decodedResponse["token_type"] == "Bearer") {
           $context = stream_context_create(
               array(
                 'http' => array(
                     'method'  => 'GET',
-                    'header'  => 'Authorization: Bearer '.$token["access_token"]
-                ),
+                    'header' => "Authorization: Bearer " . $decodedResponse["access_token"],
+                    /*
+                    'header' => "Authorization: Bearer " . $decodedResponse["access_token"] . "\r\n" .
+                                "Content-type: application/json;charset=UTF-8\r\n",
+                    'content' => http_build_query($authContextContents),*/
+                )
               )
           );
 
           // specify the api endpoint url
           $api = url(ApiController::$apiVersions["v1"]);
-          //$api = url('api/v1');
           // sample resource request url
-          //$url = $api . "/rensai/posts/3";
-          $url = $api . "/rensai/categories/3/posts";
+          $url = $api . "/rensai/posts/3";
+          //$url = $api . "/rensai/categories/3/posts";
 
           // try to connect to web API endpoints
           try {
+
               $response = file_get_contents($url, false, $context);
               var_dump("[OBTAINING RESOURCE IS SUCCESSFUL]");echo "<br><br>";
               var_dump(json_decode($response, true));
@@ -190,5 +211,12 @@ class OAuthController extends Controller
       } else {
           echo "SIGH...";
       }
+      /* ALTERNATIVELY - with cURL
+      $ch = curl_init($url);
+      curl_setopt($ch, CURLOPT_POST, false); // its GET request
+      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+      curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json', 'Authorization: Bearer ' . $decodedResponse["access_token"]));
+      $response = curl_exec($ch);
+      */
     }
 }

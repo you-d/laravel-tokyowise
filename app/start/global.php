@@ -87,14 +87,15 @@ require app_path().'/filters.php';
 */
 App::error(function($exception, $code)
 {
-	// Ref: https://stackoverflow.com/questions/21638029/how-would-you-handle-different-error-responses-for-different-routes-using-larave
+	// Ref: https://stackoverflow.com/questions/21638029/how-would-you-handle-different-error-responses-for-different-routes-using-laravel
 	$request = $exception->getTrace()[0]['args'][0];
   $path = $request->path();
 	// if the first 6 chars is 'api/v[version number]' ...
 	if(in_array(substr($path, 0, 6), ApiController::$apiVersions)) {
-			// The error comes from the api pages.
-			// do nothing as we don't want any API clients to be able to see the 'data'
-			// property of error object from their browser console.
+			// We don't want web service clients to be able to see the
+			// 'data' property of error object from their browser console.
+			// TO DO : error handling here....
+			// return Response::json(bla3x);
 	} else {
 			switch($code) {
 				case 403:

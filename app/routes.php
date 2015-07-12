@@ -122,7 +122,7 @@ Route::group(array('before' => 'cmsauth|checklogout'), function() {
  */
 Route::get('oauthtest', array( 'uses' => 'OAuthController@clientCredentialsGrantTest' ));
 Route::get('oauthtest2', array( 'uses' => 'OAuthController@passwordGrantTest' ));
-Route::group(array('prefix' => 'api/v1/rensai/', 'before' => 'oauth-owner'), function() {
+Route::group(array('prefix' => 'api/v1/rensai/', 'before' => 'oauth'), function() {
 		Route::get('categories.posts', 'RensaiCategoryApiController@showPosts');
 		Route::resource('categories.posts', 'RensaiCategoryApiController@showPosts');
 		Route::resource('categories', 'RensaiCategoryApiController');
