@@ -130,7 +130,10 @@ Route::group(array('prefix' => 'api/v1/rensai/', 'before' => 'oauth-owner'), fun
 });
 Route::post('api/oauth2', 'OAuthController@postAccessToken');
 
-// CUSTOM VALIDATIONS
+/* AngularJS Test Pages */
+Route::get('angulartest', array( 'uses' => 'AngularJSViewPagesMapper@test1' ));
+Route::get('angulartest/{pageName}', array( 'uses' => 'AngularJSViewPagesMapper@showTestPage' ));
+/* Custom Validations */
 Validator::extend('custom_is_rectangular_img', function($field, $value, $parameters) {
 	$file = Request::file($field);
 	$img_info = getimagesize($file);

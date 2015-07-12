@@ -1,0 +1,5 @@
+body {
+  background: linear-gradient(-45deg, rgba(255, 0, 229, 0.1) 0%, rgba(174, 35, 35, 0.1) 37%, rgba(116, 35, 99, 0.1) 47%, rgba(48, 35, 174, 0.1) 57%, rgba(83, 160, 253, 0.1) 78%, rgba(180, 236, 81, 0.1) 100%);
+  background: -webkit-linear-gradient(135deg, rgba(255, 0, 229, 0.1) 0%, rgba(174, 35, 35, 0.1) 37%, rgba(116, 35, 99, 0.1) 47%, rgba(48, 35, 174, 0.1) 57%, rgba(83, 160, 253, 0.1) 78%, rgba(180, 236, 81, 0.1) 100%);
+  font-family: "Anonymous Pro", "Lucida Grande", "Lucida Sans Unicode", Helvetica, Arial, sans-serif;
+}

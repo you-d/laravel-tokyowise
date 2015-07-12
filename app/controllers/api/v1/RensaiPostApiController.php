@@ -22,10 +22,6 @@ class RensaiPostApiController extends RensaiController {
 					$statusCode = 400;
 					$errorMsg = "Bad Request.";
 			} finally {
-					if ($rensaiPosts == null) {
-							$statusCode = 404;
-							$errorMsg = "Not Found.";
-					}
 					return Response::json(array('meta' => array('href' => '',
 																										  'statusCode' => $statusCode,
 																											'contentType' => 'application/json'),
@@ -78,10 +74,6 @@ class RensaiPostApiController extends RensaiController {
 				$statusCode = 400;
 				$errorMsg = "Bad Request.";
 		} finally {
-				if ($rensaiPost == null) {
-						$statusCode = 404;
-						$errorMsg = "Not Found.";
-				}
 				return Response::json(array('meta' => array('href' => '',
 																										'statusCode' => $statusCode,
 																										'contentType' => 'application/json'),

@@ -8,6 +8,8 @@ $baseDir = dirname($vendorDir);
 return array(
     'AccessTokensTableSeeder' => $vendorDir . '/lucadegasperi/oauth2-server-laravel/seeds/AccessTokensTableSeeder.php',
     'AddRememberTokenToUsersTable' => $baseDir . '/app/database/migrations/2015_06_26_063238_add_remember_token_to_users_table.php',
+    'AngularJSViewPagesMapper' => $baseDir . '/app/controllers/AngularJSViewPagesMapper.php',
+    'ApiController' => $baseDir . '/app/controllers/api/ApiController.php',
     'AuthCodesTableSeeder' => $vendorDir . '/lucadegasperi/oauth2-server-laravel/seeds/AuthCodesTableSeeder.php',
     'BaseController' => $baseDir . '/app/controllers/BaseController.php',
     'Boris\\Boris' => $vendorDir . '/d11wtq/boris/lib/Boris/Boris.php',
@@ -827,6 +829,7 @@ return array(
     'NewsPost' => $baseDir . '/app/models/NewsPost.php',
     'NewsPostSeeder' => $baseDir . '/app/database/seeds/NewsPostSeeder.php',
     'Normalizer' => $vendorDir . '/patchwork/utf8/src/Normalizer.php',
+    'OAuthController' => $baseDir . '/app/controllers/OAuthController.php',
     'PHPParser_Autoloader' => $vendorDir . '/nikic/php-parser/lib/PHPParser/Autoloader.php',
     'PHPParser_Builder' => $vendorDir . '/nikic/php-parser/lib/PHPParser/Builder.php',
     'PHPParser_BuilderAbstract' => $vendorDir . '/nikic/php-parser/lib/PHPParser/BuilderAbstract.php',

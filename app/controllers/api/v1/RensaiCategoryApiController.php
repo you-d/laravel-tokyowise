@@ -23,10 +23,6 @@ class RensaiCategoryApiController extends RensaiController {
 					$statusCode = 400;
 					$errorMsg = "Bad Request.";
 			} finally {
-					if ($rensaiCategories == null) {
-							$statusCode = 404;
-							$errorMsg = "Not Found";
-					}
 					return Response::json(array('meta' => array('href' => '',
 																											'statusCode' => $statusCode,
 																											'contentType' => 'application/json'),
@@ -78,10 +74,6 @@ class RensaiCategoryApiController extends RensaiController {
 				$statusCode = 400;
 				$errorMsg = "Bad Request.";
 		} finally {
-				if ($rensaiCategory == null) {
-						$statusCode = 404;
-						$errorMsg = "Not Found.";
-				}
 				return Response::json(array('meta' => array('href' => '',
 																										'statusCode' => $statusCode,
 																										'contentType' => 'application/json'),
@@ -113,10 +105,6 @@ class RensaiCategoryApiController extends RensaiController {
 				$statusCode = 400;
 				$errorMsg = "Bad Request.";
 		} finally {
-				if (count($rensaiPosts) <= 0) {
-						$statusCode = 404;
-						$errorMsg = "Not Found.";
-				}
 				return Response::json(array('meta' => array('href' => '',
 																										'statusCode' => $statusCode,
 																										'contentType' => 'application/json'),

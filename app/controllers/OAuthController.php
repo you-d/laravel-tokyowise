@@ -4,7 +4,6 @@ use LucaDegasperi\OAuth2Server\Authorizer;
 
 class OAuthController extends Controller
 {
-
     protected $authorizer;
 
     public function __construct(Authorizer $authorizer)
@@ -97,7 +96,8 @@ class OAuthController extends Controller
           );
 
           // specify the api endpoint url
-          $api = url('api/v1');
+          $api = url(ApiController::$apiVersions["v1"]);
+          //$api = url('api/v1');
           // sample resource request url
           //$url = $api . "/rensai/posts/3";
           $url = $api . "/rensai/categories/3/posts";
@@ -119,7 +119,7 @@ class OAuthController extends Controller
     /*
       Note :
       - OAuth 2 Grant Type : Password Grant
-      - Password Grant Type -> Must use "oauth" filter.
+      - Password Grant Type -> Must use "oauth-owner" filter for the basic credentials.
     */
     public function passwordGrantTest() {
       // login credentials
@@ -172,7 +172,8 @@ class OAuthController extends Controller
           );
 
           // specify the api endpoint url
-          $api = url('api/v1');
+          $api = url(ApiController::$apiVersions["v1"]);
+          //$api = url('api/v1');
           // sample resource request url
           //$url = $api . "/rensai/posts/3";
           $url = $api . "/rensai/categories/3/posts";

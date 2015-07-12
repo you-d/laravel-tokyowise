@@ -87,22 +87,32 @@ require app_path().'/filters.php';
 */
 App::error(function($exception, $code)
 {
-	switch($code) {
-		case 403:
-			// shows error-403.blade.php
-			return Response::view('errors.error-403', array(), 403);
-			break;
-		case 404:
-			// shows error-404.blade.php
-			return Response::view('errors.error-404', array(), 404);
-			break;
-		case 500:
-			// shows error-500.blade.php
-			return Response::view('errors.error-500', array(), 500);
-			break;
-		default:
-			// shows error-default.blade.php
-			return Response::view('errors.error-default', array(), $code);
-			break;
+	// Ref: https://stackoverflow.com/questions/21638029/how-would-you-handle-different-error-responses-for-different-routes-using-larave
+	$request = $exception->getTrace()[0]['args'][0];
+  $path = $request->path();
+	// if the first 6 chars is 'api/v[version number]' ...
+	if(in_array(substr($path, 0, 6), ApiController::$apiVersions)) {
+			// The error comes from the api pages.
+			// do nothing as we don't want any API clients to be able to see the 'data'
+			// property of error object from their browser console.
+	} else {
+			switch($code) {
+				case 403:
+					// shows error-403.blade.php
+					return Response::view('errors.error-403', array(), 403);
+					break;
+				case 404:
+					// shows error-404.blade.php
+					return Response::view('errors.error-404', array(), 404);
+					break;
+				case 500:
+					// shows error-500.blade.php
+					return Response::view('errors.error-500', array(), 500);
+					break;
+				default:
+					// shows error-default.blade.php
+					return Response::view('errors.error-default', array(), $code);
+					break;
+			}
 	}
 });
