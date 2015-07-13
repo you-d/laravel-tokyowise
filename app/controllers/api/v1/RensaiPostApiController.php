@@ -22,13 +22,7 @@ class RensaiPostApiController extends RensaiController {
 					$statusCode = 400;
 					$errorMsg = "Bad Request.";
 			} finally {
-					return Response::json(array('meta' => array('href' => '',
-																										  'statusCode' => $statusCode,
-																											'contentType' => 'application/json'),
-																			'error' => $errorMsg,
-																			'posts' => $rensaiPosts),
-																$statusCode)->
-																setCallback(Input::get('callback'));
+					return ApiController::jsonResponseTemplate(Request::url(), $statusCode, $errorMsg, $rensaiPosts);
 			}
 	}
 
@@ -74,13 +68,7 @@ class RensaiPostApiController extends RensaiController {
 				$statusCode = 400;
 				$errorMsg = "Bad Request.";
 		} finally {
-				return Response::json(array('meta' => array('href' => '',
-																										'statusCode' => $statusCode,
-																										'contentType' => 'application/json'),
-																		'error' => $errorMsg,
-																		'post' => $rensaiPost),
-															$statusCode)->
-															setCallback(Input::get('callback'));
+				return ApiController::jsonResponseTemplate(Request::url(), $statusCode, $errorMsg, $rensaiPost);
 		}
 	}
 

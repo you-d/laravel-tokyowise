@@ -82,38 +82,49 @@ require app_path().'/filters.php';
 
 /*
 |--------------------------------------------------------------------------
-| [Custom] - Error handlers
+| [Custom] - Global Error handlers
 |--------------------------------------------------------------------------
 */
 App::error(function($exception, $code)
 {
-	// Ref: https://stackoverflow.com/questions/21638029/how-would-you-handle-different-error-responses-for-different-routes-using-laravel
-	$request = $exception->getTrace()[0]['args'][0];
-  $path = $request->path();
-	// if the first 6 chars is 'api/v[version number]' ...
-	if(in_array(substr($path, 0, 6), ApiController::$apiVersions)) {
-			// We don't want web service clients to be able to see the
-			// 'data' property of error object from their browser console.
-			// TO DO : error handling here....
-			// return Response::json(bla3x);
+	if ($code === 500 && $exception->getTrace()[0]['function'] === "determineAccessToken" &&
+			strpos($_SERVER['HTTP_USER_AGENT'], "Mozilla") !== false) {
+				// In this case, users are trying to access an api endpoint without providing an access token from a web browser.
+				// Recall, we configured the oauth2 package to receive an access token over header only.
+				// Users will get error 500 status code, and  $exception->getTrace()[0]['function'] that returns
+				// 'determineAccessToken' string. So, we will use these two signatures to gracefully throw error 403 status code.
+				return Response::view('errors.error-403', array(), 403);
+	} else if ($code === 405 && $exception->getTrace()[0]['function'] === "methodNotAllowed" &&
+						 strpos($_SERVER['HTTP_USER_AGENT'], "Mozilla") !== false) {
+				return Response::view('errors.error-405', array(), 405);
 	} else {
-			switch($code) {
-				case 403:
-					// shows error-403.blade.php
-					return Response::view('errors.error-403', array(), 403);
-					break;
-				case 404:
-					// shows error-404.blade.php
-					return Response::view('errors.error-404', array(), 404);
-					break;
-				case 500:
-					// shows error-500.blade.php
-					return Response::view('errors.error-500', array(), 500);
-					break;
-				default:
-					// shows error-default.blade.php
-					return Response::view('errors.error-default', array(), $code);
-					break;
+			$request = $exception->getTrace()[0]['args'][0];
+			$path = $request->path();
+			// if the first 6 chars is 'api/v[version number]' ...
+			if(in_array(substr($path, 0, 6), ApiController::$apiVersions)) {
+					// Users are trying to access an api resource (identified as <base url>/api/v<version num>/<endpoint url>...),
+					// and encountered an error.
+					return ApiController::apiErrorHandler(Request::url(), $code);
+			} else {
+				// Users are trying to access any other pages and then encountered an error
+				switch($code) {
+					case 403:
+						// shows error-403.blade.php
+						return Response::view('errors.error-403', array(), 403);
+						break;
+					case 404:
+						// shows error-404.blade.php
+						return Response::view('errors.error-404', array(), 404);
+						break;
+					case 500:
+						// shows error-500.blade.php
+						return Response::view('errors.error-500', array(), 500);
+						break;
+					default:
+						// shows error-default.blade.php
+						return Response::view('errors.error-default', array(), $code);
+						break;
+				}
 			}
 	}
 });

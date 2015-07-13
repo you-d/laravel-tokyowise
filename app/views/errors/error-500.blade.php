@@ -9,7 +9,6 @@
 				<hr>
 				<div>
 					Whoa! What have you done, Hooman! How the heck you
-					<br>
 					ended up getting this error!
 				</div>
 			</div>

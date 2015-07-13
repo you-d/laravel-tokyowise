@@ -5,11 +5,10 @@
 	<div id="main-body">
 		<section id="error-container">
 			<div id="error-container-box">
-				<h1>[<span class="red-text">403</span>] - Forbidden</h1>
+				<h1>[<span class="red-text">405</span>] - Method Not Allowed</h1>
 				<hr>
 				<div>
-					Only Diamond Encrusted Obsidian Black Mars Express Card holders
-					can access this page, plebs. Move Along.
+					You can't do that!
 				</div>
 			</div>
 		</section>

@@ -94,10 +94,6 @@ class OAuthController extends Controller
                 'http' => array(
                     'method'  => 'GET',
                     'header' => "Authorization: Bearer " . $decodedResponse["access_token"],
-                    /*
-                    'header' => "Authorization: Bearer " . $decodedResponse["access_token"] . "\r\n" .
-                                "Content-type: application/json;charset=UTF-8\r\n",
-                    'content' => http_build_query($authContextContents),*/
                 )
               )
           );
@@ -105,13 +101,20 @@ class OAuthController extends Controller
           // specify the api endpoint url
           $api = url(ApiController::$apiVersions["v1"]);
           // sample resource request url
-          $url = $api . "/rensai/posts/3";
-          //$url = $api . "/rensai/categories/3/posts";
+          //$url = $api . "/rensai/posts";
+          $url = $api . "/rensai/categories/3/posts";
 
           // try to connect to web API endpoints
           try {
-
               $response = file_get_contents($url, false, $context);
+              // Alteratively, with cURL...
+              /*
+              $ch = curl_init($url);
+              curl_setopt($ch, CURLOPT_POST, false); // its GET request
+              curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+              curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json', 'Authorization: Bearer ' . $decodedResponse["access_token"]));
+              $response = curl_exec($ch);
+              */
               var_dump("[OBTAINING RESOURCE IS SUCCESSFUL]");echo "<br><br>";
               var_dump(json_decode($response, true));
           } catch (Exception $e) {
@@ -121,13 +124,6 @@ class OAuthController extends Controller
       } else {
           echo "SIGH...";
       }
-      /* ALTERNATIVELY - with cURL
-      $ch = curl_init($url);
-      curl_setopt($ch, CURLOPT_POST, false); // its GET request
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-      curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json', 'Authorization: Bearer ' . $decodedResponse["access_token"]));
-      $response = curl_exec($ch);
-      */
     }
 
     /*
@@ -184,10 +180,6 @@ class OAuthController extends Controller
                 'http' => array(
                     'method'  => 'GET',
                     'header' => "Authorization: Bearer " . $decodedResponse["access_token"],
-                    /*
-                    'header' => "Authorization: Bearer " . $decodedResponse["access_token"] . "\r\n" .
-                                "Content-type: application/json;charset=UTF-8\r\n",
-                    'content' => http_build_query($authContextContents),*/
                 )
               )
           );
@@ -200,8 +192,14 @@ class OAuthController extends Controller
 
           // try to connect to web API endpoints
           try {
-
               $response = file_get_contents($url, false, $context);
+              // Alteratively, with cURL...
+              /*
+              curl_setopt($ch, CURLOPT_POST, false); // its GET request
+              curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+              curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json', 'Authorization: Bearer ' . $decodedResponse["access_token"]));
+              $response = curl_exec($ch);
+              */
               var_dump("[OBTAINING RESOURCE IS SUCCESSFUL]");echo "<br><br>";
               var_dump(json_decode($response, true));
           } catch (Exception $e) {
@@ -211,12 +209,5 @@ class OAuthController extends Controller
       } else {
           echo "SIGH...";
       }
-      /* ALTERNATIVELY - with cURL
-      $ch = curl_init($url);
-      curl_setopt($ch, CURLOPT_POST, false); // its GET request
-      curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-      curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/json', 'Authorization: Bearer ' . $decodedResponse["access_token"]));
-      $response = curl_exec($ch);
-      */
     }
 }

@@ -9,7 +9,6 @@
 				<hr>
 				<div>
 					Looking for cat pictures? Try Goog...err...I mean Go to
-					<br>
 					the Home Page. You will find plenty of cat pictures there.
 				</div>
 			</div>
