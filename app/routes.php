@@ -120,8 +120,6 @@ Route::group(array('before' => 'cmsauth|checklogout'), function() {
   - $consumerKey refers to "id" column, not the "name" column in the oauth_clients
     db table.
  */
-Route::get('oauthtest', array( 'uses' => 'OAuthController@clientCredentialsGrantTest' ));
-Route::get('oauthtest2', array( 'uses' => 'OAuthController@passwordGrantTest' ));
 Route::group(array('prefix' => 'api/v1/rensai/', 'before' => 'oauth'), function() {
 		Route::get('categories.posts', 'RensaiCategoryApiController@showPosts');
 		Route::resource('categories.posts', 'RensaiCategoryApiController@showPosts');
@@ -130,9 +128,13 @@ Route::group(array('prefix' => 'api/v1/rensai/', 'before' => 'oauth'), function(
 });
 Route::post('api/oauth2', 'OAuthController@postAccessToken');
 
+/* Laravel oauth Test Pages */
+Route::get('oauthtest/{grantType}', array( 'uses' => 'ApiController@oauthTest'));
+
 /* AngularJS Test Pages */
 Route::get('angulartest', array( 'uses' => 'AngularJSViewPagesMapper@test1' ));
 Route::get('angulartest/{pageName}', array( 'uses' => 'AngularJSViewPagesMapper@showTestPage' ));
+
 /* Custom Validations */
 Validator::extend('custom_is_rectangular_img', function($field, $value, $parameters) {
 	$file = Request::file($field);

@@ -8,6 +8,7 @@
     # Redirect Trailing Slashes...
     RewriteRule ^(.*)/$ /$1 [L,R=301]
 
+    # Allow Authorization Header. Some Hosting Companies don't allow this. 
     # https://github.com/lucadegasperi/oauth2-server-laravel/issues/206
     RewriteCond %{HTTP:Authorization} .
     RewriteRule .* - [E=HTTP_AUTHORIZATION:%{HTTP:Authorization}]

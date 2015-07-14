@@ -22,59 +22,24 @@ test2Module.constant("API_VERSION", "v1");
 test2Module.constant("OAUTH_URL", "oauth2");
 
 /* Test 2 Module - Controllers */
-test2Module.controller('TokyowiseRensaiPageResourceController', function($rootScope, $scope, TokyowiseRensaiPageWebService) {
+test2Module.controller('TokyowiseRensaiPageResourceController', function($scope, $window, TokyowiseRensaiPageWebService) {
     // Request access token
-    if (typeof $rootScope.access_token === 'undefined') {
-        var promisedData = TokyowiseRensaiPageWebService.requestTokenClientCredentialGrant();
-        promisedData.then(function(data) {
-                            // promise fulfilled
-                            $rootScope.access_token = data.data.access_token; // with $http, not $resource.
-
-                            // Now, lets fetch the data...
-                            // 1. All Rensai Category record
-                            promisedData = TokyowiseRensaiPageWebService.getAllCategories(data.data.access_token);
-                            promisedData.$promise.then(function(data) {
-                                                        // promise fulfilled
-                                                        $scope.rensaiCategories = data.thedata;
-                                                        $scope.rensaiCategoriesIsAvailable = true;
-                                                    }, function(error) {
-                                                        // promise rejected
-                                                        $scope.rensaiCategoriesIsAvailable = false;
-                                                    });
-                            // 2. All Rensai Post record
-                            promisedData = TokyowiseRensaiPageWebService.getAllPosts(data.data.access_token);
-                            promisedData.$promise.then(function(data) {
-                                                        // promise fulfilled
-                                                        $scope.rensaiPosts = data.thedata;
-                                                        $scope.rensaiPostsIsAvailable = true;
-                                                    }, function(error) {
-                                                        // promise rejected
-                                                        $scope.rensaiPostsIsAvailable = false;
-                                                    });
-                            // 3. A Single Category record
-                            promisedData = TokyowiseRensaiPageWebService.getSingleCategory(data.data.access_token, 3);
-                            promisedData.$promise.then(function(data) {
-                                                        // promise fulfilled
-                                                        if (data.thedata != null) {
-                                                            $scope.aRensaiCategoryIsAvailable = true;
-                                                            $scope.aRensaiCategory = data.thedata;
-                                                        } else {
-                                                            $scope.aRensaiCategoryIsAvailable = false;
-                                                        }
-                                                    }, function(error) {
-                                                        // promise rejected
-                                                        $scope.aRensaiCategoryIsAvailable = false;
-                                                    });
-                        }, function(error) {
-                            // promise rejected
-                            $scope.rensaiCategoriesIsAvailable = false;
-                            $scope.rensaiPostsIsAvailable = false;
-                            $scope.aRensaiCategoryIsAvailable = false;
-                        });
+    var promisedAccessToken = TokyowiseRensaiPageWebService.requestTokenClientCredentialGrant();
+    if (typeof $window.sessionStorage.access_token === 'undefined') {
+        var promisedAccessToken = TokyowiseRensaiPageWebService.requestTokenClientCredentialGrant();
+        promisedAccessToken.then(function(data) {
+                                  // promise fulfilled
+                                  $window.sessionStorage.access_token = data.data.access_token;
+                              }, function(error) {
+                                  // promise rejected
+                                  $scope.rensaiCategoriesIsAvailable = false;
+                                  $scope.rensaiPostsIsAvailable = false;
+                                  $scope.aRensaiCategoryIsAvailable = false;
+                              });
     }
-    /*
+
     // All Rensai Category record
-    promisedData = TokyowiseRensaiPageWebService.getAllCategories($rootScope.access_token);
+    var promisedData = TokyowiseRensaiPageWebService.getAllCategories($window.sessionStorage.access_token);
     promisedData.$promise.then(function(data) {
                                 // promise fulfilled
                                 $scope.rensaiCategories = data.thedata;
@@ -84,7 +49,7 @@ test2Module.controller('TokyowiseRensaiPageResourceController', function($rootSc
                                 $scope.rensaiCategoriesIsAvailable = false;
                             });
     // All Rensai Post record
-    promisedData = TokyowiseRensaiPageWebService.getAllPosts($rootScope.access_token);
+    promisedData = TokyowiseRensaiPageWebService.getAllPosts($window.sessionStorage.access_token);
     promisedData.$promise.then(function(data) {
                                 // promise fulfilled
                                 $scope.rensaiPosts = data.thedata;
@@ -94,10 +59,10 @@ test2Module.controller('TokyowiseRensaiPageResourceController', function($rootSc
                                 $scope.rensaiPostsIsAvailable = false;
                             });
     // A Single Category record
-    promisedData = TokyowiseRensaiPageWebService.getSingleCategory($rootScope.access_token, 3);
+    promisedData = TokyowiseRensaiPageWebService.getSingleCategory($window.sessionStorage.access_token, 3);
     promisedData.$promise.then(function(data) {
                                 // promise fulfilled
-                                if (data.category != null) {
+                                if (data.thedata != null) {
                                     $scope.aRensaiCategoryIsAvailable = true;
                                     $scope.aRensaiCategory = data.thedata;
                                 } else {
@@ -106,15 +71,19 @@ test2Module.controller('TokyowiseRensaiPageResourceController', function($rootSc
                             }, function(error) {
                                 // promise rejected
                                 $scope.aRensaiCategoryIsAvailable = false;
-                            }); */
+                            });
 });
 
 /* Test 2 Module - Services */
-// https://stackoverflow.com/questions/27124071/invalid-request-in-angularjs-with-laravel-oauth
+// IMPORTANT! The Request Header must contain "accept: application/json"
+// otherwise This Laravel app will handle the error of which it can't interpret,
+// thus returning error 500 instead.
+// Check app/start/global.php for better undestanding about this issue.
+// Ref : http://fideloper.com/error-handling-with-content-negotiation
 test2Module.factory('TokyowiseRensaiPageWebService',
-                    ['$resource', '$http', '$rootScope', 'BASE_API_URL', 'API_VERSION', 'OAUTH_URL',
+                    ['$resource', '$http', '$q', '$rootScope', 'BASE_API_URL', 'API_VERSION', 'OAUTH_URL',
                      'Base64Service', 'LocalErrorInterceptorService',
-                    function($resource, $http, $rootScope, BASE_API_URL, API_VERSION, OAUTH_URL,
+                    function($resource, $http, $q, $rootScope, BASE_API_URL, API_VERSION, OAUTH_URL,
                              Base64Service, LocalErrorInterceptorService) {
     var rensaiPageSvc = {};
     rensaiPageSvc.requestTokenClientCredentialGrant = function() {
@@ -126,18 +95,43 @@ test2Module.factory('TokyowiseRensaiPageWebService',
         var credentials = Base64Service.base64Encode(consumerKey + ':' + consumerSecret);
 
         // Tokyowise OAuth service endpoint
+        /* utilising $q
+        var deferred = $q.defer();
+        $http.post(oAuthUrl,
+                          "grant_type=client_credentials",
+                          { headers: {'Authorization': 'Basic ' + credentials,
+                                      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+                                      'accept': 'application/json'}}
+                         ).
+                         success(function(data, status, headers, config) {
+                            deferred.resolve(data.access_token);
+                         }).
+                         error(function(data, status, headers, config) {
+                            deferred.reject(data);
+                         });
+        return deferred.promise;
+        */
+
         return $http.post(oAuthUrl,
                           "grant_type=client_credentials",
                           { headers: {'Authorization': 'Basic ' + credentials,
-                                      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8'}
-                          }
-        );
+                                      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+                                      'accept': 'application/json' }}
+                         ).
+                         success(function(data, status, headers, config) {
+
+                         }).
+                         error(function(data, status, headers, config) {
+
+                         });
     }
     rensaiPageSvc.getAllCategories = function($accessToken) {
         var allCategoriesEndpoint = BASE_API_URL + API_VERSION + "/rensai/categories";
         var RensaiCategories = $resource(allCategoriesEndpoint, {}, {
                                   'query': { method: "GET",
-                                             headers: {'Authorization': 'Bearer ' + $accessToken },
+                                             headers: { 'Authorization': 'Bearer ' + $accessToken ,
+                                                        'Content-Type': 'application/json',
+                                                        'accept': 'application/json' },
                                              interceptor: LocalErrorInterceptorService,
                                              isArray: false }
                                });
@@ -147,7 +141,9 @@ test2Module.factory('TokyowiseRensaiPageWebService',
         var allPostsEndpoint = BASE_API_URL + API_VERSION + "/rensai/posts";
         var RensaiPosts = $resource(allPostsEndpoint, {}, {
                               'query': { method: "GET",
-                                         headers: {'Authorization': 'Bearer ' + $accessToken },
+                                         headers: { 'Authorization': 'Bearer ' + $accessToken ,
+                                                    'Content-Type': 'application/json',
+                                                    'accept': 'application/json' },
                                          interceptor: LocalErrorInterceptorService,
                                          isArray: false}
                           });
@@ -157,7 +153,9 @@ test2Module.factory('TokyowiseRensaiPageWebService',
         var singleCategoryEndpoint = BASE_API_URL + API_VERSION + "/rensai/categories/:categoryId";
         var RensaiCategory = $resource(singleCategoryEndpoint, {categoryId: $categoryId}, {
                                 'query': { method: "GET",
-                                           headers: {'Authorization': 'Bearer ' + $accessToken },
+                                           headers: { 'Authorization': 'Bearer ' + $accessToken ,
+                                                      'Content-Type': 'application/json',
+                                                      'accept': 'application/json' },
                                            interceptor: LocalErrorInterceptorService,
                                            isArray: false}
                              });
@@ -190,7 +188,6 @@ test2Module.factory("LocalErrorInterceptorService", function($q) {
 /* Test 2 Module - Util functions */
 test2Module.factory("Base64Service", function() {
     // Create Base64 Object
-    // Ref : https://stackoverflow.com/questions/3774622/how-to-base64-encode-inside-of-javascript
     var Base64 = {
         // private property
         _keyStr : "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=",
