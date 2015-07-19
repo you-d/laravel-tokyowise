@@ -1,5 +1,5 @@
 /* Test 1 Module */
-var test1Module = angular.module('test1Module', [], function($interpolateProvider) {
+var test1Module = angular.module('test1Module', ['homeModule'], function($interpolateProvider) {
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
 });
@@ -52,7 +52,6 @@ test1Module.directive("customColourList1Directive", function() {
               $scope.isHiddenFlag = !$scope.isHiddenFlag;
           }
           // DOM Manipulation
-          //var colourContainer = $element.find('div');
           var colourContainer = $element.find("div#colourContainer");
           angular.forEach($scope.coloursArray, function (availColour) {
               var appendString = "<div>" + availColour + "</div>";
@@ -73,3 +72,6 @@ test1Module.factory('Test1DateTimeService', function() {
     }
     return dateTimeSvc;
 });
+
+/* Test 1 Module - Bootstrap this module to enable a single page to have multiple ng-app */
+angular.bootstrap(document.getElementById("test-1-container"),["test1Module"]);

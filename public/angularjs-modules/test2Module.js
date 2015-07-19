@@ -6,23 +6,35 @@
 // response error interceptors -> https://github.com/angular/angular.js/issues/4013
 
 /* Test 2 Module */
-var test2Module = angular.module('test2Module', ['ngResource']);
+var test2Module = angular.module('test2Module', ['ngResource', 'homeModule']);
 
 /* Test 2 Module - Config */
 test2Module.config(function ($interpolateProvider, $httpProvider) {
     $interpolateProvider.startSymbol('<%');
     $interpolateProvider.endSymbol('%>');
 
-    $httpProvider.interceptors.push('GlobalErrorInterceptorService')
+    $httpProvider.interceptors.push('GlobalErrorInterceptorService');
 });
 
 /* Test 2 Module - Constants */
-test2Module.constant("BASE_API_URL", "http://localhost:8888/laravel-15/laravel-tokyowise/public/api/");
+//test2Module.constant("BASE_API_URL", "http://localhost:8888/laravel-15/laravel-tokyowise/public/api/");
+test2Module.constant("BASE_API_URL", "http://localhost:8000/api/");
 test2Module.constant("API_VERSION", "v1");
 test2Module.constant("OAUTH_URL", "oauth2");
 
 /* Test 2 Module - Controllers */
 test2Module.controller('TokyowiseRensaiPageResourceController', function($scope, $window, TokyowiseRensaiPageWebService) {
+  var promisedAccessToken = TokyowiseRensaiPageWebService.requestTokenClientCredentialGrant();
+  promisedAccessToken.then(function(data) {
+                            // promise fulfilled
+                            $window.sessionStorage.access_token = data.data.access_token;
+                        }, function(error) {
+                            // promise rejected
+                            $scope.rensaiCategoriesIsAvailable = false;
+                            $scope.rensaiPostsIsAvailable = false;
+                            $scope.aRensaiCategoryIsAvailable = false;
+                        });
+
     // Request access token
     var promisedAccessToken = TokyowiseRensaiPageWebService.requestTokenClientCredentialGrant();
     if (typeof $window.sessionStorage.access_token === 'undefined') {
@@ -301,3 +313,6 @@ test2Module.factory("Base64Service", function() {
 
     return base64Svc;
 });
+
+/* Test 2 Module - Bootstrap this module to enable a single page to have multiple ng-app */
+angular.bootstrap(document.getElementById("test-2-container"),["test2Module"]);

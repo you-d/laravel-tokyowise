@@ -18,7 +18,7 @@ class ApiController extends Controller {
     // IMPORTANT! The Request Header must contain "accept: application/json"
     // otherwise This Laravel app will handle the error of which it can't interpret,
     // thus returning error 500 instead.
-    // Check app/start/global.php for better undestanding about this issue. 
+    // Check app/start/global.php for better undestanding about this issue.
     // Ref : http://fideloper.com/error-handling-with-content-negotiation
     public function oauthTest($grantType) {
         // internal triggers (use cURL or file_get_contents ?)

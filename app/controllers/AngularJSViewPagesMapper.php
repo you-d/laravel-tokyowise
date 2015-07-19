@@ -8,19 +8,13 @@ class AngularJSViewPagesMapper extends Controller {
 
     public function showTestPage($pageName) {
         switch ($pageName) {
-            case "test1" :
-                return $this->test1();
+            case "home" :
+                return $this->home();
                 break;
-            case "test2" :
-                return $this->test2();
         }
     }
 
-    public function test1() {
-        return View::make( $this->getAngularJSViewFolderName() . "/test1" );
-    }
-
-    public function test2() {
-        return View::make( $this->getAngularJSViewFolderName() . "/test2" );
+    public function home() {
+        return View::make( $this->getAngularJSViewFolderName() . "/home" );
     }
 }

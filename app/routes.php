@@ -132,7 +132,7 @@ Route::post('api/oauth2', 'OAuthController@postAccessToken');
 Route::get('oauthtest/{grantType}', array( 'uses' => 'ApiController@oauthTest'));
 
 /* AngularJS Test Pages */
-Route::get('angulartest', array( 'uses' => 'AngularJSViewPagesMapper@test1' ));
+Route::get('angulartest', array( 'uses' => 'AngularJSViewPagesMapper@home' ));
 Route::get('angulartest/{pageName}', array( 'uses' => 'AngularJSViewPagesMapper@showTestPage' ));
 
 /* Custom Validations */

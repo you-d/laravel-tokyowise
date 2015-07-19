@@ -4,7 +4,7 @@
 	<div id="main-body">
 		<!-- Headline Header Image - Desktop View Only -->
 		<a href="">
-			<div id="headline-header-image"> 
+			<div id="headline-header-image">
 				{{ HTML::image('images/home/' . $wideHeaderImg) }}
 			</div>
 		</a>
@@ -18,7 +18,7 @@
 				<h1>[Home] Header Image</h1>
 				<hr><br>
 				@if (isset($wideHeaderImg) && isset($narrowHeaderImg) && isset($headerImgLastUpdate))
-					{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/home'), 
+					{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/home'),
 						   		  'class' => '', 'files' => true]) }}
 					<table class="cms-content-frame">
 						<tr>
@@ -26,7 +26,7 @@
 								{{ Form::label('wide-img-input', 'Replace Wide image : ') }}
 							</td>
 							<td class="right-col">
-								{{ Form::file('wide-img-input', array('id'=>'wide-img-input','class'=>'upload-text-field')) }} 
+								{{ Form::file('wide-img-input', array('id'=>'wide-img-input','class'=>'upload-text-field')) }}
 							</td>
 						</tr>
 						<tr>
@@ -34,7 +34,7 @@
 								{{ Form::label('narrow-img-input', 'Replace Narrow image : ') }}
 							</td>
 							<td class="right-col">
-								{{ Form::file('narrow-img-input', array('id'=>'narrow-img-input','class'=>'upload-text-field')) }} 
+								{{ Form::file('narrow-img-input', array('id'=>'narrow-img-input','class'=>'upload-text-field')) }}
 							</td>
 						</tr>
 						<tr>
@@ -49,11 +49,11 @@
 						</tr>
 						<tr>
 							<td colspan="2">
-								<br><div id="error-list"></div><br>   
+								<br><div id="error-list"></div><br>
 							</td>
 						</tr>
-					</table>	
-					{{ Form::close() }}						
+					</table>
+					{{ Form::close() }}
 				@endif
 				<hr><br>
 				<button type="button" id="submit-btn">Update</button>
@@ -78,9 +78,9 @@
 		<h1>[ Home ] News Side Column</h1>
 		<hr><br>
 		@if (isset($newsModuleEntries))
-			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/home'), 
+			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/home'),
 						   'class' => '', 'accept-charset' => 'UTF-8']) }}
-				<?php $tot = count($newsModuleEntries); ?> 
+				<?php $tot = count($newsModuleEntries); ?>
 				Number of entries :&nbsp;
 				<select id="entries-num">
 					<?php for($i=3; $i<=10; $i++) { ?>
@@ -89,9 +89,9 @@
 				</select>
 				<br><br><hr><br>
 				<button type="button" id="submit-btn">Update</button>
-				<button type="button" id="cancel-btn">Cancel</button>	
+				<button type="button" id="cancel-btn">Cancel</button>
 			{{ Form::close() }}
-		@else	
+		@else
 			The $newsModuleEntries has not been defined in the HomeCmsController.
 		@endif
 	</div>
@@ -106,9 +106,9 @@
 		<h1>[ Home ] Rensai Side Column</h1>
 		<hr><br>
 		@if (isset($rensaiModuleEntries))
-			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/home'), 
+			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/home'),
 						   'class' => '', 'accept-charset' => 'UTF-8']) }}
-				<?php $tot = count($rensaiModuleEntries); ?> 
+				<?php $tot = count($rensaiModuleEntries); ?>
 				Number of entries :&nbsp;
 				<select id="entries-num">
 					<?php for($i=3; $i<=10; $i++) { ?>
@@ -117,9 +117,9 @@
 				</select>
 				<br><br><hr><br>
 				<button type="button" id="submit-btn">Update</button>
-				<button type="button" id="cancel-btn">Cancel</button>	
+				<button type="button" id="cancel-btn">Cancel</button>
 			{{ Form::close() }}
-		@else	
+		@else
 			The $rensaiModuleEntries has not been defined in the HomeCmsController.
 		@endif
 	</div>
@@ -134,9 +134,9 @@
 		<h1>[ Home ] Gadgets Side Column</h1>
 		<hr><br>
 		@if (isset($gadgetsModuleEntries))
-			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/home'), 
+			{{Form::open(['id' => 'cms-form', 'method' => 'POST', 'url' => url('/cms/home'),
 						   'class' => '', 'accept-charset' => 'UTF-8']) }}
-				<?php $tot = count($gadgetsModuleEntries); ?> 
+				<?php $tot = count($gadgetsModuleEntries); ?>
 				Number of entries :&nbsp;
 				<select id="entries-num">
 					<?php for($i=3; $i<=10; $i++) { ?>
@@ -145,9 +145,9 @@
 				</select>
 				<br><br><hr><br>
 				<button type="button" id="submit-btn">Update</button>
-				<button type="button" id="cancel-btn">Cancel</button>	
+				<button type="button" id="cancel-btn">Cancel</button>
 			{{ Form::close() }}
-		@else	
+		@else
 			The $gadgetsModuleEntries has not been defined in the HomeCmsController.
 		@endif
 	</div>

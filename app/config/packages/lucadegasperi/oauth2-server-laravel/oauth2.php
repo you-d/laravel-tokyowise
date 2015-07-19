@@ -83,31 +83,42 @@ return [
             'class' => '\League\OAuth2\Server\Grant\PasswordGrant',
             'access_token_ttl' => 3600,
             'callback' => function($username, $password){
-                $rules = array(
-                    'username'  => 'required',
-                    'password' => 'required',
-                );
                 $credentials = array( 'email'=> $username,
                                       'password'=> $password );
-                /*
+                // validate the supplied username & password
+                // To check empty string, we use a very crude method below
+                // because we can't use the 'required' Validator class rule here
+                if ($username == "" || $password == "" ||
+                    $username == " " || $password == " ") {
+                      return false;
+                }
+                $rules = array(
+                    'username'  => 'email',
+                );
+
                 $validator = Validator::make($credentials, $rules);
                 if ( $validator->fails() ) {
-                  return false;
-                }
-                */
-                try {
-                     // authenticate the user
-                     if (Sentry::authenticate($credentials, false)) {
-                       return true;
-                     }
-                } catch (Cartalyst\Sentry\Users\WrongPasswordException $e) {
-                     // wrong password exception
                     return false;
-                } catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
-                     // user not found exception
-                    return false;
+                } else {
+                    try {
+                         // authenticate the user
+                         if (Sentry::authenticate($credentials, false)) {
+                           return true;
+                         }
+                    } catch (Cartalyst\Sentry\Users\WrongPasswordException $e) {
+                         // wrong password exception
+                        return false;
+                    } catch (Cartalyst\Sentry\Users\UserNotFoundException $e) {
+                         // user not found exception
+                        return false;
+                    }
                 }
             },
+        ],
+        'refresh_token' => [
+            'class' => '\League\OAuth2\Server\Grant\RefreshTokenGrant',
+            'access_token_ttl' => 3600,
+            'refresh_token_ttl' => 36000
         ],
     ],
 
