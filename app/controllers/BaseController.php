@@ -36,6 +36,36 @@ abstract class BaseController extends Controller {
 		return "cms" . DIRECTORY_SEPARATOR;
 	}
 
+	/* Method to strip tags globally to prevent XSS attack on the site
+		 * Ref: http://usman.it/xss-filter-laravel/
+		 */
+	static public function globalXssClean() {
+			// Recursive cleaning for array [] inputs, not just strings.
+			$sanitised = self::arrayStripTags(Input::get());
+    	Input::merge($sanitised);
+	}
+
+	static private function arrayStripTags($array) {
+			$result = array();
+			foreach ($array as $key => $value) {
+					// Don't allow tags on key either, maybe useful for dynamic forms.
+					//$key = strip_tags($key);
+					$key = htmlentities($key);
+
+					// If the value is an array, we will just recurse back into the
+        	// function to keep stripping the tags out of the array,
+        	// otherwise we will set the stripped value.
+					if (is_array($value)) {
+							$result[$key] = self::arrayStripTags($value);
+					} else {
+							//$result[$key] = trim(strip_tags($value));
+							$result[$key] = trim(htmlentities($value));
+					}
+			}
+
+			return $result;
+	}
+
 	/*
 		Possible parameter values:
 		$page -> "home"

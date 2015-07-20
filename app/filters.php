@@ -13,7 +13,8 @@
 
 App::before(function($request)
 {
-	//
+		// Ref : http://usman.it/xss-filter-laravel/
+		BaseController::globalXssClean();
 });
 
 
