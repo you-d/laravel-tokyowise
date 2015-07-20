@@ -2,6 +2,11 @@
 use Illuminate\Routing\Controller;
 
 class ApiController extends Controller {
+    // https://github.com/lucadegasperi/oauth2-server-laravel/issues/78
+    // https://github.com/lucadegasperi/oauth2-server-laravel/issues/235
+    // https://github.com/lucadegasperi/oauth2-server-laravel/issues/159
+    // https://github.com/lucadegasperi/oauth2-server-laravel/issues/221
+
     // the static var below is accessed by the OAuthController & the app/start/global.php
     static public $apiVersions = array("v1" => "api/v1");
 
@@ -22,8 +27,8 @@ class ApiController extends Controller {
     // Ref : http://fideloper.com/error-handling-with-content-negotiation
     public function oauthTest($grantType) {
         // internal triggers (use cURL or file_get_contents ?)
-        $requestAccessTokenWithFileGetContents = false;
-        $accessApiEndpointWithFileGetContents = false;
+        $requestAccessTokenWithFileGetContents = true;
+        $accessApiEndpointWithFileGetContents = true;
 
         // login credentials
         $consumerKey = "1";
@@ -68,8 +73,9 @@ class ApiController extends Controller {
                 $preTokenResponse = file_get_contents($oauth2url, false, $authContext);
                 var_dump("[REQUESTING ACCESS TOKEN IS SUCCESSFUL]");echo "<br><br>";
                 $decodedResponse = json_decode($preTokenResponse, true);
-                var_dump($decodedResponse["access_token"]);echo "<br><br>";
+                var_dump($decodedResponse);echo "<br><br>";
                 var_dump("[GOT THE ACCESS TOKEN, NOW GET THE RESOURCE]");echo "<br><br>";
+                var_dump($decodedResponse["access_token"]);echo "<br><br>";
             } catch (Exception $e) {
                 var_dump("[REQUESTING ACCESS TOKEN HAS FAILED]");echo "<br><br>";
                 var_dump($http_response_header);echo "<br><br>";

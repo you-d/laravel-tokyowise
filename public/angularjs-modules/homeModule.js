@@ -2,6 +2,9 @@
 var homeModule = angular.module('homeModule', [], function($interpolateProvider) {
         $interpolateProvider.startSymbol('<%');
         $interpolateProvider.endSymbol('%>');
+
+        // Default state.
+        $("#test-2-container").css("display", "none");
 });
 
 /* Home Module - Controllers */

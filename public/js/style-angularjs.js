@@ -27,4 +27,12 @@ $(document).ready(function() {
             }
         }
     });
+    // We want the nav dropdown to automatically collapse after we click on a menu
+    // from the dropdown. Remember, this is a single page application emulated
+    // by the 'homeModuleController' in homeModule.js (not ngRoute).
+    $('.nav a').on('click', function() {
+        if ($("#main").width() < 769) {
+            $(".navbar-toggle").click();
+        }
+    });
 });

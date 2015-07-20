@@ -13,7 +13,9 @@
 
 App::before(function($request)
 {
-	//
+		// A method to defend XSS attacks globally
+		// Ref : http://usman.it/xss-filter-laravel/
+		BaseController::globalXssClean();
 });
 
 

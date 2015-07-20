@@ -69,9 +69,16 @@
           @yield('content-angularjs-test')
           </div>
     	</div>
+			<!-- Sticky Footer -->
+			<footer class="footer">
+					<div class="container">
+							<p class="text-muted">Sticky Footer here.</p>
+					</div>
+			</footer>
     	{{ HTML::script('js/jquery-2.1.4.min.js'); }}
     	{{ HTML::script('js/angular.min.js'); }}
       {{ HTML::script('js/angular-resource.min.js'); }}
+			<!-- http://jonsamwell.com/batching-http-requests-in-angular/ -->
     	{{ HTML::script('js/bootstrap.min.js'); }}
     	{{ HTML::script('js/style-angularjs.js'); }}
 			{{ HTML::script('angularjs-modules/homeModule.js'); }}

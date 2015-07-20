@@ -120,13 +120,14 @@ Route::group(array('before' => 'cmsauth|checklogout'), function() {
   - $consumerKey refers to "id" column, not the "name" column in the oauth_clients
     db table.
  */
-Route::group(array('prefix' => 'api/v1/rensai/', 'before' => 'oauth'), function() {
+Route::group(array('prefix' => 'api/v1/rensai/', 'before' => 'csrf|oauth'), function() {
 		Route::get('categories.posts', 'RensaiCategoryApiController@showPosts');
 		Route::resource('categories.posts', 'RensaiCategoryApiController@showPosts');
 		Route::resource('categories', 'RensaiCategoryApiController');
 		Route::resource('posts', 'RensaiPostApiController');
 });
-Route::post('api/oauth2', 'OAuthController@postAccessToken');
+
+Route::post('api/oauth2', array('before' => 'csrf', 'OAuthController@postAccessToken'));
 
 /* Laravel oauth Test Pages */
 Route::get('oauthtest/{grantType}', array( 'uses' => 'ApiController@oauthTest'));

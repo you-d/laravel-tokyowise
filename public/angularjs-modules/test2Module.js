@@ -17,8 +17,8 @@ test2Module.config(function ($interpolateProvider, $httpProvider) {
 });
 
 /* Test 2 Module - Constants */
-//test2Module.constant("BASE_API_URL", "http://localhost:8888/laravel-15/laravel-tokyowise/public/api/");
-test2Module.constant("BASE_API_URL", "http://localhost:8000/api/");
+test2Module.constant("BASE_API_URL", "http://localhost:8888/laravel-15/laravel-tokyowise/public/api/");
+//test2Module.constant("BASE_API_URL", "http://localhost:8000/api/");
 test2Module.constant("API_VERSION", "v1");
 test2Module.constant("OAUTH_URL", "oauth2");
 
