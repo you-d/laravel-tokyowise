@@ -19,6 +19,10 @@ html, body {
   right: 0;
   overflow: auto;
 }
+.noscript div {
+  width: 100%;
+  text-align: center;
+}
 .footer {
   position: absolute;
   bottom: 0;

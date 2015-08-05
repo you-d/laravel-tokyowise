@@ -27,7 +27,7 @@
 						N/A
 				</div>
         <hr>
-        <h1>A Category Record</h1>
+        <h1>A Rensai Category Record</h1>
 				<br>
 				<div data:ng-show="aRensaiCategoryIsAvailable">
         		<span data:ng-bind="aRensaiCategory.id"></span>
@@ -37,6 +37,11 @@
 				<div data:ng-hide="aRensaiCategoryIsAvailable">
 						N/A
 				</div>
+        <hr>
+        <h1>Change New Article List Total Entries</h1>
+        <br>
+        <change-new-articles-total-entries-directive currentTotEntries="currentTotEntries" currentTotEntriesResolved="currentTotEntriesResolved" />
+        <hr>
 		</div>
 		<!-- DUMMY CONTENT -->
 		<br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>

@@ -12,6 +12,14 @@
 </head>
 <body>
 	<div id="container">
+		<!-- noscript msg -->
+		<noscript class="noscript">
+				<div>
+						For full functionality of this site, it is necessary to enable the Javascript.
+						Here are the <a href="http://www.enable-javascript.com/" target="_blank">
+						instructions</a> on how to enable Javascript in your web browser.
+				</div>
+		</noscript>
 		<!-- header -->
 		<header id="header">
 			@if (Sentry::check())

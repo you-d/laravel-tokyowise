@@ -1,5 +1,6 @@
 <?php
 use Illuminate\Routing\Controller;
+use HtmlWebStorage\HtmlLocalStorage;
 
 class ApiController extends Controller {
     // https://github.com/lucadegasperi/oauth2-server-laravel/issues/78
@@ -52,60 +53,78 @@ class ApiController extends Controller {
                                           );
               break;
             default :
+              var_dump("UNSPECIFIED GRANT -> TESTING CLIENT CREDENTIALS GRANT");echo "<br><br>";
               $authContextContents = array( "grant_type" => "client_credentials", );
         }
 
         if ($requestAccessTokenWithFileGetContents) {
             // Request access token with file_get_contents
             var_dump("[REQUESTING ACCESS TOKEN WITH FILE_GET_CONTENTS]");echo "<br><br>";
-            try {
-                $authContext = stream_context_create(
-                    array(
-                      'http' => array(
-                          'method' => 'POST',
-                          'header' => "Authorization: Basic " . $basicCredentials . "\r\n" .
-                                      "Content-type: application/x-www-form-urlencoded;charset=UTF-8\r\n" .
-                                      "accept: application/json\r\n",
-                          'content' => http_build_query($authContextContents),
-                      )
-                    )
-                );
-                $preTokenResponse = file_get_contents($oauth2url, false, $authContext);
-                var_dump("[REQUESTING ACCESS TOKEN IS SUCCESSFUL]");echo "<br><br>";
-                $decodedResponse = json_decode($preTokenResponse, true);
-                var_dump($decodedResponse);echo "<br><br>";
-                var_dump("[GOT THE ACCESS TOKEN, NOW GET THE RESOURCE]");echo "<br><br>";
-                var_dump($decodedResponse["access_token"]);echo "<br><br>";
-            } catch (Exception $e) {
-                var_dump("[REQUESTING ACCESS TOKEN HAS FAILED]");echo "<br><br>";
-                var_dump($http_response_header);echo "<br><br>";
+            if (!Session::has("decoded_response")) {
+                try {
+                    $authContext = stream_context_create(
+                        array(
+                          'http' => array(
+                              'method' => 'POST',
+                              'header' => "Authorization: Basic " . $basicCredentials . "\r\n" .
+                                          "Content-type: application/x-www-form-urlencoded;charset=UTF-8\r\n" .
+                                          "accept: application/json\r\n",
+                              'content' => http_build_query($authContextContents),
+                          )
+                        )
+                    );
+                    $preTokenResponse = file_get_contents($oauth2url, false, $authContext);
+                    var_dump("[REQUESTING ACCESS TOKEN IS SUCCESSFUL]");echo "<br><br>";
+                    $decodedResponse = json_decode($preTokenResponse, true);
+                    var_dump($decodedResponse);echo "<br><br>";
+                    var_dump("[GOT THE ACCESS TOKEN, NOW GET THE RESOURCE]");echo "<br><br>";
+                    var_dump($decodedResponse["access_token"]);echo "<br><br>";
+
+                    // store the decoded response inside the Session
+                    Session::put("decoded_response", $decodedResponse);
+                } catch (Exception $e) {
+                    var_dump("[REQUESTING ACCESS TOKEN HAS FAILED]");echo "<br><br>";
+                    var_dump($http_response_header);echo "<br><br>";
+                }
+            } else {
+                // Get the decoded response from the Session
+                var_dump("[GET THE DECODED RESPONSE FROM THE Session]");echo "<br><br>";
+                $decodedResponse = Session::get("decoded_response");
             }
         } else {
             // Request access token with cURL
             var_dump("[REQUESTING ACCESS TOKEN WITH CURL]");echo "<br><br>";
-            $ch = curl_init($oauth2url);
-            curl_setopt($ch, CURLOPT_POST, true);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
-            curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/x-www-form-urlencoded;charset=UTF-8',
-                                                       'Authorization: Basic ' . $basicCredentials,
-                                                       'accept: application/json'));
-            curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($authContextContents));
-            curl_setopt($ch, CURLINFO_HEADER_OUT, true);
-            $preTokenResponse = curl_exec($ch);
 
-            if (curl_getinfo($ch, CURLINFO_HTTP_CODE) !== 200) {
-                var_dump("[REQUESTING ACCESS TOKEN HAS FAILED]");echo "<br><br>";
-                var_dump(curl_getinfo($ch, CURLINFO_HTTP_CODE));echo "<br><br>";
-                var_dump(curl_getinfo($ch, CURLINFO_EFFECTIVE_URL));echo "<br><br>";
-                var_dump(curl_getinfo($ch, CURLINFO_HEADER_OUT));echo "<br><br>";
-                var_dump(curl_getinfo($ch, CURLINFO_CONTENT_TYPE));echo "<br><br>";
+            if (!Session::has("decoded_response")) {
+                $ch = curl_init($oauth2url);
+                curl_setopt($ch, CURLOPT_POST, true);
+                curl_setopt($ch, CURLOPT_RETURNTRANSFER, true);
+                curl_setopt($ch, CURLOPT_HTTPHEADER, array('Content-type: application/x-www-form-urlencoded;charset=UTF-8',
+                                                           'Authorization: Basic ' . $basicCredentials,
+                                                           'accept: application/json'));
+                curl_setopt($ch, CURLOPT_POSTFIELDS, http_build_query($authContextContents));
+                curl_setopt($ch, CURLINFO_HEADER_OUT, true);
+                $preTokenResponse = curl_exec($ch);
+
+                if (curl_getinfo($ch, CURLINFO_HTTP_CODE) !== 200) {
+                    var_dump("[REQUESTING ACCESS TOKEN HAS FAILED]");echo "<br><br>";
+                    var_dump(curl_getinfo($ch, CURLINFO_HTTP_CODE));echo "<br><br>";
+                    var_dump(curl_getinfo($ch, CURLINFO_EFFECTIVE_URL));echo "<br><br>";
+                    var_dump(curl_getinfo($ch, CURLINFO_HEADER_OUT));echo "<br><br>";
+                    var_dump(curl_getinfo($ch, CURLINFO_CONTENT_TYPE));echo "<br><br>";
+                } else {
+                    var_dump("[REQUESTING ACCESS TOKEN IS SUCCESSFUL]");echo "<br><br>";
+                    $decodedResponse = json_decode($preTokenResponse, true);
+                    var_dump($decodedResponse);echo "<br><br>";
+                    var_dump("[GOT THE ACCESS TOKEN, NOW GET THE RESOURCE]");echo "<br><br>";
+                    var_dump($decodedResponse["access_token"]);echo "<br><br>";
+                }
+                curl_close($ch);
             } else {
-                var_dump("[REQUESTING ACCESS TOKEN IS SUCCESSFUL]");echo "<br><br>";
-                $decodedResponse = json_decode($preTokenResponse, true);
-                var_dump($decodedResponse);echo "<br><br>";
-                var_dump("[GOT THE ACCESS TOKEN, NOW GET THE RESOURCE]");echo "<br><br>";
+              // Get the decoded response from the Session
+              var_dump("[GET THE DECODED RESPONSE FROM THE Session]");echo "<br><br>";
+              $decodedResponse = Session::get("decoded_response");
             }
-            curl_close($ch);
         }
 
         // WARNING :

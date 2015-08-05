@@ -11,6 +11,9 @@ class AngularJSViewPagesMapper extends Controller {
             case "home" :
                 return $this->home();
                 break;
+            default :
+                App::abort("404");
+                break;
         }
     }
 

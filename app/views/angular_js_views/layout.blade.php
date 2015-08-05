@@ -11,10 +11,19 @@
 	{{ HTML::style('css/style-angularjs.css'); }}
 </head>
 <body>
+	<noscript class="noscript">
+			<style type="text/css">#main {display: none;}</style>
+			<!-- <meta http-equiv="refresh" content="0; url=http://google.com"> -->
+			<div>
+					For full functionality of this site, it is necessary to enable the Javascript.
+					Here are the <a href="http://www.enable-javascript.com/" target="_blank">
+					instructions</a> on how to enable Javascript in your web browser.
+			</div>
+	</noscript>
 	<!-- https://laracasts.com/discuss/channels/general-discussion/which-way-to-integrate-with-laravel-and-angularjs -->
 	<!-- https://scotch.io/tutorials/single-page-apps-with-angularjs-routing-and-templating -->
   <div id="main">
-      <section ng-app="homeModule" data:ng-controller="homeModuleController">
+			<section ng-app="homeModule" data:ng-controller="homeModuleController">
 					<!-- fixed navbar (which is hidden until users scroll down the page) -->
 					<nav id="angularjs-test-fixed-navbar" class="navbar navbar-default navbar-fixed-top" role="navigation">
 							<div class="container">
@@ -48,10 +57,10 @@
 								<nav>
 										<ul class="nav nav-justified">
 												<li class="test1-nav-btn active">
-														<a data:ng-click="selectTest1()">[Test #1]</a>
+														<a data:ng-click="selectTest1()">[Test #1] Basic</a>
 												</li>
 												<li class="test2-nav-btn">
-														<a data:ng-click="selectTest2()">[Test #2]</a>
+														<a data:ng-click="selectTest2()">[Test #2] Consume REST API</a>
 												</li>
 										</ul>
 								</nav>
@@ -78,7 +87,6 @@
     	{{ HTML::script('js/jquery-2.1.4.min.js'); }}
     	{{ HTML::script('js/angular.min.js'); }}
       {{ HTML::script('js/angular-resource.min.js'); }}
-			<!-- http://jonsamwell.com/batching-http-requests-in-angular/ -->
     	{{ HTML::script('js/bootstrap.min.js'); }}
     	{{ HTML::script('js/style-angularjs.js'); }}
 			{{ HTML::script('angularjs-modules/homeModule.js'); }}

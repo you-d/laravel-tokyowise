@@ -11,6 +11,19 @@ a:hover {
   color: #000;
   text-decoration: underline;
 }
+.noscript {
+  text-align: center;
+}
+.noscript div {
+  background-color: #f00;
+  height: 20px;
+  color: #fff;
+  padding-top: 2px;
+}
+.noscript div a {
+  color: #fff;
+  text-decoration: underline;
+}
 .centre-container {
   margin: 0 auto;
   line-height: 140%;
@@ -193,9 +206,8 @@ a:hover {
 }
 @media print, screen and (min-width: 641px) {
   #login-link-box, #logout-link-box {
-    position: absolute;
-    top: 0px;
-    right: 145px;
+    margin-top: -29px;
+    margin-left: 1000px;
     background-color: #000;
     border-left: 2px solid #000;
     border-right: 2px solid #000;

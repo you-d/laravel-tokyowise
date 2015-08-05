@@ -1,9 +1,12 @@
 /* References : */
+// Using ngResource -> https://draptik.github.io/blog/2013/07/28/restful-crud-with-angularjs/
 // Passing access token -> https://stackoverflow.com/questions/23303118/extracting-data-from-angularjs-resource
 // promise? -> http://andyshora.com/promises-angularjs-explained-as-cartoon.html
 // dealing with isArray = false -> https://groups.google.com/forum/#!topic/angular/PxL4bfrQKqM
 // $resource returns promise & unresolved -> https://stackoverflow.com/questions/20008244/angularjs-using-resource-service-promise-is-not-resolved-by-get-request
 // response error interceptors -> https://github.com/angular/angular.js/issues/4013
+// File Upload -> https://uncorkedstudios.com/blog/multipartformdata-file-upload-with-angularjs
+// HTTP Batching -> http://jonsamwell.com/batching-http-requests-in-angular/
 
 /* Test 2 Module */
 var test2Module = angular.module('test2Module', ['ngResource', 'homeModule']);
@@ -23,17 +26,18 @@ test2Module.constant("API_VERSION", "v1");
 test2Module.constant("OAUTH_URL", "oauth2");
 
 /* Test 2 Module - Controllers */
+// For older browsers that don't support HTML5 session storage : https://code.google.com/p/sessionstorage/
 test2Module.controller('TokyowiseRensaiPageResourceController', function($scope, $window, TokyowiseRensaiPageWebService) {
-  var promisedAccessToken = TokyowiseRensaiPageWebService.requestTokenClientCredentialGrant();
-  promisedAccessToken.then(function(data) {
-                            // promise fulfilled
-                            $window.sessionStorage.access_token = data.data.access_token;
-                        }, function(error) {
-                            // promise rejected
-                            $scope.rensaiCategoriesIsAvailable = false;
-                            $scope.rensaiPostsIsAvailable = false;
-                            $scope.aRensaiCategoryIsAvailable = false;
-                        });
+    var promisedAccessToken = TokyowiseRensaiPageWebService.requestTokenClientCredentialGrant();
+    promisedAccessToken.then(function(data) {
+                              // promise fulfilled
+                              $window.sessionStorage.access_token = data.data.access_token;
+                          }, function(error) {
+                              // promise rejected
+                              $scope.rensaiCategoriesIsAvailable = false;
+                              $scope.rensaiPostsIsAvailable = false;
+                              $scope.aRensaiCategoryIsAvailable = false;
+                          });
 
     // Request access token
     var promisedAccessToken = TokyowiseRensaiPageWebService.requestTokenClientCredentialGrant();
@@ -49,8 +53,7 @@ test2Module.controller('TokyowiseRensaiPageResourceController', function($scope,
                                   $scope.aRensaiCategoryIsAvailable = false;
                               });
     }
-
-    // All Rensai Category record
+    // Get All Rensai Category record
     var promisedData = TokyowiseRensaiPageWebService.getAllCategories($window.sessionStorage.access_token);
     promisedData.$promise.then(function(data) {
                                 // promise fulfilled
@@ -60,7 +63,7 @@ test2Module.controller('TokyowiseRensaiPageResourceController', function($scope,
                                 // promise rejected
                                 $scope.rensaiCategoriesIsAvailable = false;
                             });
-    // All Rensai Post record
+    // Get All Rensai Post record
     promisedData = TokyowiseRensaiPageWebService.getAllPosts($window.sessionStorage.access_token);
     promisedData.$promise.then(function(data) {
                                 // promise fulfilled
@@ -70,7 +73,7 @@ test2Module.controller('TokyowiseRensaiPageResourceController', function($scope,
                                 // promise rejected
                                 $scope.rensaiPostsIsAvailable = false;
                             });
-    // A Single Category record
+    // Get A Single Category record
     promisedData = TokyowiseRensaiPageWebService.getSingleCategory($window.sessionStorage.access_token, 3);
     promisedData.$promise.then(function(data) {
                                 // promise fulfilled
@@ -84,6 +87,66 @@ test2Module.controller('TokyowiseRensaiPageResourceController', function($scope,
                                 // promise rejected
                                 $scope.aRensaiCategoryIsAvailable = false;
                             });
+    // Get Current Total Entries of the New Articles Section
+    promisedData = TokyowiseRensaiPageWebService.getNewArticlesTotEntries($window.sessionStorage.access_token);
+    promisedData.$promise.then(function(data) {
+                                // promise fulfilled
+                                if (data.thedata != null) {
+                                    //$scope.aRensaiCategoryIsAvailable = true;
+                                    $scope.currentTotEntries = data.thedata [0];
+                                    $scope.currentTotEntriesResolved = true;
+                                } else {
+                                    $scope.currentTotEntriesResolved = false;
+                                }
+                            }, function(error) {
+                                // promise rejected
+                                $scope.currentTotEntriesResolved = false;
+                            });
+});
+
+/* Test 2 Module - Directives */
+// Delay directive from rendering until promise is resolved in controller
+// Ref: http://plnkr.co/edit/VEt651cIseNPuTDFv6s6?p=preview
+// Making a reusable angularJS directives by "passing parameters"
+// Ref: http://www.johanilsson.com/2013/12/making-angularjs-directives-re-usable-by-passing-parameters/
+// Ref: https://stackoverflow.com/questions/17612977/passing-variable-from-controller-scope-to-directive
+// Ref: http://www.sitepoint.com/practical-guide-angularjs-directives-part-two/
+test2Module.directive("changeNewArticlesTotalEntriesDirective", function($window, TokyowiseRensaiPageWebService) {
+    return {
+        restrict: 'AE', // A : <span data:change-new-articles-total-entries-directive></span>
+                        // E : <change-new-articles-total-entries-directive/>
+        template: "<div data:ng-show='currentTotEntriesResolved'>" +
+                  "<form data:ng-submit='changeTotEntries()'>" +
+                  "<select id='totEntriesSelect'>" +
+                  "<option data:ng-repeat='item in totEntriesRange' data:ng-selected='{{item==scope.currentTotEntries}}' value='{{item}}'>{{item}}</option>" +
+                  "</select>" +
+                  "&nbsp;&nbsp;" +
+                  "<button type='submit'>Change</button>" +
+                  "</form>" +
+                  "</div>",
+        scope: {
+            currentTotEntriesResolved: '=currentTotEntriesResolved',
+            currentTotEntries: '=currentTotEntries'
+        },
+        link: function(scope, element, attrs) {
+            console.log(scope.currentTotEntriesResolved);
+            console.log(scope.currentTotEntries);
+            // Dropdown range
+            scope.totEntriesRange = [5,6,7,8,9,10,11,12,13,14,15];
+            // Submit Button clicked action
+            scope.changeTotEntries = function() {
+                /*
+                var jsonData = $.param({
+                                  json: JSON.stringify({
+                                    desiredTotEntries: $element.find("#totEntriesSelect").val()
+                                  })
+                               });
+                */
+                TokyowiseRensaiPageWebService.updateNewArticlesTotEntries($window.sessionStorage.access_token,
+                                                                          element.find("#totEntriesSelect").val());
+            }
+        }
+    };
 });
 
 /* Test 2 Module - Services */
@@ -126,9 +189,9 @@ test2Module.factory('TokyowiseRensaiPageWebService',
 
         return $http.post(oAuthUrl,
                           "grant_type=client_credentials",
-                          { headers: {'Authorization': 'Basic ' + credentials,
-                                      'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
-                                      'accept': 'application/json' }}
+                         { headers: {'Authorization': 'Basic ' + credentials,
+                                     'Content-Type': 'application/x-www-form-urlencoded;charset=UTF-8',
+                                     'accept': 'application/json' }}
                          ).
                          success(function(data, status, headers, config) {
 
@@ -173,6 +236,35 @@ test2Module.factory('TokyowiseRensaiPageWebService',
                              });
         return RensaiCategory.query();
     }
+    rensaiPageSvc.getNewArticlesTotEntries = function($accessToken) {
+        var getTotEntriesEndpoint = BASE_API_URL + API_VERSION + "/rensai/latestposts";
+        var LatestPosts = $resource(getTotEntriesEndpoint, {}, {
+                                'get': { method: "GET",
+                                           headers: { 'Authorization': 'Bearer ' + $accessToken ,
+                                                      'Content-Type': 'application/json',
+                                                      'accept': 'application/json' },
+                                           interceptor: LocalErrorInterceptorService,
+                                           isArray: false}
+                             });
+        return LatestPosts.get();
+    }
+    rensaiPageSvc.updateNewArticlesTotEntries = function($accessToken, $desiredTotEntries) {
+        var updateTotEntriesEndpoint = BASE_API_URL + API_VERSION + "/rensai/latestposts";
+        var jsonData = JSON.parse('{"desiredTotEntries" : ' + $desiredTotEntries + '}');
+
+        return $http.post(updateTotEntriesEndpoint,
+                          "data=" + jsonData,
+                          { headers: { 'Authorization': 'Bearer ' + $accessToken ,
+                                       'Content-Type': 'application/json',
+                                       'accept': 'application/json' }}
+                         ).
+                         success(function(data, status, headers, config) {
+                              console.log(data);
+                         }).
+                         error(function(data, status, headers, config) {
+
+                         });
+    }
 
     return rensaiPageSvc;
 }]);
@@ -183,6 +275,7 @@ test2Module.factory("GlobalErrorInterceptorService", function($q) {
     return {
         'responseError': function(r) {
             console.log("global error interceptor " + r.status);
+            console.log(r.data.error.message);
             return $q.reject(r);
         }
     }

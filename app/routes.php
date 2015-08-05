@@ -10,6 +10,10 @@
 | and give it the Closure to execute when that URI is requested.
 |
 */
+// WARNING! MAMP 3.x TRAILING SLASH REDIRECT BUG :
+// e.g <localhost>/home/ or <localhost>/angulartest/
+// https://stackoverflow.com/questions/25755085/trailing-slash-redirect
+
 // GET
 Route::group(array('before' => 'checklogout'), function() {
 	Route::get('/', array('uses' => 'HomeController@home'));
@@ -119,15 +123,27 @@ Route::group(array('before' => 'cmsauth|checklogout'), function() {
 	  That means in the config file, set "http_headers_only" option to true.
   - $consumerKey refers to "id" column, not the "name" column in the oauth_clients
     db table.
+	- This site's API Call is csrf exempt because CSRF attacks rely on cookies being
+	  implicitly sent with all requests to a particular domain. This site's API authentication
+		uses oauth2 to protect every API endpoint, and the AngularJS testing page uses
+		HTML 5 Session Storage to store the access token. Furthermore, this site enforces the access token
+		to be passed over HTTP Header for each API Call.
+	  Ref: https://stackoverflow.com/questions/10741339/do-csrf-attack-worries-apply-to-apis
+
+		For browsers that doesn't support HTML5 session storage :
+		https://code.google.com/p/sessionstorage/
  */
-Route::group(array('prefix' => 'api/v1/rensai/', 'before' => 'csrf|oauth'), function() {
+Route::group(array('prefix' => 'api/v1/rensai/', 'before' => 'oauth'), function() {
 		Route::get('categories.posts', 'RensaiCategoryApiController@showPosts');
 		Route::resource('categories.posts', 'RensaiCategoryApiController@showPosts');
 		Route::resource('categories', 'RensaiCategoryApiController');
 		Route::resource('posts', 'RensaiPostApiController');
-});
 
-Route::post('api/oauth2', array('before' => 'csrf', 'OAuthController@postAccessToken'));
+		Route::get('latestposts', 'RensaiModuleApiController@getNewArticlesTotalEntries');
+		Route::post('latestposts', 'RensaiModuleApiController@changeNewArticlesTotalEntries');
+});
+/* RESTful API - request access token */
+Route::post('api/oauth2', 'OAuthController@postAccessToken');
 
 /* Laravel oauth Test Pages */
 Route::get('oauthtest/{grantType}', array( 'uses' => 'ApiController@oauthTest'));
