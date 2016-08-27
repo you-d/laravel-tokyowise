@@ -1,6 +1,6 @@
 # laravel-tokyowise
 
-Status : Discontinued 
+Status : Discontinued   
 Reason : Outdated PHP Framework (Laravel 4.2)
 
 ###### Disclaimer :
