@@ -1,6 +1,7 @@
 # laravel-tokyowise
 
-[ver.0.5.0]
+Status : Discontinued 
+Reason : Outdated PHP Framework (Laravel 4.2)
 
 ###### Disclaimer :
 
@@ -14,5 +15,4 @@ However, This project is not merely a clone of the real website. For obvious rea
 
 As of the current stage, this project is far from being production ready even though it is already taking shape. A few minor pages are still unfinished, heaps of measures could still be implemented to improve the site's backend  performance, etc etc...   
 
-Over the course of time, more features will be added into this demo site that may deviate from already existing features on the original site. (hint: a feature to allow show/hide posts has already been planned.)
 
